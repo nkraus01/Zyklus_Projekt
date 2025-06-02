@@ -3,9 +3,9 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 
-st.set_page_config(layout="wide")
-
-st.title("🧬 Zyklusrechner mit Hormonverlauf")
+# Seiteneinstellungen
+st.set_page_config(page_title="Zyklus & Hormonverlauf", page_icon="🧬", layout="wide")
+st.title("🧬 Zyklusrechner + Hormonverlauf & Info")
 
 # Auswahl Zyklusart
 modus = st.selectbox("Zyklusart", ["Natürlich", "Pille (21+7)", "Pille (28 Tage)"])
@@ -20,10 +20,10 @@ else:
 
 st.markdown(f"🛈 {hinweis}" if hinweis else "")
 
-# Zyklustag
+# Zyklustag auswählen
 tag = st.slider("Zyklustag auswählen", 1, zykluslaenge, 1)
 
-# Funktion zur Phasenbestimmung
+# Phasenbestimmung
 def zyklus_phase(tag, modus, zykluslaenge):
     ovulation = zykluslaenge - 14
     if modus == "Natürlich":
@@ -75,7 +75,6 @@ fig.add_trace(go.Scatter(x=tage, y=oe, name="Östrogen", line=dict(color='purple
 fig.add_trace(go.Scatter(x=tage, y=pr, name="Progesteron", line=dict(color='orange')))
 fig.add_trace(go.Scatter(x=tage, y=lh, name="LH", line=dict(color='green')))
 fig.add_trace(go.Scatter(x=tage, y=fsh, name="FSH", line=dict(color='blue')))
-
 fig.add_shape(type="line", x0=tag, x1=tag, y0=0, y1=1.05, line=dict(color="red", width=2, dash="dash"))
 
 fig.update_layout(
@@ -86,13 +85,12 @@ fig.update_layout(
     width=950,
     height=500
 )
-
 st.plotly_chart(fig, use_container_width=True)
 
 # Zyklusphase anzeigen
 st.markdown(f"### 📍 Tag {tag}: {zyklus_phase(tag, modus, zykluslaenge)}")
 
-# Hormonwerte
+# Hormonwerte-Tabelle
 df = pd.DataFrame({
     'Hormon': ['Östrogen', 'Progesteron', 'LH', 'FSH'],
     'Wert': [
@@ -102,117 +100,31 @@ df = pd.DataFrame({
         f"{round(real_fsh[tag - 1], 1)} mIU/mL"
     ]
 })
-
 st.markdown("#### 📊 Hormonspiegel an diesem Tag")
 st.dataframe(df, use_container_width=True)
 
-import streamlit as st
+# --- Zusätzliche Infos zu Phasen und Hormonen ---
+st.markdown("---")
+st.header("📚 Zusatzinfos zu Zyklusphasen & Hormonen")
 
-# -------------------------------
-# TITEL UND EINLEITUNG
-# -------------------------------
-st.set_page_config(page_title="Hormon- und Zyklusinfo", page_icon="💡", layout="centered")
-
-st.title("🩸 Zyklusphasen und Hormonverlauf")
-st.markdown("""
-Willkommen! Hier findest du Infos zu den **weiblichen Zyklusphasen** und den wichtigsten **Hormonen**.
-Wähle unten eine Phase oder ein Hormon, um mehr zu erfahren.
-""")
-
-# -------------------------------
-# ZYKLUSPHASEN
-# -------------------------------
-st.header("📅 Zyklusphasen")
-
+# Phaseninfo
 zyklusphasen = {
     "Menstruation": "Die Gebärmutterschleimhaut wird abgestoßen. Hormone wie Östrogen und Progesteron sind niedrig.",
     "Follikelphase": "Östrogen steigt an → Aufbau der Schleimhaut und Reifung der Follikel.",
     "Ovulation": "LH-Peak löst Eisprung aus. Östrogen ist am höchsten.",
     "Lutealphase": "Progesteron steigt → Erhalt der Schleimhaut. Körpertemperatur leicht erhöht."
 }
-
-phase = st.selectbox("Wähle eine Zyklusphase:", list(zyklusphasen.keys()))
-st.subheader(f"📌 Phase: {phase}")
+phase = st.selectbox("ℹ️ Zyklusphase wählen", list(zyklusphasen.keys()))
+st.subheader(f"📅 {phase}")
 st.write(zyklusphasen[phase])
 
-# -------------------------------
-# HORMONINFORMATIONEN
-# -------------------------------
-st.header("🔬 Hormoninfos")
-
+# Hormoninfo
 hormon_infos = {
-    "Östrogen": """**Östrogen**
-
-1. **Follikelphase**  
-🡒 Östrogen steigt kontinuierlich an  
-- Aufbau der Gebärmutterschleimhaut  
-- Wachstum des Follikels  
-- Zervixschleim wird spermienfreundlich  
-- Positiver Effekt auf Stimmung & Libido  
-
-2. **Ovulation**  
-🡒 Höchstwert → LH-Peak → Eisprung  
-
-3. **Lutealphase**  
-🡒 Sinkt leicht, steigt moderat → erhält Schleimhaut  
-
-4. **Menstruation**  
-🡒 Fällt stark ab → Blutung beginnt  
-
-Allgemein: Knochenschutz, Hautpflege, Gefäßschutz, Stimmung""",
-
-    "Progesteron": """**Progesteron**
-
-1. **Follikelphase**  
-🡒 Sehr niedrig – kaum Wirkung  
-
-2. **Lutealphase**  
-🡒 Steigt stark – vom Gelbkörper  
-- Stabilisiert Schleimhaut  
-- Erhöht Temperatur  
-- Wirkt beruhigend  
-
-3. **Menstruation**  
-🡒 Fällt stark → Schleimhaut wird abgestoßen  
-
-4. **Schwangerschaft**  
-🡒 Bleibt hoch → schützt Schwangerschaft  
-
-Allgemein: Schlafqualität, Knochenaufbau, wirkt antiöstrogen""",
-
-    "LH": """**LH (Luteinisierendes Hormon)**
-
-1. **Follikelphase**  
-🡒 Unterstützt Follikelreifung  
-
-2. **Ovulation**  
-🡒 Starker Peak → löst Eisprung aus  
-🡒 Umwandlung zum Gelbkörper  
-
-3. **Lutealphase**  
-🡒 Fällt ab – keine neue Funktion  
-
-Allgemein: Östrogen fördert LH, Progesteron hemmt LH""",
-
-    "FSH": """**FSH (Follikelstimulierendes Hormon)**
-
-1. **Menstruation & frühe Follikelphase**  
-🡒 Fördert Follikelwachstum & Östrogenproduktion  
-
-2. **Mittlere Follikelphase**  
-🡒 FSH sinkt leicht → Selektion dominanter Follikel  
-
-3. **Ovulation**  
-🡒 Kleiner Peak → unterstützt Eisprung  
-
-4. **Lutealphase**  
-🡒 Bleibt niedrig – verhindert neuen Eisprung  
-
-Allgemein: Gezielte Hemmung durch Inhibin & Östrogen"""
+    "Östrogen": "Östrogen: Aufbau der Schleimhaut, Follikelreifung, Einfluss auf Stimmung & Haut.",
+    "Progesteron": "Progesteron: Erhalt der Schleimhaut, Temperaturerhöhung, beruhigend.",
+    "LH": "LH: Auslöser des Eisprungs durch LH-Peak.",
+    "FSH": "FSH: Stimuliert Follikelwachstum und Östrogenbildung."
 }
-
-hormon = st.selectbox("Wähle ein Hormon:", list(hormon_infos.keys()))
-st.subheader(f"🧪 Hormon: {hormon}")
-st.markdown(hormon_infos[hormon])
-
-
+hormon = st.selectbox("ℹ️ Hormon wählen", list(hormon_infos.keys()))
+st.subheader(f"🧪 {hormon}")
+st.write(hormon_infos[hormon])
