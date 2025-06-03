@@ -374,7 +374,43 @@ Wenn keine Befruchtung stattfindet, schrumpft der Gelbkörper, Progesteron fäll
 
     # Hormoninfo
     hormon_infos = {
-        "Östrogen": "Östrogen: Aufbau der Schleimhaut, Follikelreifung, Einfluss auf Stimmung & Haut.",
+        "Östrogen": """Östrogen ist eines der wichtigsten Hormone im weiblichen Körper – und wirkt weit über den Zyklus hinaus. Es ist so etwas wie der Dirigent im hormonellen Orchester und beeinflusst Fruchtbarkeit, Haut, Stimmung, Knochen und sogar das Gehirn.
+
+🔬 Was genau macht Östrogen?
+
+Östrogen wird vor allem in den Eierstöcken produziert – vor allem in der ersten Zyklushälfte (Follikelphase). Es:
+- regt das Wachstum der Gebärmutterschleimhaut an,
+
+- sorgt dafür, dass sich Follikel (Eibläschen) im Eierstock entwickeln,
+
+- beeinflusst den Zervixschleim (macht ihn durchlässiger für Spermien),
+
+- wirkt auf Haut, Haare, Knochen, Gehirn, Herz und mehr.
+
+🧠 Coole Fakten über Östrogen:
+
+- Stimmungsbooster & Energiegeber
+
+Östrogen hat direkten Einfluss auf das Gehirn: Es steigert das Serotonin-Level, wirkt stimmungsaufhellend, motivierend – und kann sogar das Gedächtnis stärken.
+
+- Beauty-Hormon? Nicht ganz falsch.
+
+In der Hochphase von Östrogen (vor dem Eisprung) berichten viele von strahlender Haut, glänzendem Haar und mehr Ausstrahlung. Das ist evolutionär sogar sinnvoll – der Körper zeigt sich „von seiner besten Seite“.
+
+
+- Es schützt deine Knochen
+
+Östrogen sorgt dafür, dass der Knochenstoffwechsel im Gleichgewicht bleibt. Nach den Wechseljahren – wenn der Östrogenspiegel sinkt – steigt das Risiko für Osteoporose.
+
+
+- Mehr als nur „weiblich“
+
+Auch Männer haben Östrogen – nur in viel geringerer Menge. Es spielt auch dort eine Rolle für Libido, Knochen und Gehirn. Umgekehrt ist Östrogen auch bei Frauen kein „alleiniges Hormon der Weiblichkeit“ – es wirkt systemweit.
+
+
+Wenn es aus dem Gleichgewicht gerät …
+
+Sowohl ein Östrogenmangel (z. B. bei Essstörungen oder in den Wechseljahren) als auch ein Überschuss (z. B. durch Hormonstörungen) können Beschwerden verursachen: von Stimmungsschwankungen bis Zyklusunregelmäßigkeiten oder Hautproblemen.""",
         "Progesteron": "Progesteron: Erhalt der Schleimhaut, Temperaturerhöhung, beruhigend.",
         "LH": "LH: Auslöser des Eisprungs durch LH-Peak.",
         "FSH": "FSH: Stimuliert Follikelwachstum und Östrogenbildung."
