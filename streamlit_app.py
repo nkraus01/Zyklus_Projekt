@@ -107,11 +107,17 @@ st.markdown("#### 📊 Hormonspiegel an diesem Tag")
 st.dataframe(df, use_container_width=True)
 
 # --- Zusätzliche Infos zu Phasen und Hormonen ---
+
 st.markdown("---")
 st.header("📚 Zusatzinfos zu Zyklusphasen & Hormonen")
 
-# Einstiegsfrage mit Buttons
-frage = st.radio("Möchtest du zusätzliche Informationen über deine Zyklusphasen und deine Hormone?", ("Ja, gerne", "Nein, danke"))
+
+# Einstiegsfrage mit "Nein, danke" als Standard
+frage = st.radio(
+    "Möchtest du zusätzliche Informationen über deine Zyklusphasen und deine Hormone?",
+    ("Ja, gerne", "Nein, danke"),
+    index=1  # ← Das sorgt dafür, dass "Nein, danke" vorausgewählt ist
+)
 
 if frage == "Ja, gerne":
     # Phaseninfo
