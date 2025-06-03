@@ -243,7 +243,7 @@ st.subheader(f"🧪 {hormon}")
 st.write(hormon_infos[hormon])
 
 
-import streamlit as st
+
 
 st.markdown("---")
 st.header("📚 Zusatzinfos zu Zyklusphasen & Hormonen")
