@@ -74,10 +74,10 @@ elif modus == "Pille (28 Tage)":
 
 # Plot erzeugen
 fig = go.Figure()
-fig.add_trace(go.Scatter(x=tage, y=oe, name="Östrogen", line=dict(color='purple')))
-fig.add_trace(go.Scatter(x=tage, y=pr, name="Progesteron", line=dict(color='orange')))
-fig.add_trace(go.Scatter(x=tage, y=lh, name="LH", line=dict(color='green')))
-fig.add_trace(go.Scatter(x=tage, y=fsh, name="FSH", line=dict(color='blue')))
+fig.add_trace(go.Scatter(x=tage, y=oe, name="Östrogen", line=dict(color='purple', shape='spline')))
+fig.add_trace(go.Scatter(x=tage, y=pr, name="Progesteron", line=dict(color='orange', shape = 'spline')))
+fig.add_trace(go.Scatter(x=tage, y=lh, name="LH", line=dict(color='green', shape='spline')))
+fig.add_trace(go.Scatter(x=tage, y=fsh, name="FSH", line=dict(color='blue', shape = 'spline')))
 fig.add_shape(type="line", x0=tag, x1=tag, y0=0, y1=1.05, line=dict(color="red", width=2, dash="dash"))
 
 fig.update_layout(
