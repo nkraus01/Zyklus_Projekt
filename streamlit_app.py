@@ -276,8 +276,6 @@ In der Hochphase von Östrogen (vor dem Eisprung) berichten viele von strahlende
 Auch Männer haben Östrogen – nur in viel geringerer Menge. Es spielt auch dort eine Rolle für Libido, Knochen und Gehirn. Umgekehrt ist Östrogen auch bei Frauen kein „alleiniges Hormon der Weiblichkeit“ – es wirkt systemweit.
 
 
-Wenn es aus dem Gleichgewicht gerät …
-
 Sowohl ein Östrogenmangel (z. B. bei Essstörungen oder in den Wechseljahren) als auch ein Überschuss (z. B. durch Hormonstörungen) können Beschwerden verursachen: von Stimmungsschwankungen bis Zyklusunregelmäßigkeiten oder Hautproblemen.""",
 
         
