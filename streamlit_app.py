@@ -233,7 +233,7 @@ st.write(zyklusphasen[phase])
 
 # Hormoninfo
 hormon_infos = {
-    "Östrogen": "Östrogen: Aufbau der Schleimhaut, Follikelreifung, Einfluss auf Stimmung & Haut.",
+    "Östrogen": "Östrogen: hallufbau der Schleimhaut, Follikelreifung, Einfluss auf Stimmung & Haut.",
     "Progesteron": "Progesteron: Erhalt der Schleimhaut, Temperaturerhöhung, beruhigend.",
     "LH": "LH: Auslöser des Eisprungs durch LH-Peak.",
     "FSH": "FSH: Stimuliert Follikelwachstum und Östrogenbildung."
