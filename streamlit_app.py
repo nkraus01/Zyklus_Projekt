@@ -112,9 +112,9 @@ st.header("📚 Zusatzinfos zu Zyklusphasen & Hormonen")
 
 # Phaseninfo
 zyklusphasen = {
-    "Menstruation": "Ist die Bezeichnung für periodische wiederkehrende Blutungen aus der Gebärmutter mit 
+    "Menstruation": """Ist die Bezeichnung für periodische wiederkehrende Blutungen aus der Gebärmutter mit 
     Abstoßung der Gebärmutterschleimhaut. Es leitet sich übrigens ab aus dem lateinischen menstruus, also 
-    monatlich.",
+    monatlich.""",
     "Follikelphase": "Östrogen steigt an → Aufbau der Schleimhaut und Reifung der Follikel.",
     "Ovulation": "LH-Peak löst Eisprung aus. Östrogen ist am höchsten.",
     "Lutealphase": "Progesteron steigt → Erhalt der Schleimhaut. Körpertemperatur leicht erhöht."
