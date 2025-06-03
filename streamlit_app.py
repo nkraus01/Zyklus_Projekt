@@ -113,19 +113,20 @@ st.header("📚 Zusatzinfos zu Zyklusphasen & Hormonen")
 # Phaseninfo
 zyklusphasen = {
     "Menstruation": """🧠 Coole Facts über die Menstruation:
-1. Du blutest ca. 6–9 Jahre deines Lebens
+1. Du blutest ca. 6–9 Jahre deines Lebens. 
+
 Eine Frau hat im Schnitt etwa 450 Menstruationen im Leben – das entspricht rund 6 bis 9 Jahren Menstruation in Summe. 
 
-2. Die Blutmenge ist gar nicht so viel
+2. Die Blutmenge ist gar nicht so viel.
 Auch wenn es oft nach „viel“ aussieht: Die durchschnittliche Menge Menstruationsblut liegt nur bei 30–70 ml pro Zyklus – das sind gerade mal 2–5 Esslöffel.
 
-3. Tiere menstruieren auch – aber nur wenige
+3. Tiere menstruieren auch – aber nur wenige.
 Die meisten Säugetiere bauen ihre Gebärmutterschleimhaut einfach wieder ab, ohne zu bluten. Nur wenige Arten wie Primaten, Fledermäuse oder Elefantenrüssler haben echte Menstruationszyklen.
 
-4. Menstruation kann ein Vitalzeichen sein
+4. Menstruation kann ein Vitalzeichen sein.
 In der Medizin wird der Zyklus manchmal als "fünftes Vitalzeichen" angesehen – ähnlich wichtig wie Puls, Blutdruck oder Atmung. Zyklusveränderungen können Hinweise auf Stress, Essstörungen, Schilddrüsenerkrankungen oder hormonelle Dysbalancen geben.
 
-🚫 Und was ist mit Mythen?
+🚫 Und was ist mit Mythen?:
 „Man darf beim Schwimmen nicht ins Wasser“ – Quatsch! Mit Tampon, Cup oder Periodenunterwäsche geht das problemlos.
 
 „Alle haben Schmerzen“ – Viele haben leichte Krämpfe, aber starke Schmerzen sind nicht normal und sollten ärztlich abgeklärt werden (z. B. Endometriose).
