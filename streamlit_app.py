@@ -126,7 +126,7 @@ Die meisten Säugetiere bauen ihre Gebärmutterschleimhaut einfach wieder ab, oh
 4. Menstruation kann ein Vitalzeichen sein.
 In der Medizin wird der Zyklus manchmal als "fünftes Vitalzeichen" angesehen – ähnlich wichtig wie Puls, Blutdruck oder Atmung. Zyklusveränderungen können Hinweise auf Stress, Essstörungen, Schilddrüsenerkrankungen oder hormonelle Dysbalancen geben.
 
-🚫 Und was ist mit Mythen?:
+🚫 Und was ist mit Mythen?: hallll
 „Man darf beim Schwimmen nicht ins Wasser“ – Quatsch! Mit Tampon, Cup oder Periodenunterwäsche geht das problemlos.
 
 „Alle haben Schmerzen“ – Viele haben leichte Krämpfe, aber starke Schmerzen sind nicht normal und sollten ärztlich abgeklärt werden (z. B. Endometriose).
