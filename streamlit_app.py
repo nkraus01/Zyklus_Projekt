@@ -1,5 +1,5 @@
 import streamlit as st
-st.set_page_config(page_title="Zyklus & Hormonverlauf", page_icon="🧬", layout="wide")
+st.set_page_config(page_title="Der weibliche Zyklus", page_icon="👸", layout="wide")
 
 import numpy as np
 import pandas as pd
@@ -8,7 +8,7 @@ import plotly.graph_objects as go
 
 # Seiteneinstellungen
 
-st.title("🧬 Zyklusrechner + Hormonverlauf & Info")
+st.title("💡 Dein Hormonverlauf")
 
 # Auswahl Zyklusart
 modus = st.selectbox("Zyklusart", ["Natürlich", "Pille (21+7)", "Pille (28 Tage)"])
@@ -112,7 +112,9 @@ st.header("📚 Zusatzinfos zu Zyklusphasen & Hormonen")
 
 # Phaseninfo
 zyklusphasen = {
-    "Menstruation": "Die Gebärmutterschleimhaut wird abgestoßen. Hormone wie Östrogen und Progesteron sind niedrig.",
+    "Menstruation": "Ist die Bezeichnung für periodische wiederkehrende Blutungen aus der Gebärmutter mit 
+    Abstoßung der Gebärmutterschleimhaut. Es leitet sich übrigens ab aus dem lateinischen menstruus, also 
+    monatlich.",
     "Follikelphase": "Östrogen steigt an → Aufbau der Schleimhaut und Reifung der Follikel.",
     "Ovulation": "LH-Peak löst Eisprung aus. Östrogen ist am höchsten.",
     "Lutealphase": "Progesteron steigt → Erhalt der Schleimhaut. Körpertemperatur leicht erhöht."
