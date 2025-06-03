@@ -411,9 +411,108 @@ Auch Männer haben Östrogen – nur in viel geringerer Menge. Es spielt auch do
 Wenn es aus dem Gleichgewicht gerät …
 
 Sowohl ein Östrogenmangel (z. B. bei Essstörungen oder in den Wechseljahren) als auch ein Überschuss (z. B. durch Hormonstörungen) können Beschwerden verursachen: von Stimmungsschwankungen bis Zyklusunregelmäßigkeiten oder Hautproblemen.""",
-        "Progesteron": "Progesteron: Erhalt der Schleimhaut, Temperaturerhöhung, beruhigend.",
-        "LH": "LH: Auslöser des Eisprungs durch LH-Peak.",
-        "FSH": "FSH: Stimuliert Follikelwachstum und Östrogenbildung."
+
+        
+        "Progesteron": """Progesteron ist das dominante Hormon der zweiten Zyklushälfte (Lutealphase) – und spielt eine Schlüsselrolle, wenn es um Vorbereitung auf eine Schwangerschaft, innere Balance und körperliche Stabilität geht.
+
+🔬 Was macht Progesteron im Körper?
+
+
+Progesteron wird nach dem Eisprung vom sogenannten Gelbkörper produziert – das ist der Rest des Follikels, aus dem die Eizelle gesprungen ist. Es:
+
+- erhält und stabilisiert die Gebärmutterschleimhaut,
+
+- erhöht leicht die Körpertemperatur (ca. 0,3–0,5 °C),
+
+- bereitet den Körper auf eine mögliche Schwangerschaft vor,
+
+- wirkt beruhigend auf das Nervensystem.
+
+
+🧠 Spannende Fakten über Progesteron:
+
+- Das „Kuschelhormon“ unter den Zyklushormonen
+
+Progesteron wirkt dämpfend und entspannend auf das zentrale Nervensystem. Viele Frauen fühlen sich in dieser Phase ruhiger, reflektierter – manche aber auch sensibler oder müder.
+
+- Temperatur-Anstieg als natürlicher Zyklustracker
+
+Der Temperaturanstieg nach dem Eisprung ist messbar – und ein zentrales Werkzeug in der natürlichen Familienplanung (NFP). Bleibt die Temperatur erhöht, ist das oft ein erstes Anzeichen für eine Schwangerschaft.
+
+- Schutz für Schwangerschaft – oder Startsignal für die Menstruation
+
+Wird eine Eizelle befruchtet, sorgt Progesteron dafür, dass die Schleimhaut erhalten bleibt. Wird keine befruchtete Eizelle eingenistet, fällt der Progesteronspiegel wieder ab – und die Menstruation beginnt.
+
+- Es hat Einfluss auf deine Haut – und dein Hungergefühl
+
+Progesteron kann Wassereinlagerungen und Heißhunger (besonders auf Süßes) fördern. Manche bekommen in dieser Phase auch eher Unreinheiten – der Hormonshift macht sich spürbar.
+
+- Ein Ungleichgewicht kann PMS begünstigen
+
+Wenn zu wenig Progesteron da ist (z. B. durch Stress, Schilddrüsenprobleme oder nach Absetzen der Pille), kann das PMS-Symptome wie Reizbarkeit, Brustspannen oder Schlafstörungen verstärken.""",
+
+        
+        "LH": """Das luteinisierende Hormon – kurz LH – ist so etwas wie der „Zünder“ im Zyklusgeschehen. Es sorgt dafür, dass ein reifes Ei den Follikel verlässt und der Eisprung stattfindet. Ohne LH gäbe es keinen Eisprung – und damit auch keine Fruchtbarkeit.
+
+
+🔬 Was genau macht LH im Zyklus?
+
+
+LH wird in der Hirnanhangdrüse (Hypophyse) gebildet und ist zusammen mit FSH (follikelstimulierendes Hormon) an der Steuerung des Zyklus beteiligt.
+
+Seine Hauptaufgabe:
+
+🧨 Der sogenannte LH-Peak – ein sprunghafter Anstieg – löst den Eisprung aus!
+
+
+Etwa zur Zyklusmitte steigt die LH-Konzentration im Blut plötzlich stark an.
+Das bewirkt, dass der dominante Follikel „aufplatzt“ und das Ei freigibt.
+Danach hilft LH, dass sich der Follikel in den Gelbkörper umwandelt (→ der produziert Progesteron).
+
+
+🧠 Spannende Fakten zu LH:
+
+- Der LH-Peak ist wie ein Countdown
+Sobald LH stark ansteigt, ist der Eisprung in den nächsten 24–36 Stunden zu erwarten. Darauf basieren viele Ovulationstests – sie messen den LH-Wert im Urin.
+
+- Es ist der Eisprung-Anzeiger Nr. 1
+Wer seinen Kinderwunsch natürlich unterstützen will, beobachtet oft den LH-Peak – er markiert die fruchtbarste Zeit im Zyklus.
+
+- LH wirkt nicht nur im Eierstock
+Bei Männern stimuliert LH übrigens die Hoden, Testosteron zu produzieren – ein gutes Beispiel dafür, wie „weibliche“ und „männliche“ Hormone in beiden Geschlechtern eine Rolle spielen.
+
+- Zu viel oder zu wenig LH kann stören
+Bei hormonellen Störungen wie dem PCOS (Polyzystisches Ovarialsyndrom) ist der LH-Spiegel häufig dauerhaft erhöht – was den Eisprung behindern kann. Auch Stress, Untergewicht oder Schilddrüsenprobleme können LH beeinflussen.""",
+        
+        "FSH": """FSH steht für Follikelstimulierendes Hormon – und ist sozusagen der „Anschubser“ des weiblichen Zyklus. Es bringt den ganzen Prozess in Bewegung, indem es die Reifung der Eibläschen (Follikel) im Eierstock anstößt.
+
+
+🔬 Was genau macht FSH?
+
+
+FSH wird – wie LH – in der Hypophyse (Hirnanhangdrüse) gebildet. Es ist vor allem in der ersten Zyklushälfte aktiv (Follikelphase) und:
+
+- stimuliert die Reifung mehrerer Follikel im Eierstock,
+
+- regt die Östrogenproduktion in diesen Follikeln an,
+
+- bereitet so den Körper auf den Eisprung vor.
+
+
+🧠 Wissenswerte Facts über FSH:
+
+- FSH startet die „Auswahlrunde“ der Eizellen
+Jeden Zyklus beginnen ca. 10–20 Follikel zu wachsen – aber nur einer wird der sogenannte „Leitfollikel“. Dieser reift vollständig heran und ist der Kandidat für den Eisprung.
+
+
+- FSH und Östrogen arbeiten als Team
+Je mehr die Follikel wachsen, desto mehr Östrogen produzieren sie. Und dieses steigende Östrogen signalisiert dem Gehirn irgendwann: „Danke, reicht!“, woraufhin FSH wieder absinkt.
+
+- Zu hohe FSH-Werte können ein Warnsignal sein
+Wenn die Eierstöcke nicht mehr gut auf FSH reagieren (z. B. bei beginnender Wechseljahre oder bei verminderter Fruchtbarkeit), steigt der FSH-Wert stark an – weil der Körper „mehr schreien muss“, um eine Reaktion zu bekommen.
+
+- auch Männer brauchen FSH
+Bei Männern fördert FSH die Reifung der Samenzellen – auch hier ist es also für Fruchtbarkeit unerlässlich."""
     }
     hormon = st.selectbox("ℹ️ Hormon wählen", list(hormon_infos.keys()))
     st.subheader(f"🧪 {hormon}")
