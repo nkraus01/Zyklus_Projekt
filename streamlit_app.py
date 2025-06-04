@@ -389,28 +389,17 @@ else:
 
 ### Chiaralinchen
 
-# === Imports ===
+import streamlit as st
+import matplotlib.pyplot as plt
 import csv
 import os
 from datetime import datetime, timedelta
-import matplotlib.pyplot as plt
-import ipywidgets as widgets
-from IPython.display import display, clear_output
 
-# === Konstanten ===
 DATEINAME = "zyklen.csv"
 STANDARD_ZYKLUSLAENGE = 28
-
-# === Globale Variablen ===
-zyklen = []
-neue_eintraege = []
 temperaturdaten = []
+zyklen = []
 
-# === Widgets Allgemein ===
-ausgabe = widgets.Output()
-
-# ========== Zyklus-Teil ==========
-# === Daten einlesen ===
 def lade_zyklen():
     daten = []
     if os.path.exists(DATEINAME):
@@ -425,197 +414,92 @@ def lade_zyklen():
                     continue
     return daten
 
-# === Zyklus-Widgets ===
-datum_input = widgets.Text(placeholder="TT.MM.JJJJ", description="Datum:")
-dauer_input = widgets.BoundedIntText(value=5, min=1, max=14, description="Dauer:")
-hinzufuegen_btn = widgets.Button(description="➕ Eintrag", button_style='success')
-speichern_btn = widgets.Button(description="💾 Analyse", button_style='primary')
-loeschen_dropdown = widgets.Dropdown(description="Löschen:")
-loeschen_btn = widgets.Button(description="🗑️", button_style='danger')
-
-# === Anzeige aktualisieren ===
-def anzeigen_zyklen():
-    with ausgabe:
-        clear_output()
-        print("🩸 Aktuelle Zyklusdaten:")
-        for idx, (datum, dauer) in enumerate(neue_eintraege, 1):
-            print(f"{idx}. {datum.strftime('%d.%m.%Y')} ({dauer} Tage)")
-        loeschen_dropdown.options = [
-            (f"{idx}. {datum.strftime('%d.%m.%Y')} ({dauer} Tage)", idx)
-            for idx, (datum, dauer) in enumerate(neue_eintraege, 1)
-        ]
-
-# === Zyklusfunktionen ===
-def zyklus_hinzufuegen(_):
-    try:
-        datum = datetime.strptime(datum_input.value.strip(), "%d.%m.%Y")
-        dauer = int(dauer_input.value)
-        neue_eintraege.append((datum, dauer))
-        datum_input.value = ""
-        dauer_input.value = 5
-        anzeigen_zyklen()
-    except ValueError:
-        with ausgabe:
-            print("❌ Ungültiges Datum (Format: TT.MM.JJJJ)")
-
-def zyklus_loeschen(_):
-    idx = loeschen_dropdown.value
-    if idx and 1 <= idx <= len(neue_eintraege):
-        del neue_eintraege[idx - 1]
-        anzeigen_zyklen()
-
-def zyklus_speichern(_):
-    neue_eintraege.sort(key=lambda x: x[0])
+def speichere_zyklen(daten):
     with open(DATEINAME, "w", newline="") as f:
         writer = csv.writer(f)
-        for eintrag in neue_eintraege:
+        for eintrag in daten:
             writer.writerow([eintrag[0].strftime("%d.%m.%Y"), eintrag[1]])
-    analyse_zyklus()
 
-def analyse_zyklus():
-    if not neue_eintraege:
-        return
-    z = neue_eintraege
-    zykluslaengen = [(z[i][0] - z[i-1][0]).days for i in range(1, len(z))]
-    durchschnitt = round(sum(zykluslaengen) / len(zykluslaengen)) if zykluslaengen else STANDARD_ZYKLUSLAENGE
+# ===== Streamlit-Start =====
+st.title("🩸 Zyklus- und Temperatur-Tracker")
+
+st.subheader("📥 Zyklusdaten eingeben")
+datum_input = st.text_input("Datum (TT.MM.JJJJ)")
+dauer_input = st.number_input("Dauer in Tagen", min_value=1, max_value=14, value=5)
+
+if "zyklen" not in st.session_state:
+    st.session_state.zyklen = lade_zyklen()
+
+if st.button("➕ Eintrag hinzufügen"):
+    try:
+        datum = datetime.strptime(datum_input.strip(), "%d.%m.%Y")
+        st.session_state.zyklen.append((datum, dauer_input))
+        st.session_state.zyklen.sort()
+        speichere_zyklen(st.session_state.zyklen)
+        st.success("Eintrag gespeichert.")
+    except:
+        st.error("❌ Ungültiges Datum. Format: TT.MM.JJJJ")
+
+if st.session_state.zyklen:
+    st.subheader("📊 Analyse")
+    z = st.session_state.zyklen
+    zyklen_laengen = [(z[i][0] - z[i-1][0]).days for i in range(1, len(z))]
+    durchschnitt = round(sum(zyklen_laengen)/len(zyklen_laengen)) if zyklen_laengen else STANDARD_ZYKLUSLAENGE
     letzter_start, letzte_dauer = z[-1]
     naechste = letzter_start + timedelta(days=durchschnitt)
     eisprung = naechste - timedelta(days=14)
     fruchtbar_ab = eisprung - timedelta(days=5)
 
-    with ausgabe:
-        print("\n📊 Zyklus-Analyse:")
-        print(f"Zykluslängen: {zykluslaengen}")
-        print(f"Ø Zyklus: {durchschnitt} Tage")
-        print(f"Letzte Periode: {letzter_start.strftime('%d.%m.%Y')} ({letzte_dauer} Tage)")
-        print(f"Nächste voraussichtlich: {naechste.strftime('%d.%m.%Y')}")
-        print(f"Eisprung: {eisprung.strftime('%d.%m.%Y')}")
-        print(f"Fruchtbar: {fruchtbar_ab.strftime('%d.%m.%Y')} bis {eisprung.strftime('%d.%m.%Y')}")
+    st.write(f"Zykluslängen: {zyklen_laengen}")
+    st.write(f"Ø Zyklus: {durchschnitt} Tage")
+    st.write(f"Letzte Periode: {letzter_start.strftime('%d.%m.%Y')} ({letzte_dauer} Tage)")
+    st.write(f"Nächste voraussichtlich: {naechste.strftime('%d.%m.%Y')}")
+    st.write(f"Eisprung: {eisprung.strftime('%d.%m.%Y')}")
+    st.write(f"Fruchtbar: {fruchtbar_ab.strftime('%d.%m.%Y')} – {eisprung.strftime('%d.%m.%Y')}")
 
-# ========== Temperatur-Teil ==========
+# === Temperaturdaten ===
+st.subheader("🌡️ Temperaturdaten")
+temp_input = st.text_input("Datum und Temperatur (z. B. 01.06.2025 36.6)")
+if "temperaturdaten" not in st.session_state:
+    st.session_state.temperaturdaten = []
 
-# === Temperatur-Widgets ===
-eingabe_text = widgets.Text(placeholder="TT.MM.JJJJ 36.5", description="Temp:")
-hinzufuegen_temp_btn = widgets.Button(description="➕ Hinzufügen", button_style="success")
-analysieren_btn = widgets.Button(description="📊 Analyse", button_style="primary")
-reset_btn = widgets.Button(description="🗑️ Löschen", button_style="danger")
-bearbeiten_dropdown = widgets.Dropdown(description="Eintrag:")
-bearbeiten_text = widgets.Text(placeholder="TT.MM.JJJJ 36.5", description="Neu:")
-aktualisieren_btn = widgets.Button(description="🔁 Update", button_style="warning")
-loeschen_temp_btn = widgets.Button(description="❌ Löschen", button_style="danger")
-
-# === Temperaturfunktionen ===
-def zeige_temperaturdaten():
-    with ausgabe:
-        clear_output()
-        print("🌡️ Temperaturdaten:")
-        for idx, (datum, temp) in enumerate(temperaturdaten, 1):
-            print(f"{idx}. {datum.strftime('%d.%m.%Y')} – {temp:.2f} °C")
-    aktualisiere_dropdown()
-
-def aktualisiere_dropdown():
-    bearbeiten_dropdown.options = [f"{i+1}. {d.strftime('%d.%m.%Y')} – {t:.2f}°C" for i, (d, t) in enumerate(temperaturdaten)]
-
-def temperatur_hinzufuegen(_):
+if st.button("➕ Temperatur speichern"):
     try:
-        datum_str, temp_str = eingabe_text.value.strip().split()
+        datum_str, temp_str = temp_input.strip().split()
         datum = datetime.strptime(datum_str, "%d.%m.%Y")
-        temperatur = float(temp_str.replace(",", "."))
-        temperaturdaten.append((datum, temperatur))
-        temperaturdaten.sort()
-        eingabe_text.value = ""
-        zeige_temperaturdaten()
+        temp = float(temp_str.replace(",", "."))
+        st.session_state.temperaturdaten.append((datum, temp))
+        st.session_state.temperaturdaten.sort()
+        st.success("Temperatur gespeichert.")
     except:
-        with ausgabe:
-            print("❌ Formatfehler: Beispiel '01.06.2025 36.6'")
+        st.error("❌ Formatfehler. Beispiel: 01.06.2025 36.6")
 
-def temperatur_analysieren(_):
-    if len(temperaturdaten) < 5:
-        with ausgabe:
-            print("⚠️ Mindestens 5 Werte nötig.")
-        return
-
-    daten = [d for d, _ in temperaturdaten]
-    temps = [t for _, t in temperaturdaten]
-
-    gleit = [(temps[i-1] + temps[i] + temps[i+1]) / 3 for i in range(1, len(temps)-1)]
+if len(st.session_state.temperaturdaten) >= 5:
+    daten = [d for d, _ in st.session_state.temperaturdaten]
+    temps = [t for _, t in st.session_state.temperaturdaten]
+    gleit = [(temps[i-1] + temps[i] + temps[i+1])/3 for i in range(1, len(temps)-1)]
     mittel_daten = daten[1:-1]
     eisprung_tag = None
-
     for i in range(1, len(gleit)):
         if gleit[i] - gleit[i-1] >= 0.2:
             eisprung_tag = mittel_daten[i]
             break
 
-    with ausgabe:
-        plt.figure(figsize=(10, 4))
-        plt.plot(daten, temps, marker='o', label="Temperatur", color='blue')
-        plt.plot(mittel_daten, gleit, label="3-Tage-Mittel", linestyle='--', color='orange')
-        if eisprung_tag:
-            plt.axvline(eisprung_tag, color='red', linestyle=':', label=f"Eisprung: {eisprung_tag.strftime('%d.%m.%Y')}")
-        plt.xticks(rotation=45)
-        plt.grid(True)
-        plt.legend()
-        plt.tight_layout()
-        plt.title("Basaltemperaturkurve")
-        plt.show()
+    fig, ax = plt.subplots(figsize=(10, 4))
+    ax.plot(daten, temps, marker='o', label="Temperatur", color="blue")
+    ax.plot(mittel_daten, gleit, linestyle='--', label="3-Tage-Mittel", color="orange")
+    if eisprung_tag:
+        ax.axvline(eisprung_tag, color="red", linestyle=":", label="Eisprung")
+    ax.set_title("Basaltemperaturkurve")
+    ax.set_ylabel("Temperatur (°C)")
+    ax.grid(True)
+    ax.legend()
+    plt.xticks(rotation=45)
+    st.pyplot(fig)
 
-        print(f"✅ Eisprung erkannt: {eisprung_tag.strftime('%d.%m.%Y')}" if eisprung_tag else "❌ Kein Eisprung erkannt.")
-
-def temperatur_loeschen(_):
-    idx = bearbeiten_dropdown.index
-    if idx is not None and 0 <= idx < len(temperaturdaten):
-        temperaturdaten.pop(idx)
-        zeige_temperaturdaten()
-
-def temperatur_aktualisieren(_):
-    try:
-        datum_str, temp_str = bearbeiten_text.value.strip().split()
-        datum = datetime.strptime(datum_str, "%d.%m.%Y")
-        temperatur = float(temp_str.replace(",", "."))
-        temperaturdaten[bearbeiten_dropdown.index] = (datum, temperatur)
-        temperaturdaten.sort()
-        bearbeiten_text.value = ""
-        zeige_temperaturdaten()
-    except:
-        with ausgabe:
-            print("❌ Formatfehler beim Aktualisieren.")
-
-def temperatur_reset(_):
-    temperaturdaten.clear()
-    zeige_temperaturdaten()
-
-# ========== Start & GUI ==========
-def setup():
-    global zyklen, neue_eintraege
-    zyklen = lade_zyklen()
-    neue_eintraege = zyklen.copy()
-
-    hinzufuegen_btn.on_click(zyklus_hinzufuegen)
-    speichern_btn.on_click(zyklus_speichern)
-    loeschen_btn.on_click(zyklus_loeschen)
-
-    hinzufuegen_temp_btn.on_click(temperatur_hinzufuegen)
-    analysieren_btn.on_click(temperatur_analysieren)
-    loeschen_temp_btn.on_click(temperatur_loeschen)
-    aktualisieren_btn.on_click(temperatur_aktualisieren)
-    reset_btn.on_click(temperatur_reset)
-
-    anzeigen_zyklen()
-    zeige_temperaturdaten()
-
-    display(widgets.VBox([
-        widgets.HTML("<h3>🩸 Zyklusdaten</h3>"),
-        datum_input, dauer_input, hinzufuegen_btn,
-        widgets.HBox([loeschen_dropdown, loeschen_btn]),
-        speichern_btn,
-        widgets.HTML("<hr><h3>🌡️ Temperaturdaten</h3>"),
-        eingabe_text, hinzufuegen_temp_btn,
-        widgets.HBox([bearbeiten_dropdown, loeschen_temp_btn]),
-        widgets.HBox([bearbeiten_text, aktualisieren_btn]),
-        widgets.HBox([analysieren_btn, reset_btn]),
-        ausgabe
-    ]))
-
-setup()
-
+    if eisprung_tag:
+        st.success(f"✅ Eisprung erkannt: {eisprung_tag.strftime('%d.%m.%Y')}")
+    else:
+        st.warning("❌ Kein Eisprung erkannt.")
+else:
+    st.info("Mindestens 5 Temperaturdaten notwendig.")
