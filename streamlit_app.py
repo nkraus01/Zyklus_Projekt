@@ -423,7 +423,7 @@ def speichere_zyklen(daten):
 # ===== Streamlit-Start =====
 st.title("🩸 Zyklus- und Temperatur-Tracker")
 
-st.subheader("📥 Zyklusdaten eingeben")
+st.subheader("📥 Beginn deiner Menstruation und Dauer angeben:")
 datum_input = st.text_input("Datum (TT.MM.JJJJ)")
 dauer_input = st.number_input("Dauer in Tagen", min_value=1, max_value=14, value=5)
 
