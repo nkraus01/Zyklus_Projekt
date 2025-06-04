@@ -387,3 +387,290 @@ Bei Männern fördert FSH die Reifung der Samenzellen – auch hier ist es also 
 else:
     st.info("Kein Problem! Du kannst jederzeit später auf diese Infos zurückkommen. 🌸")
 
+### Chiara
+
+import csv
+import os
+from datetime import datetime, timedelta
+import ipywidgets as widgets
+from IPython.display import display, clear_output
+
+# === Konstanten ===
+DATEINAME = "zyklen.csv"
+STANDARD_ZYKLUSLAENGE = 28
+
+# === Daten einlesen ===
+def lade_daten():
+    daten = []
+    if os.path.exists(DATEINAME):
+        with open(DATEINAME, "r") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                try:
+                    datum = datetime.strptime(row[0], "%d.%m.%Y")
+                    dauer = int(row[1])
+                    daten.append((datum, dauer))
+                except Exception:
+                    continue
+    return daten
+
+# === Ausgabe-Komponente ===
+ausgabe = widgets.Output()
+
+# === UI-Komponenten ===
+datum_input = widgets.Text(placeholder="TT.MM.JJJJ", description="Datum:")
+dauer_input = widgets.BoundedIntText(value=5, min=1, max=14, description="Dauer:")
+btn_layout = widgets.Layout(width='fit-content')
+
+hinzufuegen_btn = widgets.Button(description="➕ Eintrag hinzufügen", button_style='success', layout=btn_layout)
+speichern_btn = widgets.Button(description="💾 Berechnung ausführen", button_style='primary', layout=btn_layout)
+loeschen_dropdown = widgets.Dropdown(options=[], description='Löschen:', layout=widgets.Layout(width='auto'))
+loeschen_btn = widgets.Button(description="🗑️ Löschen", button_style='danger', layout=btn_layout)
+
+# === Eintragsliste ===
+zyklen = lade_daten()
+neue_eintraege = zyklen.copy()
+
+# === Anzeige aktualisieren ===
+def anzeigen():
+    with ausgabe:
+        clear_output()
+        print("📝 Aktuelle Einträge:")
+        for idx, (datum, dauer) in enumerate(neue_eintraege, 1):
+            print(f"{idx}. {datum.strftime('%d.%m.%Y')} ({dauer} Tage)")
+        loeschen_dropdown.options = [
+            (f"{idx}. {datum.strftime('%d.%m.%Y')} ({dauer} Tage)", idx)
+            for idx, (datum, dauer) in enumerate(neue_eintraege, 1)
+        ]
+
+# === Hinzufügen-Funktion ===
+def hinzufuegen_clicked(_):
+    try:
+        datum = datetime.strptime(datum_input.value.strip(), "%d.%m.%Y")
+        dauer = int(dauer_input.value)
+        neue_eintraege.append((datum, dauer))
+        datum_input.value = ""
+        dauer_input.value = 5
+        anzeigen()
+    except ValueError:
+        with ausgabe:
+            print("❌ Bitte ein gültiges Datum eingeben (TT.MM.JJJJ)")
+
+# === Löschen-Funktion ===
+def loeschen_clicked(_):
+    index = loeschen_dropdown.value
+    if index and 1 <= index <= len(neue_eintraege):
+        del neue_eintraege[index - 1]
+        anzeigen()
+
+# === Speichern und Analyse starten ===
+def speichern_clicked(_):
+    neue_eintraege.sort(key=lambda x: x[0])
+    with open(DATEINAME, "w", newline="") as f:
+        writer = csv.writer(f)
+        for eintrag in neue_eintraege:
+            writer.writerow([eintrag[0].strftime("%d.%m.%Y"), eintrag[1]])
+    analyse()
+
+# === Zyklusanalyse ===
+def analyse():
+    z = neue_eintraege
+    zykluslaengen = [(z[i][0] - z[i-1][0]).days for i in range(1, len(z))]
+    durchschnitt = round(sum(zykluslaengen) / len(zykluslaengen)) if zykluslaengen else STANDARD_ZYKLUSLAENGE
+    letzter_start, letzte_dauer = z[-1]
+    naechste_periode = letzter_start + timedelta(days=durchschnitt)
+    eisprung = naechste_periode - timedelta(days=14)
+    fruchtbar_von = eisprung - timedelta(days=5)
+
+    with ausgabe:
+        print("\n📊 Analyse:")
+        print(f"Zykluslängen: {zykluslaengen}")
+        print(f"Durchschnittliche Zykluslänge: {durchschnitt} Tage")
+        print(f"Letzte Periode: {letzter_start.strftime('%d.%m.%Y')} ({letzte_dauer} Tage)")
+        print(f"Nächste Periode voraussichtlich am: {naechste_periode.strftime('%d.%m.%Y')}")
+        print(f"Eisprung voraussichtlich am: {eisprung.strftime('%d.%m.%Y')}")
+        print(f"Fruchtbare Phase: {fruchtbar_von.strftime('%d.%m.%Y')} bis {eisprung.strftime('%d.%m.%Y')}")
+
+# === Eventbindung ===
+def setup_events():
+    hinzufuegen_btn.on_click(hinzufuegen_clicked)
+    speichern_btn.on_click(speichern_clicked)
+    loeschen_btn.on_click(loeschen_clicked)
+
+# === GUI anzeigen ===
+def main():
+    setup_events()
+    display(widgets.VBox([
+        widgets.HTML("<h3>🩸 Zyklusdaten eingeben</h3>"),
+        datum_input,
+        dauer_input,
+        hinzufuegen_btn,
+        widgets.HBox([loeschen_dropdown, loeschen_btn]),
+        speichern_btn,
+        ausgabe
+    ]))
+    anzeigen()
+
+if __name__ == "__main__":
+    main()
+
+Temperatur:
+
+import matplotlib.pyplot as plt
+from datetime import datetime
+import ipywidgets as widgets
+from IPython.display import display, clear_output
+
+# === 1. Startdaten ===
+temperaturdaten = [
+    (datetime.strptime("01.06.2025", "%d.%m.%Y"), 36.4),
+    (datetime.strptime("02.06.2025", "%d.%m.%Y"), 36.5),
+    (datetime.strptime("03.06.2025", "%d.%m.%Y"), 36.4),
+    (datetime.strptime("04.06.2025", "%d.%m.%Y"), 36.8),
+    (datetime.strptime("05.06.2025", "%d.%m.%Y"), 36.9),
+    (datetime.strptime("06.06.2025", "%d.%m.%Y"), 37.0),
+    (datetime.strptime("07.06.2025", "%d.%m.%Y"), 36.9),
+    (datetime.strptime("08.06.2025", "%d.%m.%Y"), 36.8),
+]
+
+# === 2. UI-Komponenten ===
+eingabe_text = widgets.Text(placeholder="TT.MM.JJJJ 36.5", description="Eintrag:")
+hinzufuegen_btn = widgets.Button(description="➕ Hinzufügen", button_style="success", layout=widgets.Layout(width='fit-content'))
+analysieren_btn = widgets.Button(description="📊 Analyse starten", button_style="primary", layout=widgets.Layout(width='fit-content'))
+reset_btn = widgets.Button(description="🗑️ Alle löschen", button_style="danger", layout=widgets.Layout(width='fit-content'))
+
+ausgabe = widgets.Output()
+bearbeiten_dropdown = widgets.Dropdown(description="Eintrag:", options=[], layout=widgets.Layout(width='auto'))
+loeschen_btn = widgets.Button(description="❌ Löschen", button_style="danger", layout=widgets.Layout(width='fit-content'))
+bearbeiten_text = widgets.Text(placeholder="TT.MM.JJJJ 36.5", description="Neu:")
+aktualisieren_btn = widgets.Button(description="🔁 Aktualisieren", button_style="warning", layout=widgets.Layout(width='fit-content'))
+
+# === 3. Hilfsfunktionen ===
+def aktualisiere_dropdown():
+    bearbeiten_dropdown.options = [f"{i+1}. {d.strftime('%d.%m.%Y')} – {t:.2f}°C" for i, (d, t) in enumerate(temperaturdaten)]
+
+def zeige_daten():
+    with ausgabe:
+        clear_output()
+        print("📅 Aktuelle Temperaturdaten:")
+        for idx, (datum, temp) in enumerate(temperaturdaten, 1):
+            print(f"{idx}. {datum.strftime('%d.%m.%Y')} – {temp:.2f} °C")
+
+# === 4. Button-Callbacks ===
+def hinzufuegen_clicked(_):
+    text = eingabe_text.value.strip()
+    try:
+        datum_str, temp_str = text.split()
+        datum = datetime.strptime(datum_str, "%d.%m.%Y")
+        temperatur = float(temp_str.replace(",", "."))
+        temperaturdaten.append((datum, temperatur))
+        temperaturdaten.sort()
+        eingabe_text.value = ""
+        aktualisiere_dropdown()
+        zeige_daten()
+    except ValueError:
+        with ausgabe:
+            print("❌ Ungültiges Format! Beispiel: 01.06.2025 36.5")
+
+def analysieren_clicked(_):
+    with ausgabe:
+        clear_output()
+        if len(temperaturdaten) < 5:
+            print("⚠️ Nicht genügend Daten (mindestens 5 Tage empfohlen).")
+            return
+
+        temperaturdaten.sort()
+        daten = [d for d, _ in temperaturdaten]
+        temps = [t for _, t in temperaturdaten]
+
+        def berechne_3Tage_Mittel(werte):
+            return [(werte[i-1] + werte[i] + werte[i+1]) / 3 for i in range(1, len(werte)-1)]
+
+        gleitmittel = berechne_3Tage_Mittel(temps)
+        mittel_daten = daten[1:-1]
+
+        # Eisprung erkennen (Temperaturanstieg ≥ 0.2 °C)
+        eisprung_tag = None
+        for i in range(1, len(gleitmittel)):
+            if gleitmittel[i] - gleitmittel[i - 1] >= 0.2:
+                eisprung_tag = mittel_daten[i]
+                break
+
+        # Diagramm
+        plt.figure(figsize=(10, 5))
+        plt.plot(daten, temps, label="Basaltemperatur", marker='o', color='blue')
+        plt.plot(mittel_daten, gleitmittel, label="Gleitender Durchschnitt", color='orange', linestyle='--')
+        if eisprung_tag:
+            plt.axvline(eisprung_tag, color='red', linestyle=':', label=f"Eisprung: {eisprung_tag.strftime('%d.%m.%Y')}")
+        plt.title("Basaltemperaturkurve & Eisprung")
+        plt.xlabel("Datum")
+        plt.ylabel("Temperatur (°C)")
+        plt.xticks(rotation=45)
+        plt.legend()
+        plt.grid(True)
+        plt.tight_layout()
+        plt.show()
+
+        if eisprung_tag:
+            print(f"✅ Eisprung erkannt am: {eisprung_tag.strftime('%d.%m.%Y')}")
+        else:
+            print("❌ Kein Eisprung erkannt – Temperaturanstieg zu gering oder nicht vorhanden.")
+
+def loeschen_clicked(_):
+    index = bearbeiten_dropdown.index
+    if index is not None and 0 <= index < len(temperaturdaten):
+        temperaturdaten.pop(index)
+        aktualisiere_dropdown()
+        zeige_daten()
+
+def aktualisieren_clicked(_):
+    index = bearbeiten_dropdown.index
+    try:
+        datum_str, temp_str = bearbeiten_text.value.strip().split()
+        datum = datetime.strptime(datum_str, "%d.%m.%Y")
+        temperatur = float(temp_str.replace(",", "."))
+        temperaturdaten[index] = (datum, temperatur)
+        temperaturdaten.sort()
+        bearbeiten_text.value = ""
+        aktualisiere_dropdown()
+        zeige_daten()
+    except Exception:
+        with ausgabe:
+            print("❌ Formatfehler! Beispiel: 02.06.2025 36.7")
+
+def reset_clicked(_):
+    temperaturdaten.clear()
+    aktualisiere_dropdown()
+    with ausgabe:
+        clear_output()
+        print("🗑️ Alle Einträge wurden gelöscht.")
+
+# === 5. Eventbindung ===
+def setup_events():
+    hinzufuegen_btn.on_click(hinzufuegen_clicked)
+    analysieren_btn.on_click(analysieren_clicked)
+    loeschen_btn.on_click(loeschen_clicked)
+    aktualisieren_btn.on_click(aktualisieren_clicked)
+    reset_btn.on_click(reset_clicked)
+
+# === 6. GUI aufbauen ===
+def main():
+    setup_events()
+    aktualisiere_dropdown()
+    zeige_daten()
+    display(widgets.VBox([
+        widgets.HTML("<h3>🌡️ Basaltemperatur-Eingabe & Auswertung</h3>"),
+        eingabe_text,
+        hinzufuegen_btn,
+        widgets.HTML("<hr><b>✏️ Bestehende Einträge bearbeiten oder löschen</b>"),
+        widgets.HBox([bearbeiten_dropdown, loeschen_btn]),
+        widgets.HBox([bearbeiten_text, aktualisieren_btn]),
+        widgets.HTML("<hr>"),
+        widgets.HBox([analysieren_btn, reset_btn]),
+        ausgabe
+    ]))
+
+if __name__ == "__main__":
+    main()
+
+
