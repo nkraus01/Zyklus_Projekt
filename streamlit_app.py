@@ -387,7 +387,7 @@ Bei Männern fördert FSH die Reifung der Samenzellen – auch hier ist es also 
 else:
     st.info("Kein Problem! Du kannst jederzeit später auf diese Infos zurückkommen. 🌸")
 
-### Chiara
+### Chiaralinchen
 
 # === Imports ===
 import csv
