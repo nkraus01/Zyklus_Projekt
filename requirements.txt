@@ -3,5 +3,5 @@ numpy
 pandas
 plotly
 matplotlib
-ipywidgets
+
 
