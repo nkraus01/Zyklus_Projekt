@@ -393,6 +393,9 @@ Bei Männern fördert FSH die Reifung der Samenzellen – auch hier ist es also 
 else:
     st.info("Kein Problem! Du kannst jederzeit später auf diese Infos zurückkommen. 🌸")
 
+
+
+
 ### Chiaralinchen
 
 import streamlit as st
@@ -558,7 +561,7 @@ alkohol_status = 1 if "mindestens" in antwort_a else 0
 # Fruchtbarkeitswahrscheinlichkeit berechnen
 if bmi is not None:
     p_log = -0.602 + 0.268 * eisprung_entfernung - 0.020 * bmi - 0.065 * alter
-    p_fruchtbarkeit = np.exp(p_log) / (1 + np.exp(p_log))_
+    p_fruchtbarkeit = np.exp(p_log) / (1 + np.exp(p_log))
     st.success(f"Geschätzte Fruchtbarkeitswahrscheinlichkeit: {p_fruchtbarkeit:.4f}")
 
 
