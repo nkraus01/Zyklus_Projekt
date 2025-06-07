@@ -517,111 +517,47 @@ else:
 
 
 
-### Lou ###
+### Lou #################################################################################
 
-def main():
-    # Alter abfragen
-    while True:
-        try:
-            alter = int(input("Ihr Alter: "))
-            print(f"Folgendes Alter wurde übernommen: {alter}")
-            break
-        except ValueError:
-            print("Ihre Eingabe ist nicht gültig. Versuchen Sie es erneut.")
+st.title("Fruchtbarkeitsrechner")
 
-    print()
+# Alter
+alter = st.number_input("Ihr Alter", min_value=10, max_value=60, value=30)
 
-    # durchschnittliche Zykluslänge
-    try:
-        durchschnitt = float(input("Geben Sie eine bekannte durchschnittliche Zykluslänge ein (z. B. 28): "))
-        zykluslaenge = round(durchschnitt)
-        print(f"Wir konnten folgende durchschnittliche Zykluslänge übernehmen: {zykluslaenge} Tage")
-    except ValueError:
-        while True:
-            try:
-                zykluslaenge = int(input("Zykluslänge (in Tagen): "))
-                print(f"Folgende Zykluslänge wurde übernommen: {zykluslaenge}")
-                break
-            except ValueError:
-                print("Ihre Eingabe ist nicht gültig. Versuchen Sie es erneut.")
-    
-    print()
+# Zykluslänge
+zykluslaenge = st.number_input("Durchschnittliche Zykluslänge (in Tagen)", min_value=15, max_value=45, value=28)
 
-    # Tag des Eisprungs berechnen
-    tag_eisprung = zykluslaenge - 14
-    print(f"Ihr Eisprung findet durchschnittlich an Zyklustag {tag_eisprung} statt.")
-    print()
+# Tag des Eisprungs
+tag_eisprung = zykluslaenge - 14
+st.info(f"Ihr Eisprung findet durchschnittlich an Zyklustag {tag_eisprung} statt.")
 
-    # Zyklustag berechnen oder übernehmen
-    while True:
-        try:
-            zyklustag = int(input("Geben Sie Ihren aktuellen Zyklustag ein: "))
-            print(f"Folgender Zyklustag wurde übernommen: {zyklustag}")
-            break
-        except ValueError:
-            print("Ihre Eingabe ist nicht gültig. Versuchen Sie es erneut.")
-    
-    print()
+# Aktueller Zyklustag
+zyklustag = st.number_input("Aktueller Zyklustag", min_value=1, max_value=zykluslaenge, value=10)
 
-    # Abstand zum Eisprung
-    eisprung_entfernung = zyklustag - tag_eisprung
+# Abstand zum Eisprung
+eisprung_entfernung = zyklustag - tag_eisprung
 
-    # BMI berechnen
-    while True:
-        try:
-            gewicht = float(input("Gewicht in kg: "))
-            groesse = float(input("Größe in m (z. B. 1.70): "))
-            if 0 < gewicht < 300 and 0 < groesse < 2.5:
-                bmi = gewicht / (groesse ** 2)
-                print(f"Ihr BMI beträgt: {bmi:.2f}")
-                break
-            else:
-                print("Ihre Eingabe liegt nicht im gültigen Bereich. Versuchen Sie es erneut.")
-        except ValueError:
-            print("Ungültige Eingabe. Versuchen Sie es erneut.")
+# BMI berechnen
+gewicht = st.number_input("Gewicht (in kg)", min_value=30.0, max_value=200.0, value=70.0)
+groesse = st.number_input("Größe (in m)", min_value=1.0, max_value=2.5, value=1.70)
+if groesse > 0:
+    bmi = gewicht / (groesse ** 2)
+    st.write(f"Ihr BMI beträgt: {bmi:.2f}")
+else:
+    bmi = None
+    st.error("Größe muss größer als 0 sein.")
 
-    print()
+# Raucherstatus
+antwort_r = st.radio("Rauchen Sie?", ["Ja, täglich mindestens eine Zigarette", "Selten oder nie"])
+raucher_status = 1 if "täglich" in antwort_r else 0
 
-    # Raucherstatus
-    print("Rauchen Sie?")
-    print("1 - Ja, täglich mindestens eine Zigarette")
-    print("0 - Selten oder nie")
-    while True:
-        try:
-            antwort_r = int(input("Ihre Auswahl (0 oder 1): "))
-            if antwort_r in [0, 1]:
-                break
-            else:
-                print("Bitte geben Sie 0 oder 1 ein.")
-        except ValueError:
-            print("Ungültige Eingabe.")
+# Alkoholkonsum
+antwort_a = st.radio("Trinken Sie Alkohol?", ["Ja, mindestens 7 Getränke pro Woche", "Seltener oder nie"])
+alkohol_status = 1 if "mindestens" in antwort_a else 0
 
-    print()
-
-    # Alkoholkonsum
-    print("Trinken Sie Alkohol?")
-    print("1 - Ja, mindestens 7 Getränke pro Woche")
-    print("0 - Seltener oder nie")
-    while True:
-        try:
-            antwort_a = int(input("Ihre Auswahl (0 oder 1): "))
-            if antwort_a in [0, 1]:
-                break
-            else:
-                print("Bitte geben Sie 0 oder 1 ein.")
-        except ValueError:
-            print("Ungültige Eingabe.")
-
-    print(f"Raucherstatus: {antwort_r}")
-    print(f"Alkoholkonsum: {antwort_a}")
-    print()
-
-    # Fruchtbarkeitswahrscheinlichkeit berechnen
+# Fruchtbarkeitswahrscheinlichkeit berechnen
+if bmi is not None:
     p_log = -0.602 + 0.268 * eisprung_entfernung - 0.020 * bmi - 0.065 * alter
-    # - 0.105 * Amod - 0.262 * Astark + 0.139 * Rgeleg + 0.350 * Rregel (optional, aktuell nicht verwendet)
-    p_fruchtbarkeit = np.exp(p_log) / (1 + np.exp(p_log))
-    print(f"Geschätzte Fruchtbarkeitswahrscheinlichkeit: {p_fruchtbarkeit:.4f}")
+    p_fruchtbarkeit = np.exp(p_log) / (1 + np.exp(p_log))_
 
-if __name__ == "__main__":
-    main()
 
