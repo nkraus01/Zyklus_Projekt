@@ -5,14 +5,22 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 
+st.title("Weiblicher Zyklus 🌹")
+
 ###########################################################################################
 
 
-tab1, tab2, tab3, tab4 = st.tabs(["🏠 Start", "📊 Dashboard", "⚙️ Einstellungen", "❓ Hilfe"])
+start, nathi, chiara, lou = st.tabs(["🏠 Übersicht", "📊 Zyklus und Hormone", "⚙️ Zyklus und Temperatur", "❓ Fruchtbarkeitsrechner"])
 
-with tab1:
-    st.header("Willkommen!")
-    st.write("Das ist der erste Tab mit der Startseite.")
+with start:
+    st.header("Willkommen")
+    st.subheader("""Hey, du interessierst dich für deinen Zyklus? - Dann bist du hier genau richtig!""")
+                   
+    st.write("""Wir haben eine Website erstellt mit allen möglichen interessanten Facts und Darstellungen, dabei sind viele Elemente interaktiv, 
+          sodass du alles ganz auf deinen eigenen Körper abstimmen kannst.
+          
+          Wir wünschen dir viel Spaß
+          Lou, Chiara & Nathalie""")
     
     col1, col2 = st.columns(2)
     
@@ -28,52 +36,14 @@ with tab1:
         if st.button("Einstellungen öffnen"):
             st.write("Öffne die Einstellungen!")
 
-with tab2:
+with nathi:
     st.header("📊 Dashboard")
     st.write("Hier siehst du wichtige Kennzahlen und Diagramme.")
 
-#######################################################################################
-
-st.sidebar.title("Navigation")
-page = st.sidebar.selectbox("Seite auswählen", 
-                           ["Startseite", "Über uns", "Kontakt", "Datenanalyse"])
-
-# Hauptinhalt basierend auf Auswahl
-if page == "Startseite":
-    st.title("🏠 Willkommen auf der Startseite")
-    st.write("Das ist die Hauptseite unserer Anwendung.")
-    st.write("Nutze die Seitenleiste links, um zu anderen Seiten zu navigieren.")
-    
-elif page == "Über uns":
-    st.title("ℹ️ Über uns")
-    st.write("Hier erfährst du mehr über unser Team und unsere Mission.")
-    st.write("Wir entwickeln innovative Lösungen mit Streamlit.")
-    
-elif page == "Kontakt":
-    st.title("📧 Kontakt")
-    st.write("So erreichst du uns:")
-    st.write("📧 E-Mail: info@beispiel.de")
-    st.write("📞 Telefon: +49 123 456789")
-    
-    # Kontaktformular
-    with st.form("kontakt_form"):
-        name = st.text_input("Name")
-        email = st.text_input("E-Mail")
-        nachricht = st.text_area("Nachricht")
-        submitted = st.form_submit_button("Senden")
-        
-        if submitted:
-            st.success("Danke für deine Nachricht! Wir melden uns bald.")
 
 ###########################################################################################
 
-st.title("Weiblicher Zyklus 🌹")
-st.header("""Hey, du interessierst dich für deinen Zyklus? - Dann bist du hier genau richtig!
-                    Wir haben eine Website erstellt mit allen möglichen interessanten Facts und Darstellungen, dabei sind viele Elemente interaktiv, 
-          sodass du alles ganz auf deinen eigenen Körper abstimmen kannst.
-          
-          Wir wünschen dir viel Spaß
-          Lou, Chiara & Nathalie""")
+
 # Seiteneinstellungen
 
 st.title("💡 Dein Hormonverlauf")
