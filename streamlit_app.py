@@ -31,23 +31,16 @@ with start:
     
     with spalte1:
         st.write("Bei Nathi kannst du mehr über Hormone im Zyklusverlauf, den Hormonspiegel und ihre Rolle im Zyklus erfahren.")
-        st.info("info")
-        if st.button("💡 Hormone", use_container_width=True):
-            set_page("nathi")
-            st.rerun()
+        st.info("Klicke dafür oben auf "Zyklus und Hormone"!")
             
     
     with spalte2:
         st.write("Bei Chiara kannst du mithilfe von Temperaturen deinen Eisprung ausrechnen lassen und das graphisch darstellen.")
-        if st.button("🌡️ Zyklus und Temperatur", use_container_width=True):
-            set_page("chiara")
-            st.rerun()
+        st.info("Klicke dafür oben auf "Zyklus und Temperatur"!")
     
     with spalte3:
         st.write("Bei Lou kannst du dir in Bezug auf verschiedene Faktoren deine Fruchtbarkeitswahrscheinlichkeit berechnen lassen.")
-        if st.button("📊 Fruchtbarkeitsrechner", use_container_width=True):
-            set_page("lou")
-            st.rerun()
+        st.info("Klicke dafür oben auf "Fruchtbarkeitsrechner"!")
 
 
 ### Nathi #####################################################################################
