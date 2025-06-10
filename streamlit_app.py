@@ -10,7 +10,7 @@ st.title("Weiblicher Zyklus 🌹")
 ###########################################################################################
 
 
-start, nathi, chiara, lou = st.tabs(["🏠 Übersicht", "📊 Zyklus und Hormone", "⚙️ Zyklus und Temperatur", "❓ Fruchtbarkeitsrechner"])
+start, nathi, chiara, lou = st.tabs(["🏠 Übersicht", "💡 Zyklus und Hormone", "🌡️ Zyklus und Temperatur", "📊 Fruchtbarkeitsrechner"])
 
 with start:
     st.header("Willkommen")
