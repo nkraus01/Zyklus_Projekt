@@ -9,8 +9,12 @@ st.title("Weiblicher Zyklus 🌹")
 
 ### Start ######################################################################################
 
+def set_page(page_name):
+    """Funktion zum Setzen der aktuellen Seite"""
+    st.session_state.current_page = page_name
 
 start, nathi, chiara, lou = st.tabs(["🏠 Übersicht", "💡 Zyklus und Hormone", "🌡️ Zyklus und Temperatur", "📊 Fruchtbarkeitsrechner"])
+
 
 with start:
     st.header("Willkommen")
@@ -19,12 +23,27 @@ with start:
     st.write("""Wir haben eine Website erstellt mit allen möglichen interessanten Facts und Darstellungen, dabei sind viele Elemente interaktiv, 
           sodass du alles ganz auf deinen eigenen Körper abstimmen kannst.""")
     st.write("""Wir wünschen dir viel Spaß! 
-        Lou, Chiara & Nathalie""")
+            Lou, Chiara & Nathalie""")
             
     st.subheader("Überblick")
     if st.button("Du willst mehr über Hormone im Zyklusverlauf erfahren?"):
         set_page("nathi")
         st.rerun()
+
+     with col1:
+        if st.button("💡 Mehr über Hormone im Zyklusverlauf erfahren", use_container_width=True):
+            set_page("nathi")
+            st.rerun()
+    
+     with col2:
+        if st.button("🌡️ Alles über Zyklus und Temperatur", use_container_width=True):
+            set_page("chiara")
+            st.rerun()
+    
+    with col3:
+        if st.button("📊 Fruchtbarkeitsrechner nutzen", use_container_width=True):
+            set_page("lou")
+            st.rerun()
 
 
 ### Nathi #####################################################################################
