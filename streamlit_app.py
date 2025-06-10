@@ -18,6 +18,7 @@ with start:
                    
     st.write("""Wir haben eine Website erstellt mit allen möglichen interessanten Facts und Darstellungen, dabei sind viele Elemente interaktiv, 
           sodass du alles ganz auf deinen eigenen Körper abstimmen kannst.
+        
           Wir wünschen dir viel Spaß
           Lou, Chiara & Nathalie""")
     
