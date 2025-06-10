@@ -36,7 +36,7 @@ with start:
             st.rerun()
     
     with spalte2:
-        st.write("Bei Chiara kannst du dir deinen Zyklus anzeigen lassen und zudem mit eingegebenen Temperaturen deinen Eisprung ausrechnen lassen.")
+        st.write("Bei Chiara kannst du mit eingegebenen Temperaturen deinen Eisprung ausrechnen lassen und dies graphisch anschauen.")
         if st.button("🌡️ Zyklus und Temperatur", use_container_width=True):
             set_page("chiara")
             st.rerun()
