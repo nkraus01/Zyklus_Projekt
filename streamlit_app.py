@@ -51,9 +51,7 @@ with start:
 ### Nathi #####################################################################################
 
 with nathi:
-    st.header("📊 Dashboard")
-    st.write("Hier siehst du wichtige Kennzahlen und Diagramme.")
-
+    
     # Seiteneinstellungen
     
     st.title("💡 Dein Hormonverlauf")
@@ -560,7 +558,7 @@ with chiara:
 
 with lou:
     
-    st.title("Fruchtbarkeitsrechner")
+    st.title("📊 Fruchtbarkeitsrechner")
     
     # Alter
     alter = st.number_input("Ihr Alter", min_value=10, max_value=60, value=30)
