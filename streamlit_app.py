@@ -20,20 +20,13 @@ with start:
           sodass du alles ganz auf deinen eigenen Körper abstimmen kannst.""")
     st.write("""Wir wünschen dir viel Spaß! 
         Lou, Chiara & Nathalie""")
-        
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.subheader("Neuigkeiten")
-        st.info("🎉 Neue Features verfügbar!")
-        st.success("✅ System läuft stabil")
-        
-    with col2:
-        st.subheader("Schnellzugriff")
-        if st.button("Zum Dashboard"):
-            st.write("Wechsle zum Dashboard-Tab!")
-        if st.button("Einstellungen öffnen"):
-            st.write("Öffne die Einstellungen!")
+            
+    st.subheader("Überblick")
+    if st.button("Du willst mehr über Hormone im Zyklusverlauf erfahren?"):
+        set_page("start")
+
+        #st.rerun()
+
 
 ### Nathi #####################################################################################
 
