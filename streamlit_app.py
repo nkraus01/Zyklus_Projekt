@@ -31,9 +31,11 @@ with start:
     
     with spalte1:
         st.write("Bei Nathi kannst du mehr über Hormone im Zyklusverlauf, den Hormonspiegel und ihre Rolle im Zyklus erfahren.")
+        st.info("info")
         if st.button("💡 Hormone", use_container_width=True):
             set_page("nathi")
             st.rerun()
+            
     
     with spalte2:
         st.write("Bei Chiara kannst du mithilfe von Temperaturen deinen Eisprung ausrechnen lassen und das graphisch darstellen.")
