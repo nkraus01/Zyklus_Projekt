@@ -37,7 +37,7 @@ with start:
             set_page("nathi")
             st.rerun()
     
-     with spalte2:
+    with spalte2:
         if st.button("🌡️ Alles über Zyklus und Temperatur", use_container_width=True):
             set_page("chiara")
             st.rerun()
