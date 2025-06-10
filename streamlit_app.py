@@ -30,19 +30,19 @@ with start:
         set_page("nathi")
         st.rerun()
 
-    col1, col2, col3 = st.columns(3)
+    spalte1, spalte2, spalte3 = st.columns(3)
     
-    with col1:
+    with spalte1:
         if st.button("💡 Mehr über Hormone im Zyklusverlauf erfahren", use_container_width=True):
             set_page("nathi")
             st.rerun()
     
-     with col2:
+     with spalte2:
         if st.button("🌡️ Alles über Zyklus und Temperatur", use_container_width=True):
             set_page("chiara")
             st.rerun()
     
-    with col3:
+    with spalte3:
         if st.button("📊 Fruchtbarkeitsrechner nutzen", use_container_width=True):
             set_page("lou")
             st.rerun()
