@@ -26,9 +26,6 @@ with start:
             Lou, Chiara & Nathalie""")
             
     st.subheader("Überblick")
-    if st.button("Du willst mehr über Hormone im Zyklusverlauf erfahren?"):
-        set_page("nathi")
-        st.rerun()
 
     spalte1, spalte2, spalte3 = st.columns(3)
     
