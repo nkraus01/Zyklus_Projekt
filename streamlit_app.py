@@ -30,7 +30,7 @@ with start:
     spalte1, spalte2, spalte3 = st.columns(3)
     
     with spalte1:
-        st.write("Bei Nathi kannst du mehr über Hormone im Zyklusverlauf, den Hormonspiegel und ihre Rolle im Zyklus erfahren." 
+        st.write("Bei Nathi kannst du mehr über Hormone im Zyklusverlauf, den Hormonspiegel und ihre Rolle im Zyklus erfahren.")
         if st.button("💡 zu den Hormonen", use_container_width=True):
             set_page("nathi")
             st.rerun()
