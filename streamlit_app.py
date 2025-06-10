@@ -24,8 +24,7 @@ with start:
     st.subheader("Überblick")
     if st.button("Du willst mehr über Hormone im Zyklusverlauf erfahren?"):
         set_page("nathi")
-
-        #st.rerun()
+        st.rerun()
 
 
 ### Nathi #####################################################################################
