@@ -17,11 +17,10 @@ with start:
     st.subheader("""Hey, du interessierst dich für deinen Zyklus? - Dann bist du hier genau richtig!""")
                    
     st.write("""Wir haben eine Website erstellt mit allen möglichen interessanten Facts und Darstellungen, dabei sind viele Elemente interaktiv, 
-          sodass du alles ganz auf deinen eigenen Körper abstimmen kannst.
+          sodass du alles ganz auf deinen eigenen Körper abstimmen kannst.""")
+    st.write("""Wir wünschen dir viel Spaß! 
+        Lou, Chiara & Nathalie""")
         
-          Wir wünschen dir viel Spaß
-          Lou, Chiara & Nathalie""")
-    
     col1, col2 = st.columns(2)
     
     with col1:
