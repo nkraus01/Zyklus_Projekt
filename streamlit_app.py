@@ -36,11 +36,11 @@ with start:
     
     with spalte2:
         st.write("Bei Chiara kannst du mithilfe von Temperaturen deinen Eisprung ausrechnen lassen und das graphisch darstellen.")
-        st.info("Klicke dafür oben auf "Zyklus und Temperatur"!")
+        st.info("Klicke dafür oben auf 'Zyklus und Temperatur'!")
     
     with spalte3:
         st.write("Bei Lou kannst du dir in Bezug auf verschiedene Faktoren deine Fruchtbarkeitswahrscheinlichkeit berechnen lassen.")
-        st.info("Klicke dafür oben auf "Fruchtbarkeitsrechner"!")
+        st.info("Klicke dafür oben auf 'Fruchtbarkeitsrechner'!")
 
 
 ### Nathi #####################################################################################
