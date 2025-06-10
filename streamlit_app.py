@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 
 st.title("Weiblicher Zyklus 🌹")
 
-###########################################################################################
+### Start ######################################################################################
 
 
 start, nathi, chiara, lou = st.tabs(["🏠 Übersicht", "💡 Zyklus und Hormone", "🌡️ Zyklus und Temperatur", "📊 Fruchtbarkeitsrechner"])
@@ -34,6 +34,8 @@ with start:
             st.write("Wechsle zum Dashboard-Tab!")
         if st.button("Einstellungen öffnen"):
             st.write("Öffne die Einstellungen!")
+
+### Nathi #####################################################################################
 
 with nathi:
     st.header("📊 Dashboard")
@@ -421,182 +423,170 @@ with nathi:
         st.info("Kein Problem! Du kannst jederzeit später auf diese Infos zurückkommen. 🌸")
 
 
+### Chiara ####################################################################################
 
-
-
-###########################################################################################
-
-
-
-
-
-
-
-### Chiaralinchen
-
-import streamlit as st
-import matplotlib.pyplot as plt
-import csv
-import os
-from datetime import datetime, timedelta
-
-DATEINAME = "zyklen.csv"
-STANDARD_ZYKLUSLAENGE = 28
-temperaturdaten = []
-zyklen = []
-
-def lade_zyklen():
-    daten = []
-    if os.path.exists(DATEINAME):
-        with open(DATEINAME, "r") as f:
-            reader = csv.reader(f)
-            for row in reader:
-                try:
-                    datum = datetime.strptime(row[0], "%d.%m.%Y")
-                    dauer = int(row[1])
-                    daten.append((datum, dauer))
-                except Exception:
-                    continue
-    return daten
-
-def speichere_zyklen(daten):
-    with open(DATEINAME, "w", newline="") as f:
-        writer = csv.writer(f)
-        for eintrag in daten:
-            writer.writerow([eintrag[0].strftime("%d.%m.%Y"), eintrag[1]])
-
-# ===== Streamlit-Start =====
-st.title("🩸 Zyklus- und Temperatur-Tracker")
-
-st.subheader("📥 Beginn deiner Menstruation und Dauer angeben:")
-datum_input = st.text_input("Datum (TT.MM.JJJJ)")
-dauer_input = st.number_input("Dauer in Tagen", min_value=1, max_value=14, value=5)
-
-if "zyklen" not in st.session_state:
-    st.session_state.zyklen = lade_zyklen()
-
-if st.button("➕ Eintrag hinzufügen"):
-    try:
-        datum = datetime.strptime(datum_input.strip(), "%d.%m.%Y")
-        st.session_state.zyklen.append((datum, dauer_input))
-        st.session_state.zyklen.sort()
-        speichere_zyklen(st.session_state.zyklen)
-        st.success("Eintrag gespeichert.")
-    except:
-        st.error("❌ Ungültiges Datum. Format: TT.MM.JJJJ")
-
-if st.session_state.zyklen:
-    st.subheader("📊 Analyse")
-    z = st.session_state.zyklen
-    zyklen_laengen = [(z[i][0] - z[i-1][0]).days for i in range(1, len(z))]
-    durchschnitt = round(sum(zyklen_laengen)/len(zyklen_laengen)) if zyklen_laengen else STANDARD_ZYKLUSLAENGE
-    letzter_start, letzte_dauer = z[-1]
-    naechste = letzter_start + timedelta(days=durchschnitt)
-    eisprung = naechste - timedelta(days=14)
-    fruchtbar_ab = eisprung - timedelta(days=5)
-
-    st.write(f"Zykluslängen: {zyklen_laengen}")
-    st.write(f"Ø Zyklus: {durchschnitt} Tage")
-    st.write(f"Letzte Periode: {letzter_start.strftime('%d.%m.%Y')} ({letzte_dauer} Tage)")
-    st.write(f"Nächste voraussichtlich: {naechste.strftime('%d.%m.%Y')}")
-    st.write(f"Eisprung: {eisprung.strftime('%d.%m.%Y')}")
-    st.write(f"Fruchtbar: {fruchtbar_ab.strftime('%d.%m.%Y')} – {eisprung.strftime('%d.%m.%Y')}")
-
-# === Temperaturdaten ===
-st.subheader("🌡️ Temperaturdaten")
-temp_input = st.text_input("Datum und Temperatur (z. B. 01.06.2025 36.6)")
-if "temperaturdaten" not in st.session_state:
-    st.session_state.temperaturdaten = []
-
-if st.button("➕ Temperatur speichern"):
-    try:
-        datum_str, temp_str = temp_input.strip().split()
-        datum = datetime.strptime(datum_str, "%d.%m.%Y")
-        temp = float(temp_str.replace(",", "."))
-        st.session_state.temperaturdaten.append((datum, temp))
-        st.session_state.temperaturdaten.sort()
-        st.success("Temperatur gespeichert.")
-    except:
-        st.error("❌ Formatfehler. Beispiel: 01.06.2025 36.6")
-
-if len(st.session_state.temperaturdaten) >= 5:
-    daten = [d for d, _ in st.session_state.temperaturdaten]
-    temps = [t for _, t in st.session_state.temperaturdaten]
-    gleit = [(temps[i-1] + temps[i] + temps[i+1])/3 for i in range(1, len(temps)-1)]
-    mittel_daten = daten[1:-1]
-    eisprung_tag = None
-    for i in range(1, len(gleit)):
-        if gleit[i] - gleit[i-1] >= 0.2:
-            eisprung_tag = mittel_daten[i]
-            break
-
-    fig, ax = plt.subplots(figsize=(10, 4))
-    ax.plot(daten, temps, marker='o', label="Temperatur", color="blue")
-    ax.plot(mittel_daten, gleit, linestyle='--', label="3-Tage-Mittel", color="orange")
-    if eisprung_tag:
-        ax.axvline(eisprung_tag, color="red", linestyle=":", label="Eisprung")
-    ax.set_title("Basaltemperaturkurve")
-    ax.set_ylabel("Temperatur (°C)")
-    ax.grid(True)
-    ax.legend()
-    plt.xticks(rotation=45)
-    st.pyplot(fig)
-
-    if eisprung_tag:
-        st.success(f"✅ Eisprung erkannt: {eisprung_tag.strftime('%d.%m.%Y')}")
+with chiara:  
+    
+    import streamlit as st
+    import matplotlib.pyplot as plt
+    import csv
+    import os
+    from datetime import datetime, timedelta
+    
+    DATEINAME = "zyklen.csv"
+    STANDARD_ZYKLUSLAENGE = 28
+    temperaturdaten = []
+    zyklen = []
+    
+    def lade_zyklen():
+        daten = []
+        if os.path.exists(DATEINAME):
+            with open(DATEINAME, "r") as f:
+                reader = csv.reader(f)
+                for row in reader:
+                    try:
+                        datum = datetime.strptime(row[0], "%d.%m.%Y")
+                        dauer = int(row[1])
+                        daten.append((datum, dauer))
+                    except Exception:
+                        continue
+        return daten
+    
+    def speichere_zyklen(daten):
+        with open(DATEINAME, "w", newline="") as f:
+            writer = csv.writer(f)
+            for eintrag in daten:
+                writer.writerow([eintrag[0].strftime("%d.%m.%Y"), eintrag[1]])
+    
+    # ===== Streamlit-Start =====
+    st.title("🩸 Zyklus- und Temperatur-Tracker")
+    
+    st.subheader("📥 Beginn deiner Menstruation und Dauer angeben:")
+    datum_input = st.text_input("Datum (TT.MM.JJJJ)")
+    dauer_input = st.number_input("Dauer in Tagen", min_value=1, max_value=14, value=5)
+    
+    if "zyklen" not in st.session_state:
+        st.session_state.zyklen = lade_zyklen()
+    
+    if st.button("➕ Eintrag hinzufügen"):
+        try:
+            datum = datetime.strptime(datum_input.strip(), "%d.%m.%Y")
+            st.session_state.zyklen.append((datum, dauer_input))
+            st.session_state.zyklen.sort()
+            speichere_zyklen(st.session_state.zyklen)
+            st.success("Eintrag gespeichert.")
+        except:
+            st.error("❌ Ungültiges Datum. Format: TT.MM.JJJJ")
+    
+    if st.session_state.zyklen:
+        st.subheader("📊 Analyse")
+        z = st.session_state.zyklen
+        zyklen_laengen = [(z[i][0] - z[i-1][0]).days for i in range(1, len(z))]
+        durchschnitt = round(sum(zyklen_laengen)/len(zyklen_laengen)) if zyklen_laengen else STANDARD_ZYKLUSLAENGE
+        letzter_start, letzte_dauer = z[-1]
+        naechste = letzter_start + timedelta(days=durchschnitt)
+        eisprung = naechste - timedelta(days=14)
+        fruchtbar_ab = eisprung - timedelta(days=5)
+    
+        st.write(f"Zykluslängen: {zyklen_laengen}")
+        st.write(f"Ø Zyklus: {durchschnitt} Tage")
+        st.write(f"Letzte Periode: {letzter_start.strftime('%d.%m.%Y')} ({letzte_dauer} Tage)")
+        st.write(f"Nächste voraussichtlich: {naechste.strftime('%d.%m.%Y')}")
+        st.write(f"Eisprung: {eisprung.strftime('%d.%m.%Y')}")
+        st.write(f"Fruchtbar: {fruchtbar_ab.strftime('%d.%m.%Y')} – {eisprung.strftime('%d.%m.%Y')}")
+    
+    # === Temperaturdaten ===
+    st.subheader("🌡️ Temperaturdaten")
+    temp_input = st.text_input("Datum und Temperatur (z. B. 01.06.2025 36.6)")
+    if "temperaturdaten" not in st.session_state:
+        st.session_state.temperaturdaten = []
+    
+    if st.button("➕ Temperatur speichern"):
+        try:
+            datum_str, temp_str = temp_input.strip().split()
+            datum = datetime.strptime(datum_str, "%d.%m.%Y")
+            temp = float(temp_str.replace(",", "."))
+            st.session_state.temperaturdaten.append((datum, temp))
+            st.session_state.temperaturdaten.sort()
+            st.success("Temperatur gespeichert.")
+        except:
+            st.error("❌ Formatfehler. Beispiel: 01.06.2025 36.6")
+    
+    if len(st.session_state.temperaturdaten) >= 5:
+        daten = [d for d, _ in st.session_state.temperaturdaten]
+        temps = [t for _, t in st.session_state.temperaturdaten]
+        gleit = [(temps[i-1] + temps[i] + temps[i+1])/3 for i in range(1, len(temps)-1)]
+        mittel_daten = daten[1:-1]
+        eisprung_tag = None
+        for i in range(1, len(gleit)):
+            if gleit[i] - gleit[i-1] >= 0.2:
+                eisprung_tag = mittel_daten[i]
+                break
+    
+        fig, ax = plt.subplots(figsize=(10, 4))
+        ax.plot(daten, temps, marker='o', label="Temperatur", color="blue")
+        ax.plot(mittel_daten, gleit, linestyle='--', label="3-Tage-Mittel", color="orange")
+        if eisprung_tag:
+            ax.axvline(eisprung_tag, color="red", linestyle=":", label="Eisprung")
+        ax.set_title("Basaltemperaturkurve")
+        ax.set_ylabel("Temperatur (°C)")
+        ax.grid(True)
+        ax.legend()
+        plt.xticks(rotation=45)
+        st.pyplot(fig)
+    
+        if eisprung_tag:
+            st.success(f"✅ Eisprung erkannt: {eisprung_tag.strftime('%d.%m.%Y')}")
+        else:
+            st.warning("❌ Kein Eisprung erkannt.")
     else:
-        st.warning("❌ Kein Eisprung erkannt.")
-else:
-    st.info("Mindestens 5 Temperaturdaten notwendig.")
-
-
-
-
-
+        st.info("Mindestens 5 Temperaturdaten notwendig.")
 
 
 ### Lou #################################################################################
 
-st.title("Fruchtbarkeitsrechner")
-
-# Alter
-alter = st.number_input("Ihr Alter", min_value=10, max_value=60, value=30)
-
-# Zykluslänge
-zykluslaenge = st.number_input("Durchschnittliche Zykluslänge (in Tagen)", min_value=15, max_value=45, value=28)
-
-# Tag des Eisprungs
-tag_eisprung = zykluslaenge - 14
-st.info(f"Ihr Eisprung findet durchschnittlich an Zyklustag {tag_eisprung} statt.")
-
-# Aktueller Zyklustag
-zyklustag = st.number_input("Aktueller Zyklustag", min_value=1, max_value=zykluslaenge, value=10)
-
-# Abstand zum Eisprung
-eisprung_entfernung = zyklustag - tag_eisprung
-
-# BMI berechnen
-gewicht = st.number_input("Gewicht (in kg)", min_value=30.0, max_value=200.0, value=70.0)
-groesse = st.number_input("Größe (in m)", min_value=1.0, max_value=2.5, value=1.70)
-if groesse > 0:
-    bmi = gewicht / (groesse ** 2)
-    st.write(f"Ihr BMI beträgt: {bmi:.2f}")
-else:
-    bmi = None
-    st.error("Größe muss größer als 0 sein.")
-
-# Raucherstatus
-antwort_r = st.radio("Rauchen Sie?", ["Ja, täglich mindestens eine Zigarette", "Selten oder nie"])
-raucher_status = 1 if "täglich" in antwort_r else 0
-
-# Alkoholkonsum
-antwort_a = st.radio("Trinken Sie Alkohol?", ["Ja, mindestens 7 Getränke pro Woche", "Seltener oder nie"])
-alkohol_status = 1 if "mindestens" in antwort_a else 0
-
-# Fruchtbarkeitswahrscheinlichkeit berechnen
-if bmi is not None:
-    p_log = -0.602 + 0.268 * eisprung_entfernung - 0.020 * bmi - 0.065 * alter
-    p_fruchtbarkeit = np.exp(p_log) / (1 + np.exp(p_log))
-    st.success(f"Geschätzte Fruchtbarkeitswahrscheinlichkeit: {100 * p_fruchtbarkeit:.2f}%")
-
-
+with lou:
+    
+    st.title("Fruchtbarkeitsrechner")
+    
+    # Alter
+    alter = st.number_input("Ihr Alter", min_value=10, max_value=60, value=30)
+    
+    # Zykluslänge
+    zykluslaenge = st.number_input("Durchschnittliche Zykluslänge (in Tagen)", min_value=15, max_value=45, value=28)
+    
+    # Tag des Eisprungs
+    tag_eisprung = zykluslaenge - 14
+    st.info(f"Ihr Eisprung findet durchschnittlich an Zyklustag {tag_eisprung} statt.")
+    
+    # Aktueller Zyklustag
+    zyklustag = st.number_input("Aktueller Zyklustag", min_value=1, max_value=zykluslaenge, value=10)
+    
+    # Abstand zum Eisprung
+    eisprung_entfernung = zyklustag - tag_eisprung
+    
+    # BMI berechnen
+    gewicht = st.number_input("Gewicht (in kg)", min_value=30.0, max_value=200.0, value=70.0)
+    groesse = st.number_input("Größe (in m)", min_value=1.0, max_value=2.5, value=1.70)
+    if groesse > 0:
+        bmi = gewicht / (groesse ** 2)
+        st.write(f"Ihr BMI beträgt: {bmi:.2f}")
+    else:
+        bmi = None
+        st.error("Größe muss größer als 0 sein.")
+    
+    # Raucherstatus
+    antwort_r = st.radio("Rauchen Sie?", ["Ja, täglich mindestens eine Zigarette", "Selten oder nie"])
+    raucher_status = 1 if "täglich" in antwort_r else 0
+    
+    # Alkoholkonsum
+    antwort_a = st.radio("Trinken Sie Alkohol?", ["Ja, mindestens 7 Getränke pro Woche", "Seltener oder nie"])
+    alkohol_status = 1 if "mindestens" in antwort_a else 0
+    
+    # Fruchtbarkeitswahrscheinlichkeit berechnen
+    if bmi is not None:
+        p_log = -0.602 + 0.268 * eisprung_entfernung - 0.020 * bmi - 0.065 * alter
+        p_fruchtbarkeit = np.exp(p_log) / (1 + np.exp(p_log))
+        st.success(f"Geschätzte Fruchtbarkeitswahrscheinlichkeit: {100 * p_fruchtbarkeit:.2f}%")
+    
+    
