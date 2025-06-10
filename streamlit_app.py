@@ -31,7 +31,7 @@ with start:
     
     with spalte1:
         st.write("Bei Nathi kannst du mehr über Hormone im Zyklusverlauf, den Hormonspiegel und ihre Rolle im Zyklus erfahren.")
-        st.info("Klicke dafür oben auf "Zyklus und Hormone"!")
+        st.info("Klicke dafür oben auf 'Zyklus und Hormone'!")
             
     
     with spalte2:
