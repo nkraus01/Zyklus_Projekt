@@ -30,17 +30,20 @@ with start:
     spalte1, spalte2, spalte3 = st.columns(3)
     
     with spalte1:
-        if st.button("💡 Mehr über Hormone im Zyklusverlauf erfahren", use_container_width=True):
+        st.write("Bei Nathi kannst du mehr über Hormone im Zyklusverlauf, den Hormonspiegel und ihre Rolle im Zyklus erfahren." 
+        if st.button("💡 zu den Hormonen", use_container_width=True):
             set_page("nathi")
             st.rerun()
     
     with spalte2:
-        if st.button("🌡️ Alles über Zyklus und Temperatur", use_container_width=True):
+        st.write("Bei Chiara kannst du dir deinen Zyklus anzeigen lassen und zudem mit eingegebenen Temperaturen deinen Eisprung ausrechnen lassen.")
+        if st.button("🌡️ Zyklus und Temperatur", use_container_width=True):
             set_page("chiara")
             st.rerun()
     
     with spalte3:
-        if st.button("📊 Fruchtbarkeitsrechner nutzen", use_container_width=True):
+        st.write("Bei Lou kannst du dir in Bezug auf verschiedene Faktoren deine Fruchtbarkeitswahrscheinlichkeit berechnen lassen.")
+        if st.button("📊 Fruchtbarkeitsrechner", use_container_width=True):
             set_page("lou")
             st.rerun()
 
