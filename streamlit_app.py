@@ -9,7 +9,7 @@ st.title("Weiblicher Zyklus 🌹")
 
 ### Start ######################################################################################
 
-def set_page(page_name):
+# def set_page(page_name):
     """Funktion zum Setzen der aktuellen Seite"""
     st.session_state.current_page = page_name
 
