@@ -17,7 +17,7 @@ start, nathi, chiara, lou = st.tabs(["🏠 Übersicht", "💡 Zyklus und Hormone
 
 
 with start:
-    st.header("Willkommen")
+    st.header("Willkommen!")
     st.subheader("""Hey, du interessierst dich für deinen Zyklus? - Dann bist du hier genau richtig!""")
                    
     st.write("""Wir haben eine Website erstellt mit allen möglichen interessanten Facts und Darstellungen, dabei sind viele Elemente interaktiv, 
