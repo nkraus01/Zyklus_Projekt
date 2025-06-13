@@ -580,7 +580,7 @@ with chiara:
                 36.8, 36.8, 36.7, 36.8, 36.6, 36.6, 36.5
             ])
         ]
-      st.session_state.benutzer_hat_eingabe_gemacht = False
+          st.session_state.benutzer_hat_eingabe_gemacht = False
 
     daten = st.session_state.daten
 
