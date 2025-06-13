@@ -1,5 +1,5 @@
 import streamlit as st
-st.set_page_config(page_title="Der weibliche Zyklus", page_icon="ddd🌹", layout="wide")
+st.set_page_config(page_title="Der weibliche Zyklus", page_icon="🌹", layout="wide")
 
 import numpy as np
 import pandas as pd
