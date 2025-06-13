@@ -433,6 +433,8 @@ with nathi:
 
 with chiara:  
     
+### Allgemeines berechnen ###
+    
     import csv
     import os
     from datetime import datetime, timedelta
@@ -524,26 +526,28 @@ with chiara:
         analyse(zyklen)
 
     
+### Tempratur berechnen ###
     import streamlit as st
     import matplotlib.pyplot as plt
-    from datetime import datetime
+    from datetime import datetime, timedelta
 
-# === Initialisierung der Daten im Session State ===
-    if "temperaturdaten" not in st.session_state:
-        st.session_state.temperaturdaten = [
-            (datetime.strptime("01.06.2025", "%d.%m.%Y"), 36.4),
-            (datetime.strptime("02.06.2025", "%d.%m.%Y"), 36.5),
-            (datetime.strptime("03.06.2025", "%d.%m.%Y"), 36.4),
-            (datetime.strptime("04.06.2025", "%d.%m.%Y"), 36.8),
-            (datetime.strptime("05.06.2025", "%d.%m.%Y"), 36.9),
-            (datetime.strptime("06.06.2025", "%d.%m.%Y"), 37.0),
-            (datetime.strptime("07.06.2025", "%d.%m.%Y"), 36.9),
-            (datetime.strptime("08.06.2025", "%d.%m.%Y"), 36.8)
+# === Initialisierung der Beispiel-Daten im Session State ===
+    def beispiel_daten():
+        start = datetime(2025, 6, 1)
+        werte = [
+            36.4, 36.4, 36.5, 36.5, 36.4, 36.5, 36.4,
+            36.5, 36.6, 36.5, 36.6, 36.6, 36.5, 36.6,  # vor Eisprung
+            36.8, 36.9, 37.0, 37.0, 36.9, 36.8,        # nach Eisprung
+            36.9, 36.8, 36.8, 36.7, 36.8, 36.7, 36.6, 36.6
         ]
+        return [(start + timedelta(days=i), t) for i, t in enumerate(werte)]
+
+    if "temperaturdaten" not in st.session_state:
+        st.session_state.temperaturdaten = beispiel_daten()
 
     temperaturdaten = st.session_state.temperaturdaten
 
-    st.title("🌡️ Basaltemperatur-Eingabe & Auswertung")
+    st.title("🌡️ Basaltemperatur-Eingabe & Eisprung-Analyse")
 
 # === Eingabe neuer Daten ===
     st.subheader("➕ Neuen Eintrag hinzufügen")
@@ -603,27 +607,25 @@ with chiara:
     if st.button("Analyse starten"):
         if len(temperaturdaten) < 5:
             st.warning("⚠️ Mindestens 5 Einträge benötigt.")
-    else:
+        else:
             temperaturdaten.sort()
             daten = [d for d, _ in temperaturdaten]
             temps = [t for _, t in temperaturdaten]
 
-        # Gleitender 3-Tages-Mittelwert
             def berechne_3Tage_Mittel(werte):
                 return [(werte[i-1] + werte[i] + werte[i+1]) / 3 for i in range(1, len(werte)-1)]
 
             gleitmittel = berechne_3Tage_Mittel(temps)
             mittel_daten = daten[1:-1]
 
-        # Eisprung-Erkennung
             eisprung_tag = None
             for i in range(1, len(gleitmittel)):
                 if gleitmittel[i] - gleitmittel[i - 1] >= 0.2:
                     eisprung_tag = mittel_daten[i]
                     break
 
-        # Diagramm
-            fig, ax = plt.subplots(figsize=(10, 5))
+        # Diagramm mit verkleinerter Größe
+            fig, ax = plt.subplots(figsize=(8, 4))
             ax.plot(daten, temps, label="Basaltemperatur", marker='o', color='blue')
             ax.plot(mittel_daten, gleitmittel, label="Gleitender Durchschnitt", linestyle='--', color='orange')
             if eisprung_tag:
