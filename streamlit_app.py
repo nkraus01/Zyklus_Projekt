@@ -531,7 +531,7 @@ with chiara:
     import matplotlib.pyplot as plt
     from datetime import datetime, timedelta
 
-# === Initialisierung der Beispiel-Daten im Session State ===
+# === Standardzyklusdaten ===
     def beispiel_daten():
         start = datetime(2025, 6, 1)
         werte = [
@@ -542,106 +542,113 @@ with chiara:
         ]
         return [(start + timedelta(days=i), t) for i, t in enumerate(werte)]
 
+# === Session State ===
     if "temperaturdaten" not in st.session_state:
         st.session_state.temperaturdaten = beispiel_daten()
+    if "beispiel_aktiv" not in st.session_state:
+        st.session_state.beispiel_aktiv = True
 
     temperaturdaten = st.session_state.temperaturdaten
 
-    st.title("🌡️ Basaltemperatur-Eingabe & Eisprung-Analyse")
+    st.title("🌡️ Basaltemperatur-Tracker & Eisprung-Analyse")
 
-# === Eingabe neuer Daten ===
-    st.subheader("➕ Neuen Eintrag hinzufügen")
+# === Neueingabe ===
+    st.subheader("➕ Eintrag hinzufügen")
     eingabe = st.text_input("Format: TT.MM.JJJJ 36.5", key="eingabe_text")
     if st.button("Hinzufügen"):
         try:
             datum_str, temp_str = eingabe.strip().split()
             datum = datetime.strptime(datum_str, "%d.%m.%Y")
             temperatur = float(temp_str.replace(",", "."))
+            if st.session_state.beispiel_aktiv:
+                temperaturdaten.clear()  # Beispiel entfernen
+                st.session_state.beispiel_aktiv = False
             temperaturdaten.append((datum, temperatur))
             temperaturdaten.sort()
             st.success(f"Hinzugefügt: {datum.strftime('%d.%m.%Y')} – {temperatur:.2f} °C")
         except Exception:
             st.error("❌ Ungültiges Format! Beispiel: 01.06.2025 36.5")
 
-# === Aktuelle Daten anzeigen ===
-    st.subheader("📅 Aktuelle Temperaturdaten")
+# === Anzeige der Daten ===
+    st.subheader("📅 Temperaturdaten")
     if temperaturdaten:
         for i, (d, t) in enumerate(temperaturdaten, 1):
             st.markdown(f"{i}. **{d.strftime('%d.%m.%Y')}** – {t:.2f} °C")
     else:
         st.info("Noch keine Daten vorhanden.")
 
-# === Daten bearbeiten oder löschen ===
-    st.subheader("✏️ Einträge bearbeiten oder löschen")
+# === Bearbeiten / Löschen ===
+    st.subheader("✏️ Bearbeiten oder löschen")
     if temperaturdaten:
-        eintrag_liste = [f"{i+1}. {d.strftime('%d.%m.%Y')} – {t:.2f}°C" for i, (d, t) in enumerate(temperaturdaten)]
-        auswahl = st.selectbox("Eintrag auswählen", eintrag_liste)
-        index = eintrag_liste.index(auswahl)
+        eintraege = [f"{i+1}. {d.strftime('%d.%m.%Y')} – {t:.2f}°C" for i, (d, t) in enumerate(temperaturdaten)]
+        auswahl = st.selectbox("Eintrag auswählen", eintraege)
+        index = eintraege.index(auswahl)
 
-        col1, col2 = st.columns([3, 1])
-        with col1:
-            neuer_wert = st.text_input("Neuer Wert (TT.MM.JJJJ 36.5):", key="bearbeiten_text")
-        with col2:
-            if st.button("🔁 Aktualisieren"):
-                try:
-                    datum_str, temp_str = neuer_wert.strip().split()
-                    datum = datetime.strptime(datum_str, "%d.%m.%Y")
-                    temperatur = float(temp_str.replace(",", "."))
-                    temperaturdaten[index] = (datum, temperatur)
-                    temperaturdaten.sort()
-                    st.success("✅ Eintrag aktualisiert.")
-                except:
-                    st.error("❌ Formatfehler! Beispiel: 02.06.2025 36.7")
+        cols = st.columns([2, 1])
+        neuer_wert = cols[0].text_input("Neuer Wert (TT.MM.JJJJ 36.5):", key="bearbeiten_text")
+        if cols[1].button("🔁 Aktualisieren"):
+            try:
+                datum_str, temp_str = neuer_wert.strip().split()
+                datum = datetime.strptime(datum_str, "%d.%m.%Y")
+                temperatur = float(temp_str.replace(",", "."))
+                temperaturdaten[index] = (datum, temperatur)
+                temperaturdaten.sort()
+                st.success("✅ Eintrag aktualisiert.")
+            except:
+                st.error("❌ Fehler beim Aktualisieren.")
 
         if st.button("❌ Eintrag löschen"):
             temperaturdaten.pop(index)
             st.success("🗑️ Eintrag gelöscht.")
 
-# === Alle löschen ===
+# === Alles löschen ===
     if st.button("🗑️ Alle Daten löschen"):
         temperaturdaten.clear()
-        st.success("Alle Einträge wurden gelöscht.")
+        st.session_state.beispiel_aktiv = False
+        st.success("Alle Daten wurden gelöscht.")
 
-# === Analysefunktion ===
-    st.subheader("📊 Temperaturkurve & Eisprung erkennen")
-    if st.button("Analyse starten"):
-        if len(temperaturdaten) < 5:
-            st.warning("⚠️ Mindestens 5 Einträge benötigt.")
+# === Analyse automatisch bei Start ===
+    def analysieren_daten(daten):
+        daten.sort()
+        tage = [d for d, _ in daten]
+        temps = [t for _, t in daten]
+
+        def mittel(werte):
+            return [(werte[i-1] + werte[i] + werte[i+1]) / 3 for i in range(1, len(werte)-1)]
+
+        gleit = mittel(temps)
+        mittel_tage = tage[1:-1]
+
+        eisprung = None
+        for i in range(1, len(gleit)):
+            if gleit[i] - gleit[i-1] >= 0.2:
+                eisprung = mittel_tage[i]
+                break
+
+        fig, ax = plt.subplots(figsize=(6, 3))  # klein
+        ax.plot(tage, temps, marker='o', label="Temperatur", color='blue')
+        ax.plot(mittel_tage, gleit, linestyle='--', label="3-Tage-Mittel", color='orange')
+        if eisprung:
+            ax.axvline(eisprung, color='red', linestyle=':', label=f"Eisprung: {eisprung.strftime('%d.%m.%Y')}")
+        ax.set_title("Basaltemperaturkurve")
+        ax.set_xlabel("Datum")
+        ax.set_ylabel("Temperatur (°C)")
+        ax.grid(True)
+        ax.legend()
+        plt.xticks(rotation=45)
+        st.pyplot(fig)
+
+        if eisprung:
+            st.success(f"✅ Eisprung erkannt am **{eisprung.strftime('%d.%m.%Y')}**")
         else:
-            temperaturdaten.sort()
-            daten = [d for d, _ in temperaturdaten]
-            temps = [t for _, t in temperaturdaten]
+            st.info("❌ Kein Eisprung erkannt – Temperaturanstieg zu gering.")
 
-            def berechne_3Tage_Mittel(werte):
-                return [(werte[i-1] + werte[i] + werte[i+1]) / 3 for i in range(1, len(werte)-1)]
+# === Sofortige Analyse (nur wenn Beispiel oder ≥5 Werte) ===
+    if len(temperaturdaten) >= 5:
+        st.subheader("📊 Analyse")
+        analysieren_daten(temperaturdaten)
 
-            gleitmittel = berechne_3Tage_Mittel(temps)
-            mittel_daten = daten[1:-1]
 
-            eisprung_tag = None
-            for i in range(1, len(gleitmittel)):
-                if gleitmittel[i] - gleitmittel[i - 1] >= 0.2:
-                    eisprung_tag = mittel_daten[i]
-                    break
-
-        # Diagramm mit verkleinerter Größe
-            fig, ax = plt.subplots(figsize=(8, 4))
-            ax.plot(daten, temps, label="Basaltemperatur", marker='o', color='blue')
-            ax.plot(mittel_daten, gleitmittel, label="Gleitender Durchschnitt", linestyle='--', color='orange')
-            if eisprung_tag:
-                ax.axvline(eisprung_tag, color='red', linestyle=':', label=f"Eisprung: {eisprung_tag.strftime('%d.%m.%Y')}")
-            ax.set_title("Basaltemperaturkurve & Eisprung")
-            ax.set_xlabel("Datum")
-            ax.set_ylabel("Temperatur (°C)")
-            ax.legend()
-            ax.grid(True)
-            plt.xticks(rotation=45)
-            st.pyplot(fig)
-
-            if eisprung_tag:
-                st.success(f"✅ Eisprung erkannt am: **{eisprung_tag.strftime('%d.%m.%Y')}**")
-            else:
-                st.info("❌ Kein Eisprung erkannt – Temperaturanstieg zu gering oder nicht vorhanden.")
 
 
 
