@@ -433,73 +433,97 @@ with nathi:
 
 with chiara:  
     
-    import streamlit as st
-    import matplotlib.pyplot as plt
-    import csv
-    import os
-    from datetime import datetime, timedelta
-    
-    DATEINAME = "zyklen.csv"
-    STANDARD_ZYKLUSLAENGE = 28
-    temperaturdaten = []
+import csv
+import os
+from datetime import datetime, timedelta
+import streamlit as st
+
+# === Konstanten ===
+DATEINAME = "zyklen.csv"
+STANDARD_ZYKLUSLAENGE = 28
+
+# === Alte Daten laden ===
+def lade_zyklen():
     zyklen = []
-    
-    def lade_zyklen():
-        daten = []
-        if os.path.exists(DATEINAME):
-            with open(DATEINAME, "r") as f:
-                reader = csv.reader(f)
-                for row in reader:
-                    try:
-                        datum = datetime.strptime(row[0], "%d.%m.%Y")
-                        dauer = int(row[1])
-                        daten.append((datum, dauer))
-                    except Exception:
-                        continue
-        return daten
-    
-    def speichere_zyklen(daten):
-        with open(DATEINAME, "w", newline="") as f:
-            writer = csv.writer(f)
-            for eintrag in daten:
-                writer.writerow([eintrag[0].strftime("%d.%m.%Y"), eintrag[1]])
-    
-    # ===== Streamlit-Start =====
-    st.title("🩸 Zyklus- und Temperatur-Tracker")
-    
-    st.subheader("📥 Beginn deiner Menstruation und Dauer angeben:")
-    datum_input = st.text_input("Datum (TT.MM.JJJJ)")
-    dauer_input = st.number_input("Dauer in Tagen", min_value=1, max_value=14, value=5)
-    
-    if "zyklen" not in st.session_state:
-        st.session_state.zyklen = lade_zyklen()
-    
-    if st.button("➕ Eintrag hinzufügen"):
+    if os.path.exists(DATEINAME):
+        with open(DATEINAME, "r") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                try:
+                    datum = datetime.strptime(row[0], "%d.%m.%Y")
+                    dauer = int(row[1])
+                    zyklen.append((datum, dauer))
+                except:
+                    continue
+    return zyklen
+
+# === Zyklusanalyse ===
+def analyse(zyklen):
+    if not zyklen:
+        st.info("Keine Daten vorhanden zur Analyse.")
+        return
+
+    zyklen.sort(key=lambda x: x[0])
+    zykluslaengen = [(zyklen[i][0] - zyklen[i - 1][0]).days for i in range(1, len(zyklen))]
+    durchschnitt = round(sum(zykluslaengen) / len(zykluslaengen)) if zykluslaengen else STANDARD_ZYKLUSLAENGE
+    letzter_start, letzte_dauer = zyklen[-1]
+    naechste_periode = letzter_start + timedelta(days=durchschnitt)
+    eisprung = naechste_periode - timedelta(days=14)
+    fruchtbar_von = eisprung - timedelta(days=5)
+
+    st.subheader("📊 Analyse")
+    st.write(f"**Zykluslängen:** {zykluslaengen}")
+    st.write(f"**Durchschnittliche Zykluslänge:** {durchschnitt} Tage")
+    st.write(f"**Letzte Periode:** {letzter_start.strftime('%d.%m.%Y')} ({letzte_dauer} Tage)")
+    st.write(f"**Nächste Periode voraussichtlich am:** {naechste_periode.strftime('%d.%m.%Y')}")
+    st.write(f"**Eisprung voraussichtlich am:** {eisprung.strftime('%d.%m.%Y')}")
+    st.write(f"**Fruchtbare Phase:** {fruchtbar_von.strftime('%d.%m.%Y')} bis {eisprung.strftime('%d.%m.%Y')}")
+
+# === Speichern ===
+def speichere_zyklen(zyklen):
+    zyklen.sort(key=lambda x: x[0])
+    with open(DATEINAME, "w", newline="") as f:
+        writer = csv.writer(f)
+        for eintrag in zyklen:
+            writer.writerow([eintrag[0].strftime("%d.%m.%Y"), eintrag[1]])
+
+# === Streamlit App ===
+st.title("🩸 Zyklus-Tracker")
+zyklen = lade_zyklen()
+
+# Neue Einträge
+with st.form("neuer_eintrag"):
+    datum_str = st.text_input("Datum der Periode (TT.MM.JJJJ):")
+    dauer = st.number_input("Dauer (Tage):", min_value=1, max_value=14, value=5)
+    submitted = st.form_submit_button("➕ Eintrag hinzufügen")
+
+    if submitted:
         try:
-            datum = datetime.strptime(datum_input.strip(), "%d.%m.%Y")
-            st.session_state.zyklen.append((datum, dauer_input))
-            st.session_state.zyklen.sort()
-            speichere_zyklen(st.session_state.zyklen)
-            st.success("Eintrag gespeichert.")
-        except:
-            st.error("❌ Ungültiges Datum. Format: TT.MM.JJJJ")
+            datum = datetime.strptime(datum_str.strip(), "%d.%m.%Y")
+            zyklen.append((datum, dauer))
+            speichere_zyklen(zyklen)
+            st.success(f"Eintrag hinzugefügt: {datum.strftime('%d.%m.%Y')} ({dauer} Tage)")
+        except ValueError:
+            st.error("❌ Bitte ein gültiges Datum eingeben (TT.MM.JJJJ)")
+
+# Einträge anzeigen und löschen
+st.subheader("📝 Aktuelle Einträge")
+if zyklen:
+    for idx, (datum, dauer) in enumerate(zyklen):
+        col1, col2 = st.columns([4, 1])
+        col1.write(f"{idx+1}. {datum.strftime('%d.%m.%Y')} ({dauer} Tage)")
+        if col2.button("🗑️ Löschen", key=f"del_{idx}"):
+            del zyklen[idx]
+            speichere_zyklen(zyklen)
+            st.experimental_rerun()
+else:
+    st.write("Noch keine Einträge vorhanden.")
+
+# Analysebereich
+if st.button("💾 Berechnung ausführen"):
+    analyse(zyklen)
+
     
-    if st.session_state.zyklen:
-        st.subheader("📊 Analyse")
-        z = st.session_state.zyklen
-        zyklen_laengen = [(z[i][0] - z[i-1][0]).days for i in range(1, len(z))]
-        durchschnitt = round(sum(zyklen_laengen)/len(zyklen_laengen)) if zyklen_laengen else STANDARD_ZYKLUSLAENGE
-        letzter_start, letzte_dauer = z[-1]
-        naechste = letzter_start + timedelta(days=durchschnitt)
-        eisprung = naechste - timedelta(days=14)
-        fruchtbar_ab = eisprung - timedelta(days=5)
-    
-        st.write(f"Zykluslängen: {zyklen_laengen}")
-        st.write(f"Ø Zyklus: {durchschnitt} Tage")
-        st.write(f"Letzte Periode: {letzter_start.strftime('%d.%m.%Y')} ({letzte_dauer} Tage)")
-        st.write(f"Nächste voraussichtlich: {naechste.strftime('%d.%m.%Y')}")
-        st.write(f"Eisprung: {eisprung.strftime('%d.%m.%Y')}")
-        st.write(f"Fruchtbar: {fruchtbar_ab.strftime('%d.%m.%Y')} – {eisprung.strftime('%d.%m.%Y')}")
     
     # === Temperaturdaten ===
     st.subheader("🌡️ Temperaturdaten")
