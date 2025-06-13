@@ -633,6 +633,7 @@ with chiara:
         ax.set_title("Basaltemperaturkurve")
         ax.set_xlabel("Datum")
         ax.set_ylabel("Temperatur (°C)")
+        ax.tick_params(axis='both', lablesize=8)
         ax.grid(True)
         ax.legend()
         plt.xticks(rotation=45)
