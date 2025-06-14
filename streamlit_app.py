@@ -528,10 +528,9 @@ with chiara:
     
 ### Tempratur berechnen ###
     import streamlit as st
+    st.set_page_config(page_title="Basaltemperatur", layout="centered")
     from datetime import datetime
     import matplotlib.pyplot as plt
-
-    st.set_page_config(page_title="Basaltemperatur", layout="centered")
 
 # === 🔢 Funktion: Gleitender Mittelwert ===
     def berechne_3tage_mittel(werte):
