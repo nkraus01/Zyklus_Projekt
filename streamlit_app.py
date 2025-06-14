@@ -525,12 +525,14 @@ with chiara:
     if st.button("💾 Berechnung ausführen"):
         analyse(zyklen)
 
-    
 ### Tempratur berechnen ###
+
     import streamlit as st
-    st.set_page_config(page_title="Basaltemperatur", layout="centered")
     from datetime import datetime
     import matplotlib.pyplot as plt
+
+# === 🛠️ Konfiguration ===
+    st.set_page_config(page_title="Basaltemperatur", layout="centered")
 
 # === 🔢 Funktion: Gleitender Mittelwert ===
     def berechne_3tage_mittel(werte):
@@ -550,17 +552,17 @@ with chiara:
                 eisprung = mittel_tage[i]
                 break
 
-        fig, ax = plt.subplots(figsize=(6, 3))
+        fig, ax = plt.subplots(figsize=(5.5, 2.8))  # kleineres Diagramm
         ax.plot(tage, temps, marker='o', label="Temperatur", color='blue')
         ax.plot(mittel_tage, gleit, linestyle='--', label="3-Tage-Mittel", color='orange')
         if eisprung:
             ax.axvline(eisprung, color='red', linestyle=':', label=f"Eisprung: {eisprung.strftime('%d.%m.%Y')}")
-        ax.set_title("Basaltemperaturkurve", fontsize=10)
-        ax.set_xlabel("Datum", fontsize=8)
-        ax.set_ylabel("Temperatur (°C)", fontsize=8)
-        ax.tick_params(axis='both', labelsize=8)
+        ax.set_title("Basaltemperaturkurve", fontsize=9, color="gray")
+        ax.set_xlabel("Datum", fontsize=7, color="gray")
+        ax.set_ylabel("Temperatur (°C)", fontsize=7, color="gray")
+        ax.tick_params(axis='both', labelsize=7, colors='gray')
         ax.grid(True, alpha=0.3)
-        ax.legend(fontsize=8)
+        ax.legend(fontsize=7)
         plt.xticks(rotation=45)
         st.pyplot(fig)
 
@@ -569,7 +571,7 @@ with chiara:
         else:
             st.info("ℹ️ Kein Eisprung erkannt (Temperaturanstieg zu gering).")
 
-# === 📅 Initiale Beispieldaten mit erkennbarem Eisprung ===
+# === 📅 Initialdaten + Zustand ===
     if "daten" not in st.session_state:
         st.session_state.daten = [
             (datetime(2025, 6, i + 1), t) for i, t in enumerate([
@@ -579,13 +581,13 @@ with chiara:
                 36.8, 36.8, 36.7, 36.8, 36.6, 36.6, 36.5
             ])
         ]
-    st.session_state.benutzer_hat_eingabe_gemacht = False
+    if "benutzer_hat_eingabe_gemacht" not in st.session_state:
+        st.session_state.benutzer_hat_eingabe_gemacht = False
 
     daten = st.session_state.daten
 
 # === 🖥️ UI: Eingabeformular ===
     st.title("🌡️ Basaltemperatur-Auswertung")
-
     st.subheader("➕ Temperaturdaten eingeben")
     eingabe = st.text_input("Format: TT.MM.JJJJ 36.5", key="eingabe")
 
@@ -601,12 +603,11 @@ with chiara:
             st.session_state.daten.sort()
             st.experimental_rerun()
         except:
-           st.error("❌ Ungültiges Format! Beispiel: 01.06.2025 36.5")
+            st.error("❌ Ungültiges Format! Beispiel: 01.06.2025 36.5")
 
 # === 📋 Anzeige aller Daten ===
     st.divider()
     st.subheader("📅 Aktuelle Einträge")
-
     for idx, (d, t) in enumerate(daten):
         st.text(f"{idx+1}. {d.strftime('%d.%m.%Y')} – {t:.2f} °C")
 
@@ -618,6 +619,7 @@ with chiara:
 
     bearbeiten_text = st.text_input("Neuer Wert (TT.MM.JJJJ 36.5)", key="bearbeiten")
 
+# Erst Aktualisieren-Button, dann Löschen
     if st.button("🔁 Aktualisieren"):
         try:
             datum_str, temp_str = bearbeiten_text.strip().split()
@@ -638,15 +640,13 @@ with chiara:
         st.session_state.daten.clear()
         st.experimental_rerun()
 
-# === 📊 Analyse ===
+# === 📊 Analyse (automatisch bei Start) ===
     st.divider()
     st.subheader("📈 Zyklusanalyse")
     if len(daten) >= 5:
         analysieren_daten(daten)
     else:
         st.warning("⚠️ Mindestens 5 Einträge nötig für Analyse.")
-
-   
 
 
 
