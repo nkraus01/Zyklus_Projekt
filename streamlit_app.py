@@ -526,7 +526,6 @@ with chiara:
         analyse(zyklen)
 
 ### Tempratur berechnen ###
-
     import streamlit as st
     import matplotlib.pyplot as plt
     from datetime import datetime, timedelta
@@ -535,14 +534,14 @@ with chiara:
     def beispiel_daten():
         start = datetime(2025, 6, 1)
         werte = [
-            36.3, 36.3, 36.4, 36.4, 36.3, 36.4, 36.3,
-            36.5, 36.6, 36.7, 36.8, 36.9, 37.0, 37.0,  # vor Eisprung
-            37.0, 36.9, 36.9, 36.9, 36.8, 36.7,         # nach Eisprung
-            36.6, 36.5, 36.4, 36.4, 36.3
+            36.4, 36.4, 36.5, 36.5, 36.4, 36.5, 36.4,
+            36.5, 36.6, 36.5, 36.6, 36.6, 36.5, 36.6,
+            36.8, 36.9, 37.0, 37.0, 36.9, 36.8,
+            36.9, 36.8, 36.8, 36.7, 36.8, 36.7, 36.6, 36.6
         ]
         return [(start + timedelta(days=i), t) for i, t in enumerate(werte)]
 
-# === Session State ===
+# === Session State Initialisieren ===
     if "temperaturdaten" not in st.session_state:
         st.session_state.temperaturdaten = beispiel_daten()
     if "beispiel_aktiv" not in st.session_state:
@@ -560,29 +559,31 @@ with chiara:
             datum_str, temp_str = eingabe.strip().split()
             datum = datetime.strptime(datum_str, "%d.%m.%Y")
             temperatur = float(temp_str.replace(",", "."))
+            # Beispielwerte entfernen bei erster Eingabe
             if st.session_state.beispiel_aktiv:
-                temperaturdaten.clear()  # Beispiel entfernen
+                st.session_state.temperaturdaten = []
                 st.session_state.beispiel_aktiv = False
-            temperaturdaten.append((datum, temperatur))
-            temperaturdaten.sort()
+            st.session_state.temperaturdaten.append((datum, temperatur))
+            st.session_state.temperaturdaten.sort()
             st.success(f"Hinzugefügt: {datum.strftime('%d.%m.%Y')} – {temperatur:.2f} °C")
         except Exception:
             st.error("❌ Ungültiges Format! Beispiel: 01.06.2025 36.5")
 
+    temperaturdaten = st.session_state.temperaturdaten
+
 # === Anzeige der Daten ===
     st.subheader("📅 Temperaturdaten")
-
     if temperaturdaten and not st.session_state.beispiel_aktiv:
         for i, (d, t) in enumerate(temperaturdaten, 1):
             st.markdown(f"{i}. **{d.strftime('%d.%m.%Y')}** – {t:.2f} °C")
     elif st.session_state.beispiel_aktiv:
-        st.info("⚠️ Es werden Beispielwerte angezeigt. Füge eigene Einträge hinzu, um zu starten.")
+        st.info("⚠️ Es werden Beispielwerte angezeigt. Füge eigene Daten ein, um loszulegen.")
     else:
         st.info("Noch keine Daten vorhanden.")
 
-# === Bearbeiten / Löschen ===
-    st.subheader("✏️ Bearbeiten oder löschen")
-    if temperaturdaten:
+# === Bearbeiten / Löschen (nur wenn keine Beispieldaten) ===
+    if temperaturdaten and not st.session_state.beispiel_aktiv:
+        st.subheader("✏️ Bearbeiten oder löschen")
         eintraege = [f"{i+1}. {d.strftime('%d.%m.%Y')} – {t:.2f}°C" for i, (d, t) in enumerate(temperaturdaten)]
         auswahl = st.selectbox("Eintrag auswählen", eintraege)
         index = eintraege.index(auswahl)
@@ -604,13 +605,13 @@ with chiara:
             temperaturdaten.pop(index)
             st.success("🗑️ Eintrag gelöscht.")
 
-# === Alles löschen ===
-    if st.button("🗑️ Alle Daten löschen"):
-        temperaturdaten.clear()
-        st.session_state.beispiel_aktiv = False
-        st.success("Alle Daten wurden gelöscht.")
+# === Alles löschen (nur eigene Daten) ===
+    if temperaturdaten and not st.session_state.beispiel_aktiv:
+        if st.button("🗑️ Alle Daten löschen"):
+            temperaturdaten.clear()
+            st.success("Alle Daten wurden gelöscht.")
 
-# === Analyse automatisch bei Start ===
+# === Analysefunktion ===
     def analysieren_daten(daten):
         daten.sort()
         tage = [d for d, _ in daten]
@@ -628,16 +629,18 @@ with chiara:
                 eisprung = mittel_tage[i]
                 break
 
-        fig, ax = plt.subplots(figsize=(6, 3))  # klein
+        fig, ax = plt.subplots(figsize=(6, 3))
         ax.plot(tage, temps, marker='o', label="Temperatur", color='blue')
         ax.plot(mittel_tage, gleit, linestyle='--', label="3-Tage-Mittel", color='orange')
         if eisprung:
             ax.axvline(eisprung, color='red', linestyle=':', label=f"Eisprung: {eisprung.strftime('%d.%m.%Y')}")
+
         ax.set_title("Basaltemperaturkurve")
         ax.set_xlabel("Datum")
         ax.set_ylabel("Temperatur (°C)")
         ax.grid(True)
         ax.legend()
+        ax.set_ylim(36.2, 37.2)  # <<< kleinere Achsenskalierung
         plt.xticks(rotation=45)
         st.pyplot(fig)
 
@@ -646,10 +649,11 @@ with chiara:
         else:
             st.info("❌ Kein Eisprung erkannt – Temperaturanstieg zu gering.")
 
-# === Sofortige Analyse (nur wenn Beispiel oder ≥5 Werte) ===
+# === Automatische Analyse ===
     if len(temperaturdaten) >= 5:
         st.subheader("📊 Analyse")
         analysieren_daten(temperaturdaten)
+
 
 
 
