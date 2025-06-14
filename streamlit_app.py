@@ -570,7 +570,7 @@ with chiara:
             st.error("❌ Ungültiges Format! Beispiel: 01.06.2025 36.5")
 
 # === Anzeige der Daten ===
-   st.subheader("📅 Temperaturdaten")
+    st.subheader("📅 Temperaturdaten")
 
     if temperaturdaten and not st.session_state.beispiel_aktiv:
         for i, (d, t) in enumerate(temperaturdaten, 1):
