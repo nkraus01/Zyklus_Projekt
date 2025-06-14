@@ -532,22 +532,22 @@ with chiara:
 
 # === Standardzyklusdaten ===
     def beispiel_daten():
-    start = datetime(2025, 6, 1)
-    werte = [
+        start = datetime(2025, 6, 1)
+        werte = [
         # Follikelphase – niedrige Temperaturen
-        36.4, 36.3, 36.4, 36.5, 36.4, 36.3, 36.5,
-        36.4, 36.4, 36.3, 36.5, 36.4, 36.3,
+            36.4, 36.3, 36.4, 36.5, 36.4, 36.3, 36.5,
+            36.4, 36.4, 36.3, 36.5, 36.4, 36.3,
         
         # Eisprung – Temperaturanstieg
-        36.6, 36.8, 36.9,
+            36.6, 36.8, 36.9,
 
         # Lutealphase – höhere Temperaturen
-        37.0, 36.9, 36.8, 36.9, 37.0, 36.8, 36.9, 36.7,
+            37.0, 36.9, 36.8, 36.9, 37.0, 36.8, 36.9, 36.7,
 
         # Prämenstruell – leichte Absenkung
-        36.6, 36.5, 36.4
-    ]
-    return [(start + timedelta(days=i), t) for i, t in enumerate(werte)]
+            36.6, 36.5, 36.4
+        ]
+        return [(start + timedelta(days=i), t) for i, t in enumerate(werte)]
 
 
 # === Session State Initialisieren ===
