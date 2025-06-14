@@ -563,20 +563,29 @@ with chiara:
 # === Neueingabe ===
     st.subheader("➕ Eintrag hinzufügen")
     eingabe = st.text_input("Format: TT.MM.JJJJ 36.5", key="eingabe_text")
+   
     if st.button("Hinzufügen"):
         try:
             datum_str, temp_str = eingabe.strip().split()
             datum = datetime.strptime(datum_str, "%d.%m.%Y")
             temperatur = float(temp_str.replace(",", "."))
-            # Beispielwerte entfernen bei erster Eingabe
+
+            # Entferne Beispiel beim ersten Eintrag
             if st.session_state.beispiel_aktiv:
                 st.session_state.temperaturdaten = []
                 st.session_state.beispiel_aktiv = False
-            st.session_state.temperaturdaten.append((datum, temperatur))
-            st.session_state.temperaturdaten.sort()
-            st.success(f"Hinzugefügt: {datum.strftime('%d.%m.%Y')} – {temperatur:.2f} °C")
+
+            # Prüfe auf Duplikat (Datum bereits vorhanden)
+            vorhandene_daten = [d.date() for d, _ in st.session_state.temperaturdaten]
+            if datum.date() in vorhandene_daten:
+                st.error(f"❌ Für den {datum.strftime('%d.%m.%Y')} existiert bereits ein Eintrag.")
+            else:
+                st.session_state.temperaturdaten.append((datum, temperatur))
+                st.session_state.temperaturdaten.sort()
+                st.success(f"Hinzugefügt: {datum.strftime('%d.%m.%Y')} – {temperatur:.2f} °C")
+
         except Exception:
-            st.error("❌ Ungültiges Format! Beispiel: 01.06.2025 36.5")
+            st.error("❌ Ungültiges Format! Beispiel: 01.06.2025 36.5")    
 
     temperaturdaten = st.session_state.temperaturdaten
 
