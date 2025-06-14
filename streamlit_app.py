@@ -525,7 +525,7 @@ with chiara:
     if st.button("💾 Berechnung ausführen"):
         analyse(zyklen)
 
-### Tempratur berechnen ###
+### Tempratur berechnen #######
     import streamlit as st
     import matplotlib.pyplot as plt
     from datetime import datetime, timedelta
@@ -638,20 +638,24 @@ with chiara:
                 eisprung = mittel_tage[i]
                 break
 
-        fig, ax = plt.subplots(figsize=(6, 3))
-        ax.plot(tage, temps, marker='o', label="Temperatur", color='blue')
-        ax.plot(mittel_tage, gleit, linestyle='--', label="3-Tage-Mittel", color='orange')
-        if eisprung:
-            ax.axvline(eisprung, color='red', linestyle=':', label=f"Eisprung: {eisprung.strftime('%d.%m.%Y')}")
+    fig, ax = plt.subplots(figsize=(6, 3))
+    ax.plot(tage, temps, marker='o', label="Temperatur", color='blue')
+    ax.plot(mittel_tage, gleit, linestyle='--', label="3-Tage-Mittel", color='orange')
+    if eisprung:
+        ax.axvline(eisprung, color='red', linestyle=':', label=f"Eisprung: {eisprung.strftime('%d.%m.%Y')}")
 
-        ax.set_title("Basaltemperaturkurve")
-        ax.set_xlabel("Datum")
-        ax.set_ylabel("Temperatur (°C)")
-        ax.grid(True)
-        ax.legend()
-        ax.set_ylim(36.2, 37.2)  # <<< kleinere Achsenskalierung
-        plt.xticks(rotation=45)
-        st.pyplot(fig)
+    ax.set_title("Basaltemperaturkurve", fontsize=11)
+    ax.set_xlabel("Datum", fontsize=10)
+    ax.set_ylabel("Temperatur (°C)", fontsize=10)
+    ax.grid(True)
+    ax.legend(fontsize=8)
+
+    ax.set_ylim(36.2, 37.2)  # feste Achsenskalierung
+    ax.tick_params(axis='x', labelsize=8)
+    ax.tick_params(axis='y', labelsize=8)
+    plt.xticks(rotation=45)
+    st.pyplot(fig)
+
 
         if eisprung:
             st.success(f"✅ Eisprung erkannt am **{eisprung.strftime('%d.%m.%Y')}**")
