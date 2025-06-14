@@ -570,12 +570,15 @@ with chiara:
             st.error("❌ Ungültiges Format! Beispiel: 01.06.2025 36.5")
 
 # === Anzeige der Daten ===
-    st.subheader("📅 Temperaturdaten")
-    if temperaturdaten:
-        for i, (d, t) in enumerate(temperaturdaten, 1):
-            st.markdown(f"{i}. **{d.strftime('%d.%m.%Y')}** – {t:.2f} °C")
-    else:
-        st.info("Noch keine Daten vorhanden.")
+   st.subheader("📅 Temperaturdaten")
+
+if temperaturdaten and not st.session_state.beispiel_aktiv:
+    for i, (d, t) in enumerate(temperaturdaten, 1):
+        st.markdown(f"{i}. **{d.strftime('%d.%m.%Y')}** – {t:.2f} °C")
+elif st.session_state.beispiel_aktiv:
+    st.info("⚠️ Es werden Beispielwerte angezeigt. Füge eigene Einträge hinzu, um zu starten.")
+else:
+    st.info("Noch keine Daten vorhanden.")
 
 # === Bearbeiten / Löschen ===
     st.subheader("✏️ Bearbeiten oder löschen")
