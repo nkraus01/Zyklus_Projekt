@@ -623,12 +623,6 @@ with chiara:
             temperaturdaten.pop(index)
             st.success("🗑️ Eintrag gelöscht.")
 
-# === Alles löschen (nur eigene Daten) ===
-    if temperaturdaten and not st.session_state.beispiel_aktiv:
-        if st.button("🗑️ Alle Daten löschen"):
-            temperaturdaten.clear()
-            st.success("Alle Daten wurden gelöscht.")
-
 # === Analysefunktion ===
     def analysieren_daten(daten):
         daten.sort()
