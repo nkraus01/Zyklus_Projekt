@@ -439,6 +439,8 @@ with chiara:
     import os
     from datetime import datetime, timedelta
     import streamlit as st
+# === 🛠️ Konfiguration ===
+    st.set_page_config(page_title="Basaltemperatur", layout="centered")
 
 # === Konstanten ===
     DATEINAME = "zyklen.csv"
@@ -528,8 +530,6 @@ with chiara:
 ### Tempratur berechnen ###
 
     import streamlit as st
-# === 🛠️ Konfiguration ===
-    st.set_page_config(page_title="Basaltemperatur", layout="centered")
     from datetime import datetime
     import matplotlib.pyplot as plt
 
