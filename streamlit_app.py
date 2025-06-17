@@ -33,7 +33,7 @@ with start:
         index=1  # ← Das sorgt dafür, dass "Nein, danke" vorausgewählt ist
     )
     if quellen_anzeigen == "Ja, gerne!":
-        st.info("Hier kommen bald unsere Quellen")
+        st.info("Hier kommen bald unsere Quellen.")
     st.write("""Wir wünschen dir viel Spaß! 
             Lou, Chiara & Nathalie""")
             
