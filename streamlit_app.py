@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 
 st.title("Weiblicher Zyklus 🌹")
 
-### Start #######################################################################################
+### Start ########################################################################################
 
 def set_page(page_name):
     """Funktion zum Setzen der aktuellen Seite"""
