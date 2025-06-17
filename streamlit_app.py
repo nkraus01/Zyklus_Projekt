@@ -729,5 +729,21 @@ with lou:
         p_log = -0.602 + 0.268 * eisprung_entfernung - 0.020 * bmi - 0.065 * alter
         p_fruchtbarkeit = np.exp(p_log) / (1 + np.exp(p_log))
         st.success(f"Geschätzte Fruchtbarkeitswahrscheinlichkeit: {100 * p_fruchtbarkeit:.2f}%")
+    st.info("""Die Fruchtbarkeitswahrscheinlichkeit ist anhand von Daten geschätzt und kann stark variieren. 
+    Sie bezieht sich auf einmaligen Geschlechtsverkehr am angegebenen Zyklustag.""")
+    # Anzeigen von mehr Informationen
+    quellen_anzeigen = st.radio(
+        "Möchtest du mehr Infos darüber, wie man die Fruchtbarkeitswahrscheinlichkeit erhöhen kann?",
+        ("Ja, gerne!", "Nein, danke!"),
+        index=1  # ← Das sorgt dafür, dass "Nein, danke" vorausgewählt ist
+    )
+    if quellen_anzeigen == "Ja, gerne!":
+        st.write("""Die Fruchtbarkeitswahrscheinlichkeit kann durch bestimmte Methoden beeinflusst werden. Dazu zählen:
+        - gesunde Ernährung, ausreichende Nährstoffaufnahme und zugleich Meiden von verarbeiteten Lebensmitteln und zugesetzten Zuckern
+        - gesundes Körpergewicht und Maß an Bewegung
+        - Einnahme von Ergänzungen von Folsäure, Vitamin D, Jod (!! unbedingt vorher mit dem Hausarzt oder Frauenarzt besprechen!!)
+        - Alkohol und Zigaretten meiden.""")
+    
+    
     
     
