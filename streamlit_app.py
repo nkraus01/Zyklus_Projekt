@@ -47,17 +47,16 @@ with start:
 
 with nathi:
     
-    # Seiteneinstellungen
     
     st.title("💡 Dein Hormonverlauf")
     
     # Auswahl Zyklusart
     modus = st.selectbox("Zyklusart", ["Natürlich", "Pille (21+7)", "Pille (28 Tage)"])
     
-    # Eingabe Zykluslänge
+    # Eingabe Zykluslänge (nur bei "Natürlich", da sonst die Pille die Zykluslänge entscheidet)
     if modus == "Natürlich":
         zykluslaenge = st.slider("Zykluslänge (in Tagen)", min_value=21, max_value=40, value=28)
-        hinweis = ""
+        hinweis = "" 
     else:
         zykluslaenge = 28
         hinweis = "Bei Pilleneinnahme ist die Zykluslänge auf 28 Tage festgelegt."
@@ -149,7 +148,7 @@ with nathi:
     
     # --- Zusätzliche Infos zu Phasen und Hormonen ---
     
-    st.markdown("---")
+    st.markdown("---") # erzeugt horizontale Trennlinie
     st.header("📚 Zusatzinfos zu Zyklusphasen & Hormonen")
     
     
