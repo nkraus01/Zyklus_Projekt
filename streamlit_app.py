@@ -13,13 +13,15 @@ def set_page(page_name):
     """Funktion zum Setzen der aktuellen Seite"""
     st.session_state.current_page = page_name
 
-start, nathi, chiara, lou = st.tabs(["🏠 Übersicht", "💡 Hormonverlauf", "🌡️ Zyklus und Temperatur", "📊 Fruchtbarkeitsrechner"])
+start, nathi, chiara, lou = st.tabs(["🏠 Start", "💡 Hormonverlauf", "🌡️ Zyklus und Temperatur", "📊 Fruchtbarkeitsrechner"])
 
 
 with start:
     st.header("Willkommen!")
     st.subheader("""Hey, du interessierst dich für deinen Zyklus? - Dann bist du hier genau richtig!""")
-                   
+    name = st.text_input("Wie ist dein Name?")
+    st.write(f"Schön, dass du da bist, {name}")
+             
     st.write("""Wir haben eine Website erstellt mit allen möglichen interessanten Facts und Darstellungen, dabei sind viele Elemente interaktiv, 
           sodass du alles ganz auf deinen eigenen Körper abstimmen kannst.""")
     st.write("""Wir wünschen dir viel Spaß! 
