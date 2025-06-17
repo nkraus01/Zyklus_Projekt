@@ -13,7 +13,7 @@ def set_page(page_name):
     """Funktion zum Setzen der aktuellen Seite"""
     st.session_state.current_page = page_name
 
-start, nathi, chiara, lou = st.tabs(["🏠 Übersicht", "💡 Zyklus und Hormone", "🌡️ Zyklus und Temperatur", "📊 Fruchtbarkeitsrechner"])
+start, nathi, chiara, lou = st.tabs(["🏠 Übersicht", "💡 Hormonverlauf", "🌡️ Zyklus und Temperatur", "📊 Fruchtbarkeitsrechner"])
 
 
 with start:
@@ -31,7 +31,7 @@ with start:
     
     with spalte1:
         st.write("Bei Nathi kannst du mehr über Hormone im Zyklusverlauf, den Hormonspiegel und ihre Rolle im Zyklus erfahren.")
-        st.info("Klicke dafür oben auf 'Zyklus und Hormone'!")
+        st.info("Klicke dafür oben auf 'Hormonverlauf'!")
             
     
     with spalte2:
