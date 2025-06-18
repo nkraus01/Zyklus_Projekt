@@ -135,22 +135,22 @@ with nathi:
     fig.add_shape(type="line", x0=tag, x1=tag, y0=0, y1=1.05, line=dict(color="red", width=2, dash="dash"))
 
     
-if modus == "Natürlich":
-    yaxis_title = "relativer Hormonspiegel"
-else:
-    yaxis_title = "absoluter Hormonspiegel"
+    if modus == "Natürlich":
+        yaxis_title = "relativer Hormonspiegel"
+    else:
+        yaxis_title = "absoluter Hormonspiegel"
 
 
-fig.update_layout(
-    title=f"Hormonverlauf ({modus}, {zykluslaenge} Tage)",
-    xaxis_title="Zyklustag",
-    yaxis_title=yaxis_title,
-    yaxis=dict(range=[0, 1.05]),
-    width=950,
-    height=500
-)
+    fig.update_layout(
+        title=f"Hormonverlauf ({modus}, {zykluslaenge} Tage)",
+        xaxis_title="Zyklustag",
+        yaxis_title=yaxis_title,
+        yaxis=dict(range=[0, 1.05]),
+        width=950,
+        height=500
+    )
 
-st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True)
     
     # Zyklusphase anzeigen
     st.markdown(f"### 📍 Tag {tag}: {zyklus_phase(tag, modus, zykluslaenge)}")
