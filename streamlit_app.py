@@ -119,9 +119,9 @@ with nathi:
         real_pr = np.concatenate([np.full(21, 10), np.full(zykluslaenge - 21, 1)])
         real_lh = real_fsh = np.full(zykluslaenge, 3)
     elif modus == "Pille (28 Tage)":
-        oe = np.full(zykluslaenge, 0.5)
-        pr = np.full(zykluslaenge, 0.7)
-        lh = fsh = np.full(zykluslaenge, 0.1)
+        oe = np.full(zykluslaenge, 100/100)
+        pr = np.full(zykluslaenge, 10/100)
+        lh = fsh = np.full(zykluslaenge, 3/100)
         real_oe = np.full(zykluslaenge, 100)
         real_pr = np.full(zykluslaenge, 10)
         real_lh = real_fsh = np.full(zykluslaenge, 3)
