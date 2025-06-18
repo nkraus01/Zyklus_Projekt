@@ -142,7 +142,7 @@ with nathi:
 
 
     fig.update_layout(
-        title=f"Hormonverlauf ({modus})",
+        title=f"Hormonverlauf {modus}",
         xaxis_title="Zyklustag",
         yaxis_title=yaxis_title,
         yaxis=dict(range=[0, 1.05]),
