@@ -138,7 +138,7 @@ with nathi:
     if modus == "Natürlich":
         yaxis_title = "relativer Hormonspiegel"
     else:
-        yaxis_title = "absoluter Hormonspiegel"
+        yaxis_title = "absoluter Hormonspiegel * (1/100) (ohne Einheit)"
 
 
     fig.update_layout(
