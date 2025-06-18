@@ -112,9 +112,9 @@ with nathi:
     fsh = real_fsh / np.max(real_fsh)
     
     if modus == "Pille (21+7)":
-        oe = np.concatenate([np.full(21, 0.5), np.full(zykluslaenge - 21, 0.1)])
-        pr = np.concatenate([np.full(21, 0.7), np.full(zykluslaenge - 21, 0.1)])
-        lh = fsh = np.full(zykluslaenge, 0.1)
+        oe = np.concatenate([np.full(21, 1), np.full(zykluslaenge - 21, 0.1)])
+        pr = np.concatenate([np.full(21, 0.1), np.full(zykluslaenge - 21, 0.1)])
+        lh = fsh = np.full(zykluslaenge, 0.03)
         real_oe = np.concatenate([np.full(21, 100), np.full(zykluslaenge - 21, 30)])
         real_pr = np.concatenate([np.full(21, 10), np.full(zykluslaenge - 21, 1)])
         real_lh = real_fsh = np.full(zykluslaenge, 3)
