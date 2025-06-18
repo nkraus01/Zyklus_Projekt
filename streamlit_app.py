@@ -133,18 +133,23 @@ with nathi:
     fig.add_trace(go.Scatter(x=tage, y=lh, name="LH", line=dict(color='green', shape='spline')))
     fig.add_trace(go.Scatter(x=tage, y=fsh, name="FSH", line=dict(color='blue', shape = 'spline')))
     fig.add_shape(type="line", x0=tag, x1=tag, y0=0, y1=1.05, line=dict(color="red", width=2, dash="dash"))
+
     
-    fig.update_layout(
-        title=f"Hormonverlauf ({modus}, {zykluslaenge} Tage)",
-        xaxis_title="Zyklustag",
-        if modus == "Natürlich":
-            yaxis_title="relativer Hormonspiegel",
-        else:
-            yaxis_title="absoluter Hormonspiegel",
-        yaxis=dict(range=[0, 1.05]),
-        width=950,
-        height=500
-    )
+if modus == "Natürlich":
+    yaxis_title = "relativer Hormonspiegel"
+else:
+    yaxis_title = "absoluter Hormonspiegel"
+
+
+fig.update_layout(
+    title=f"Hormonverlauf ({modus}, {zykluslaenge} Tage)",
+    xaxis_title="Zyklustag",
+    yaxis_title=yaxis_title,
+    yaxis=dict(range=[0, 1.05]),
+    width=950,
+    height=500
+)
+
     st.plotly_chart(fig, use_container_width=True)
     
     # Zyklusphase anzeigen
