@@ -98,12 +98,14 @@ with nathi:
     # Daten vorbereiten
     tage = np.arange(1, zykluslaenge + 1)
     ovulation = zykluslaenge - 14
-    
+
+    # modellhaft, mit Gaußschen Normalverteilung rekonstruiert
     real_oe = 50 + 250 * np.exp(-0.5 * ((tage - (ovulation - 1)) / 3)**2) + 70 * np.exp(-0.5 * ((tage - (zykluslaenge - 7)) / 2)**2)
     real_pr = 0.5 + 15 * np.exp(-0.5 * ((tage - (zykluslaenge - 7)) / 3)**2)
     real_lh = 5 + 75 * np.exp(-0.5 * ((tage - ovulation) / 1.5)**2)
     real_fsh = 4 + 25 * np.exp(-0.5 * ((tage - 3) / 2)**2) + 15 * np.exp(-0.5 * ((tage - ovulation) / 2)**2)
-    
+
+    # In Relation mit Maximum gesetzt, Normierung
     oe = real_oe / np.max(real_oe)
     pr = real_pr / np.max(real_pr)
     lh = real_lh / np.max(real_lh)
@@ -135,7 +137,10 @@ with nathi:
     fig.update_layout(
         title=f"Hormonverlauf ({modus}, {zykluslaenge} Tage)",
         xaxis_title="Zyklustag",
-        yaxis_title="relativer Hormonspiegel",
+        if modus == "Natürlich"
+            yaxis_title="relativer Hormonspiegel",
+        else
+            yaxis_title="absoluter Hormonspiegel",
         yaxis=dict(range=[0, 1.05]),
         width=950,
         height=500
