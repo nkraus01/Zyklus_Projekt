@@ -137,9 +137,9 @@ with nathi:
     fig.update_layout(
         title=f"Hormonverlauf ({modus}, {zykluslaenge} Tage)",
         xaxis_title="Zyklustag",
-        if modus == "Natürlich"
+        if modus == "Natürlich":
             yaxis_title="relativer Hormonspiegel",
-        else
+        else:
             yaxis_title="absoluter Hormonspiegel",
         yaxis=dict(range=[0, 1.05]),
         width=950,
