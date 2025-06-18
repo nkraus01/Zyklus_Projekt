@@ -150,7 +150,7 @@ with nathi:
         height=500
     )
 
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True) #zur interaktiven Ausgabe von fig ,automatische Anpassung an Bildschirmgröße durch TRUE
     
     # Zyklusphase anzeigen
     st.markdown(f"### 📍 Tag {tag}: {zyklus_phase(tag, modus, zykluslaenge)}")
@@ -163,7 +163,7 @@ with nathi:
             f"{round(real_pr[tag - 1], 2)} ng/mL",
             f"{round(real_lh[tag - 1], 1)} mIU/mL",
             f"{round(real_fsh[tag - 1], 1)} mIU/mL"
-        ]
+        ]  # tag -1, weil Python Index bei 0 beginnt
     })
     st.markdown("#### 📊 Hormonspiegel an diesem Tag")
     st.dataframe(df, use_container_width=True)
