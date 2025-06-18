@@ -132,7 +132,7 @@ with nathi:
     fig.add_trace(go.Scatter(x=tage, y=pr, name="Progesteron", line=dict(color='orange', shape = 'spline')))
     fig.add_trace(go.Scatter(x=tage, y=lh, name="LH", line=dict(color='green', shape='spline')))
     fig.add_trace(go.Scatter(x=tage, y=fsh, name="FSH", line=dict(color='blue', shape = 'spline')))
-    fig.add_shape(type="line", x0=tag, x1=tag, y0=0, y1=1.05, line=dict(color="red", width=2, dash="dash"))
+    fig.add_shape(type="line", x0=tag, x1=tag, y0=0, y1=1, line=dict(color="red", width=2, dash="dash")) #hinzufügen einer vertikalen Linie (durch x0 = x1), dash -> gestrichelte Linie
 
     
     if modus == "Natürlich":
@@ -145,7 +145,7 @@ with nathi:
         title=f"Hormonverlauf {modus}",
         xaxis_title="Zyklustag",
         yaxis_title=yaxis_title,
-        yaxis=dict(range=[0, 1.05]),
+        yaxis=dict(range=[0, 1]),
         width=950,
         height=500
     )
