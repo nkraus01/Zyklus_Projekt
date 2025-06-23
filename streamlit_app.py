@@ -840,7 +840,7 @@ with lou:
         st.info("Berechnung der Wahrscheinlichkeit, über X Zyklen hinweg schwanger zu werden:")
         X = st.number_input("Gib X als Zyklenanzahl ein: ")
         z = 0.5
-        p = 1-(1-z)^X
+        p = 1-(1-z)**X
         st.info("Die Wahrscheinlichkeit beträgt {p}%.")
         
         
