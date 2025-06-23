@@ -47,11 +47,12 @@ with start:
     # Anzeigen der Quellen
     quellen_anzeigen = st.radio(
         "Möchtest du unsere Quellen sehen?",
-        ("Ja, gerne!", "Nein, danke!"),
+        ("Ja, gerne!", "Nein, danke."),
         index=1  # ← Das sorgt dafür, dass "Nein, danke" vorausgewählt ist
     )
     if quellen_anzeigen == "Ja, gerne!":
         st.info("""Bereich 'Hormonverlauf':
+        
                 https://arxiv.org/pdf/1712.00117
                 https://www.researchgate.net/publication/2282598_A_Model_For_The_Production_Of_Ovarian_Hormones_During_The_Menstrual_Cycle
                 https://proceedings.mlr.press/v106/urteaga19a/urteaga19a.pdf?""")
