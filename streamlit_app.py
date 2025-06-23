@@ -170,7 +170,6 @@ with nathi:
         xaxis_title="Zyklustag",
         yaxis_title=yaxis_title,
         yaxis=dict(range=[0, 1.2]),
-        width=950,
         height=500
     )
 
