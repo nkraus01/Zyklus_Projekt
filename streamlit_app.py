@@ -18,7 +18,7 @@ start, nathi, chiara, lou = st.tabs(["🏠 Start", "💡 Hormonverlauf", "🌡�
 
 with start:
     st.header("Willkommen!")
-    st.subheader("""Hey, du interessierst dich für deinen Zyklus? - Dann bist du hier genau richtig!""")
+    st.subheader("""Du interessierst dich für deinen Zyklus? - Dann bist du hier genau richtig!""")
     name = st.text_input("Wie ist dein Name?")
     st.info(f"Schön, dass du da bist {name}!")
              
