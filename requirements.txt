@@ -5,5 +5,10 @@ plotly
 matplotlib
 
 # Das sind alle für den Code notwendigen Bibliotheken, die automatisch beim Ausführen über Streamlit, installiert werden.
+# streamlit: zu interaktiven Web-App-Darstellung (Erstellung Benutzeroberflächen)
+# numpy: mathematische Berechnungen, Grundlage für viele andere Bibliotheken, wie z.B. Pandas
+# pandas: Datenanlayse, ermöglicht einfaches Einlesen, Filtern, Gruppieren und Zusammenfassen von Daten
+# plotly: interaktive Visualisierungen (Diagramme, Dashboards)
+# motplotlib: Erstellung nicht interaktiver Diagramme, statische Visualisierung
 
 
