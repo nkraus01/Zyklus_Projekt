@@ -274,6 +274,7 @@ with nathi:
     """,
             "Ovulation": """Die Ovulation, auch Eisprung, ist das zentrale Ereignis im weiblichen Zyklus: 
             Ein reifes Ei verlässt den Eierstock und macht sich auf den Weg – bereit für eine mögliche Befruchtung. 
+            
             Klingt simpel, ist aber ein präzise getimter, hormonell gesteuerter Vorgang.
     
     🔬 Was passiert bei der Ovulation?
