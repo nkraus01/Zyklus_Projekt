@@ -72,7 +72,7 @@ with start:
                 https://www.news-medical.net/health/Estradiol-Measurement.aspx? (01.06.25)
                 https://shop.miracare.com/blogs/resources/fsh-levels?srsltid=AfmBOooOHKqp3qDe808khcB2uvJ8EHcYf8Sy9Lr0Y4Pbq-FsEn0XXMU9& (02.06.25)
                 https://www.straighthealthcare.com/female-hormone-physiology.html (02.06.25)
-                https://chatgpt.com
+                https://chatgpt.com (23.06.25)
                 """)
     st.write(f"""Wir wünschen dir viel Spaß, {name}! 
             Lou, Chiara & Nathalie""")
