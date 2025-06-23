@@ -53,9 +53,27 @@ with start:
     if quellen_anzeigen == "Ja, gerne!":
         st.info("""Bereich 'Hormonverlauf':
         
-                https://arxiv.org/pdf/1712.00117
-                https://www.researchgate.net/publication/2282598_A_Model_For_The_Production_Of_Ovarian_Hormones_During_The_Menstrual_Cycle
-                https://proceedings.mlr.press/v106/urteaga19a/urteaga19a.pdf?""")
+                https://docs.streamlit.io/develop/tutorials (03.06.25)
+                https://docs.github.com/de/get-started/start-your-journey (21.05.25)
+                https://plotly.com/python/renderers/ (22.05.25)
+                https://arxiv.org/pdf/1712.00117 (05.06.25)
+                https://www.researchgate.net/publication/2282598_A_Model_For_The_Production_Of_Ovarian_Hormones_During_The_Menstrual_Cycle (05.06.25)
+                https://proceedings.mlr.press/v106/urteaga19a/urteaga19a.pdf? (05.06.25)
+                https://github.com/uja-works/Programmieren2 (20.05.25)
+                https://www.ncbi.nlm.nih.gov/books/NBK500020/ (23.05.25)
+                https://www.ncbi.nlm.nih.gov/books/NBK500020/ (23.05.25)
+                https://de.wikipedia.org/wiki/Menstruationszyklus#Hormonzyklus (18.05.25)
+                https://www.wikiwand.com/de/articles/Menstruation (18.05.25)
+                https://de.wikipedia.org/wiki/Progesteron (15.06.25)
+                https://www.wikiwand.com/de/search?q=%C3%B6strogen (16.06.25)
+                https://de.wikipedia.org/wiki/Follikelstimulierendes_Hormon (16.06.25)
+                https://de.wikipedia.org/wiki/Luteinisierendes_Hormon (15.05.25)
+                https://www.news-medical.net/health/Estradiol-Measurement.aspx? (01.06.25)
+                https://www.news-medical.net/health/Estradiol-Measurement.aspx? (01.06.25)
+                https://shop.miracare.com/blogs/resources/fsh-levels?srsltid=AfmBOooOHKqp3qDe808khcB2uvJ8EHcYf8Sy9Lr0Y4Pbq-FsEn0XXMU9& (02.06.25)
+                https://www.straighthealthcare.com/female-hormone-physiology.html (02.06.25)
+                https://chatgpt.com
+                """)
     st.write(f"""Wir wünschen dir viel Spaß, {name}! 
             Lou, Chiara & Nathalie""")
 
