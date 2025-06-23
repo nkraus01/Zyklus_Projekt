@@ -180,7 +180,7 @@ with nathi:
     
     # Einstiegsfrage mit "Nein, danke" als Standard
     frage = st.radio(
-        "Möchtest du zusätzliche Informationen über deine Zyklusphasen und deine Hormone?",
+        f"Möchtest du zusätzliche Informationen über deine Zyklusphasen und deine Hormone, {name}?",
         ("Ja, gerne!", "Nein, danke!"),
         index=1  # ← Das sorgt dafür, dass "Nein, danke" vorausgewählt ist
     )
