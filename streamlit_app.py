@@ -167,7 +167,7 @@ with nathi:
         title=f"Hormonverlauf {modus}",
         xaxis_title="Zyklustag",
         yaxis_title=yaxis_title,
-        yaxis=dict(range=[0, 1]),
+        yaxis=dict(range=[0, 1.2]),
         width=950,
         height=500
     )
