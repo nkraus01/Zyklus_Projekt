@@ -821,6 +821,14 @@ with lou:
         - Einnahme von Ergänzungsmitteln, wie Folsäure, Vitamin D, Jod (!! unbedingt vorher mit dem Hausarzt oder Frauenarzt besprechen!!)
         
         - Alkohol und Zigaretten meiden """)
+
+        else: 
+        st.write("""Okay! Du kannst gerne später darauf zurückkommen.""")
+    st.info("Berechnung der Wahrscheinlichkeit, über X Zyklen hinweg schwanger zu werden:")
+    X = st.input("Gib X als Zyklenanzahl ein: ")
+    z = 0.5
+    p = 1-(1-z)^X
+    st.info("Die Wahrscheinlichkeit beträgt {p}%.")
     
     
     
