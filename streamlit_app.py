@@ -26,16 +26,7 @@ with start:
           sodass du alles ganz auf deinen eigenen Körper abstimmen kannst.""")
     st.write("""Wir sind drei Studentinnen und möchten betonen, dass unsere Website keinen Anspruch auf Richtigkeit hat und Fehler enthalten kann! Daher überprüfe die Informationen auf jeden Fall, 
     bevor du sie verwendest. Sie dient der Darstellung und groben Informationsbereitstellung. Du kannst du auf unsere Quellen zugreifen, indem du hier klickst!""")
-    # Anzeigen der Quellen
-    quellen_anzeigen = st.radio(
-        "Möchtest du unsere Quellen sehen?",
-        ("Ja, gerne!", "Nein, danke!"),
-        index=1  # ← Das sorgt dafür, dass "Nein, danke" vorausgewählt ist
-    )
-    if quellen_anzeigen == "Ja, gerne!":
-        st.info("Hier kommen bald unsere Quellen.")
-    st.write("""Wir wünschen dir viel Spaß! 
-            Lou, Chiara & Nathalie""")
+  
             
     st.subheader("Überblick")
 
@@ -54,6 +45,16 @@ with start:
         st.write("Bei Lou kannst du dir in Bezug auf verschiedene Faktoren deine Fruchtbarkeitswahrscheinlichkeit berechnen lassen.")
         st.info("Klicke dafür oben auf 'Fruchtbarkeitsrechner'!")
 
+    # Anzeigen der Quellen
+    quellen_anzeigen = st.radio(
+        "Möchtest du unsere Quellen sehen?",
+        ("Ja, gerne!", "Nein, danke!"),
+        index=1  # ← Das sorgt dafür, dass "Nein, danke" vorausgewählt ist
+    )
+    if quellen_anzeigen == "Ja, gerne!":
+        st.info("Hier kommen bald unsere Quellen.")
+    st.write("""Wir wünschen dir viel Spaß! 
+            Lou, Chiara & Nathalie""")
 
 ### Nathi #####################################################################################
 
