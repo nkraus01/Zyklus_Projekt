@@ -739,7 +739,7 @@ with chiara:
         ax.legend(fontsize=5)
 
         ax.set_ylim(36.2, 37.2)  # feste Achsenskalierung
-        ax.tick_params(axis='x', labelsize=5)
+        ax.tick_params(axis='x', labelsize=6)
         ax.tick_params(axis='y', labelsize=5)
         plt.xticks(rotation=45)
         st.pyplot(fig)
