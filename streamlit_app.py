@@ -75,7 +75,7 @@ with start:
                 https://chatgpt.com (23.06.25)
                 """)
     st.write(f"""Wir wünschen dir viel Spaß, {name}! 
-            Lou, Chiara & Nathalie""")
+            Liebe Grüße Lou, Chiara & Nathalie""")
 
 ### Nathi #####################################################################################
 
