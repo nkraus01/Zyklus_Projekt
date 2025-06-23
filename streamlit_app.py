@@ -802,7 +802,7 @@ with lou:
             return 0.33
         elif 17 < bmi < 20:
             return 0.89
-        else bmi between(20,25):
+        else 20 < bmi< 25:
             return 1
         
     
