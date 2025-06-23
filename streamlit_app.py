@@ -732,9 +732,9 @@ with chiara:
         if eisprung:
             ax.axvline(eisprung, color='red', linestyle=':', label=f"Eisprung: {eisprung.strftime('%d.%m.%Y')}")
 
-        ax.set_title("Basaltemperaturkurve", fontsize=11)
-        ax.set_xlabel("Datum", fontsize=10)
-        ax.set_ylabel("Temperatur (°C)", fontsize=10)
+        ax.set_title("Basaltemperaturkurve", fontsize=10)
+        ax.set_xlabel("Datum", fontsize=8)
+        ax.set_ylabel("Temperatur (°C)", fontsize=8)
         ax.grid(True)
         ax.legend(fontsize=8)
 
