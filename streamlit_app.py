@@ -736,7 +736,7 @@ with chiara:
         ax.set_xlabel("Datum", fontsize=6)
         ax.set_ylabel("Temperatur (°C)", fontsize=6)
         ax.grid(True)
-        ax.legend(fontsize=4)
+        ax.legend(loc="upper left", fontsize=4)
 
         ax.set_ylim(36.2, 37.2)  # feste Achsenskalierung
         ax.tick_params(axis='x', labelsize=4)
@@ -746,7 +746,7 @@ with chiara:
 
 
         if eisprung:
-            st.success(f"✅ {name}, Eisprung wurde am **{eisprung.strftime('%d.%m.%Y')}** erkannt.")
+            st.success(f"✅ Eisprung wurde am **{eisprung.strftime('%d.%m.%Y')}** erkannt.")
         else:
             st.info("❌ Kein Eisprung erkannt – Temperaturanstieg zu gering.")
 
