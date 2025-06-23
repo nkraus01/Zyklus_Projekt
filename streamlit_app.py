@@ -823,8 +823,7 @@ with lou:
     quellen_anzeigen = st.radio(
         "Möchtest du mehr Infos darüber, wie man die Fruchtbarkeitswahrscheinlichkeit erhöhen kann?",
         ("Ja, gerne!", "Nein, danke!"),
-        index=1  # ← Das sorgt dafür, dass "Nein, danke" vorausgewählt ist
-    )
+        index=1))
     if quellen_anzeigen == "Ja, gerne!":
         st.write("""Die Fruchtbarkeitswahrscheinlichkeit kann durch bestimmte Methoden beeinflusst werden. Dazu zählen:
         
