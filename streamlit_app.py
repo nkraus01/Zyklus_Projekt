@@ -127,7 +127,7 @@ with nathi:
     real_oe = 50 + 250 * np.exp(-0.5 * ((tage - (ovulation - 1)) / 3)**2) + 70 * np.exp(-0.5 * ((tage - (zykluslaenge - 7)) / 2)**2)
     real_pr = 0.5 + 15 * np.exp(-0.5 * ((tage - (zykluslaenge - 7)) / 3)**2)
     real_lh = 5 + 75 * np.exp(-0.5 * ((tage - ovulation) / 1.5)**2)
-    real_fsh = 4 + 25 * np.exp(-0.5 * ((tage - 3) / 2)**2) + 15 * np.exp(-0.5 * ((tage - ovulation) / 2)**2)
+    real_fsh = 4 + 25 * np.exp(-0.5 * ((tage - 3) / 2)**2) + 15 * np.exp(-0.5 * ((tage - ovulation) / 2)**2) # Addition -> 2 Peaks
 
     # In Relation mit Maximum gesetzt, Normierung
     oe = real_oe / np.max(real_oe)
