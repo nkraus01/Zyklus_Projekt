@@ -207,6 +207,7 @@ with nathi:
         # Phaseninfo
         zyklusphasen = {
             "Menstruation": """🧠 Coole Facts über die Menstruation:
+            
     1. Du blutest ca. 6–9 Jahre deines Lebens. 
     
        Eine Frau hat im Schnitt etwa 450 Menstruationen im Leben – das entspricht rund 6 bis 9 Jahren Menstruation in Summe. 
