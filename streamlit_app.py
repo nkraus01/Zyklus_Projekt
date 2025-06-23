@@ -753,9 +753,13 @@ with lou:
     )
     if quellen_anzeigen == "Ja, gerne!":
         st.write("""Die Fruchtbarkeitswahrscheinlichkeit kann durch bestimmte Methoden beeinflusst werden. Dazu zählen:
+        
         - gesunde Ernährung, ausreichende Nährstoffaufnahme und zugleich Meiden von verarbeiteten Lebensmitteln und zugesetzten Zuckern
+        
         - gesundes Körpergewicht und Maß an Bewegung
+        
         - Einnahme von Ergänzungen von Folsäure, Vitamin D, Jod (!! unbedingt vorher mit dem Hausarzt oder Frauenarzt besprechen!!)
+        
         - Alkohol und Zigaretten meiden.""")
     
     
