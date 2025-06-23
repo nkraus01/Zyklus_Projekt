@@ -20,7 +20,9 @@ with start:
     st.header("Willkommen!")
     st.subheader("""Du interessierst dich für deinen Zyklus? - Dann bist du hier genau richtig!""")
     name = st.text_input("Verrate uns bitte deinen Namen:")
-    st.info(f"""Wie schön, dass du da bist {name}! Wir haben eine Website erstellt mit allen möglichen interessanten Facts und Darstellungen, dabei sind viele Elemente interaktiv, 
+    st.info(f"""Wie schön, dass du da bist {name}! 
+    
+    Wir haben eine Website erstellt mit allen möglichen interessanten Facts und Darstellungen, dabei sind viele Elemente interaktiv, 
           sodass du alles ganz auf deinen eigenen Körper abstimmen kannst.""")
              
     st.write("""Wir haben eine Website erstellt mit allen möglichen interessanten Facts und Darstellungen, dabei sind viele Elemente interaktiv, 
