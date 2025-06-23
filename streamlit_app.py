@@ -800,9 +800,9 @@ with lou:
     def bmi_wkt(bmi):
         if bmi < 17:
             return 0.33
-        elif (17 < bmi < 20):
+        elif 17 < bmi < 20:
             return 0.89
-        else (20 < bmi< 25):
+        elif 20 < bmi< 25:
             return 1
         
     
