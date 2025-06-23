@@ -33,16 +33,16 @@ with start:
     spalte1, spalte2, spalte3 = st.columns(3)
     
     with spalte1:
-        st.write("Bei Nathi kannst du mehr über Hormone im Zyklusverlauf, den Hormonspiegel und ihre Rolle im Zyklus erfahren.")
+        st.write("Nathi hat dir verschiedenste Informationen über die einzelnen Zyklusphasen, die weiblichen Hormone und ihre Rolle im Zyklus zusammengestellt.")
         st.info("Klicke dafür oben auf 'Hormonverlauf'!")
             
     
     with spalte2:
-        st.write("Bei Chiara kannst du mithilfe von Temperaturen deinen Eisprung ausrechnen lassen und das graphisch darstellen.")
+        st.write("Mit Hilfe von Chiaras Code kannst du dir abhängig von deiner Körpertemperaturen deinen Eisprung ausrechnen lassen und das graphisch darstellen.")
         st.info("Klicke dafür oben auf 'Zyklus und Temperatur'!")
     
     with spalte3:
-        st.write("Bei Lou kannst du dir in Bezug auf verschiedene Faktoren deine Fruchtbarkeitswahrscheinlichkeit berechnen lassen.")
+        st.write("Mit Hilfe von Lous Programmierung kannst du dir in Bezug auf verschiedene Faktoren deine Fruchtbarkeitswahrscheinlichkeit berechnen lassen.")
         st.info("Klicke dafür oben auf 'Fruchtbarkeitsrechner'!")
 
     # Anzeigen der Quellen
@@ -52,7 +52,8 @@ with start:
         index=1  # ← Das sorgt dafür, dass "Nein, danke" vorausgewählt ist
     )
     if quellen_anzeigen == "Ja, gerne!":
-        st.info("Hier kommen bald unsere Quellen.")
+        st.info("Bereich 'Hormonverlauf':
+                https://arxiv.org/pdf/1712.00117")
     st.write("""Wir wünschen dir viel Spaß! 
             Lou, Chiara & Nathalie""")
 
