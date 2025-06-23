@@ -727,7 +727,7 @@ with chiara:
                 break
 
         fig, ax = plt.subplots(figsize=(4, 2))
-        ax.plot(tage, temps, marker='o', label="Temperatur", color='blue')
+        ax.plot(tage, temps, marker='.', label="Temperatur", color='blue')
         ax.plot(mittel_tage, gleit, linestyle='--', label="3-Tage-Mittel", color='orange')
         if eisprung:
             ax.axvline(eisprung, color='red', linestyle=':', label=f"Eisprung: {eisprung.strftime('%d.%m.%Y')}")
