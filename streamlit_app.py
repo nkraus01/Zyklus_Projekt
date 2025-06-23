@@ -686,7 +686,7 @@ with chiara:
 
 
         if eisprung:
-            st.success(f"✅ Eisprung erkannt am **{eisprung.strftime('%d.%m.%Y')}**")
+            st.success(f"✅ {name}, dein Eisprung wurde am **{eisprung.strftime('%d.%m.%Y')}** erkannt.")
         else:
             st.info("❌ Kein Eisprung erkannt – Temperaturanstieg zu gering.")
 
