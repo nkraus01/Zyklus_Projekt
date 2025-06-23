@@ -25,8 +25,7 @@ with start:
     Wir haben eine Website erstellt mit allen möglichen interessanten Facts und Darstellungen, dabei sind viele Elemente interaktiv, 
           sodass du alles ganz auf deinen eigenen Körper abstimmen kannst.""")
              
-    st.write("""Wir haben eine Website erstellt mit allen möglichen interessanten Facts und Darstellungen, dabei sind viele Elemente interaktiv, 
-          sodass du alles ganz auf deinen eigenen Körper abstimmen kannst.""")
+    st.write("""Wir haben eine Website erstellt mit allen möglichen interessanten Facts und Darstellungen, dabei sind viele Elemente interaktiv, sodass du alles ganz auf deinen eigenen Körper abstimmen kannst.""")
     st.write("""Wir sind drei Studentinnen und möchten betonen, dass unsere Website keinen Anspruch auf Richtigkeit hat und Fehler enthalten kann! Daher überprüfe die Informationen auf jeden Fall, 
     bevor du sie verwendest. Sie dient der Darstellung und groben Informationsbereitstellung. Du kannst du auf unsere Quellen zugreifen, indem du hier klickst!""")
   
