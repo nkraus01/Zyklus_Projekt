@@ -726,7 +726,7 @@ with chiara:
                 eisprung = mittel_tage[i]
                 break
 
-        fig, ax = plt.subplots(figsize=(6, 3))
+        fig, ax = plt.subplots(figsize=(5, 2))
         ax.plot(tage, temps, marker='o', label="Temperatur", color='blue')
         ax.plot(mittel_tage, gleit, linestyle='--', label="3-Tage-Mittel", color='orange')
         if eisprung:
