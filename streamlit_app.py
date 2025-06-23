@@ -272,9 +272,8 @@ with nathi:
        Östrogen sorgt auch dafür, dass der Zervixschleim dünn und durchlässig wird – optimal für Spermien. 
        Außerdem wird die Haut oft klarer, die Libido kann steigen und manche spüren sogar mehr Kreativität oder Fokus.
     """,
-            "Ovulation": """Die Ovulation, auch Eisprung, ist das zentrale Ereignis im weiblichen Zyklus: 
+            "Ovulation": """Die Ovulation ist das zentrale Ereignis im weiblichen Zyklus: 
             Ein reifes Ei verlässt den Eierstock und macht sich auf den Weg – bereit für eine mögliche Befruchtung. 
-            
             Klingt simpel, ist aber ein präzise getimter, hormonell gesteuerter Vorgang.
     
     🔬 Was passiert bei der Ovulation?
