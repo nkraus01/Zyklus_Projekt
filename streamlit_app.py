@@ -736,7 +736,7 @@ with chiara:
         ax.set_xlabel("Datum", fontsize=7)
         ax.set_ylabel("Temperatur (°C)", fontsize=7)
         ax.grid(True)
-        ax.legend(fontsize=6)
+        ax.legend(fontsize=5)
 
         ax.set_ylim(36.2, 37.2)  # feste Achsenskalierung
         ax.tick_params(axis='x', labelsize=8)
