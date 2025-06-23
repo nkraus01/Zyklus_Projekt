@@ -4,4 +4,6 @@ pandas
 plotly
 matplotlib
 
+# Das sind alle für den Code notwendigen Bibliotheken, die automatisch beim Ausführen über Streamlit, installiert werden.
+
 
