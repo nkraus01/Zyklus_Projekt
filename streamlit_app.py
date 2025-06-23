@@ -219,6 +219,7 @@ with nathi:
     3. Tiere menstruieren auch – aber nur wenige.
     
        Die meisten Säugetiere bauen ihre Gebärmutterschleimhaut einfach wieder ab, ohne zu bluten. Nur wenige Arten wie Primaten, Fledermäuse oder Elefantenrüssler haben echte Menstruationszyklen.
+       Hunde bluten übrigens - im Gegensatz zu uns Menschen - wenn sich ihre Gebärmutterschleimhaut aufbaut, ausgelöst durch eine verstärkte Durchblutung der Gefäße und hormonelle Einflüsse.
     
     4. Menstruation kann ein Vitalzeichen sein.
     
