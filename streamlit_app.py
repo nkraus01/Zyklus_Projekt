@@ -167,9 +167,9 @@ with nathi:
         title=f"Hormonverlauf {modus}",
         xaxis_title="Zyklustag",
         yaxis_title=yaxis_title,
-        yaxis=dict(range=[0, 1.2]),
+        yaxis=dict(range=[0, 1]),
         width=950,
-        height=500
+        height=600
     )
 
     st.plotly_chart(fig, use_container_width=True) #zur interaktiven Ausgabe von fig ,automatische Anpassung an Bildschirmgröße durch TRUE
