@@ -173,7 +173,7 @@ with nathi:
         height=500
     )
 
-    st.plotly_chart(fig, use_container_width=True) #zur interaktiven Ausgabe von fig ,automatische Anpassung an Bildschirmgröße durch TRUE
+    st.plotly_chart(fig, use_container_width=True) #zur interaktiven Ausgabe von fig ,automatische Anpassung der Breite an Bildschirmgröße durch TRUE
     
     # Zyklusphase anzeigen
     st.markdown(f"### 📍 Tag {tag}: {zyklus_phase(tag, modus, zykluslaenge)}")
