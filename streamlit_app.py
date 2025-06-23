@@ -74,8 +74,8 @@ with start:
                 https://www.straighthealthcare.com/female-hormone-physiology.html (02.06.25)
                 https://chatgpt.com (23.06.25)
                 """)
-    st.write(f"""Wir wünschen dir viel Spaß, {name}! 
-            Liebe Grüße Lou, Chiara & Nathalie""")
+    st.write(f"Wir wünschen dir viel Spaß, {name}!")
+    st.write("Liebe Grüße Lou, Chiara & Nathalie""")
 
 ### Nathi #####################################################################################
 
