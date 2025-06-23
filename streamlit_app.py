@@ -758,9 +758,9 @@ with lou:
         
         - gesundes Körpergewicht und Maß an Bewegung
         
-        - Einnahme von Ergänzungen von Folsäure, Vitamin D, Jod (!! unbedingt vorher mit dem Hausarzt oder Frauenarzt besprechen!!)
+        - Einnahme von Ergänzungsmitteln, wie Folsäure, Vitamin D, Jod (!! unbedingt vorher mit dem Hausarzt oder Frauenarzt besprechen!!)
         
-        - Alkohol und Zigaretten meiden.""")
+        - Alkohol und Zigaretten meiden """)
     
     
     
