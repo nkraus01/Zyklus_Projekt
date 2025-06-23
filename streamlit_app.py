@@ -733,8 +733,8 @@ with chiara:
             ax.axvline(eisprung, color='red', linestyle=':', label=f"Eisprung: {eisprung.strftime('%d.%m.%Y')}")
 
         ax.set_title("Basaltemperaturkurve", fontsize=10)
-        ax.set_xlabel("Datum", fontsize=7)
-        ax.set_ylabel("Temperatur (°C)", fontsize=7)
+        ax.set_xlabel("Datum", fontsize=6)
+        ax.set_ylabel("Temperatur (°C)", fontsize=6)
         ax.grid(True)
         ax.legend(fontsize=5)
 
