@@ -97,7 +97,7 @@ with nathi:
     
     st.markdown(f"🛈 {hinweis}" if hinweis else "")
     
-    # Zyklustag auswählen
+    # Zyklustag auswählen, Form: (label, min_value, max_value, value als Startwert)
     tag = st.slider("Zyklustag auswählen", 1, zykluslaenge, 1)
     
     # Phasenbestimmung
@@ -121,7 +121,9 @@ with nathi:
     tage = np.arange(1, zykluslaenge + 1)
     ovulation = zykluslaenge - 14
 
-    # modellhaft, mit Gaußschen Normalverteilung rekonstruiert
+    # modellhaft, mit Gaußschen Normalverteilung rekonstruiert 
+    # f(x) = A * exp(-1/2*((x-q)/sigma)^2)), A: Höhe/Amplitude, q: Mittelpunkt der Kurve (Maximum), sigma: Standartabweichung
+    
     real_oe = 50 + 250 * np.exp(-0.5 * ((tage - (ovulation - 1)) / 3)**2) + 70 * np.exp(-0.5 * ((tage - (zykluslaenge - 7)) / 2)**2)
     real_pr = 0.5 + 15 * np.exp(-0.5 * ((tage - (zykluslaenge - 7)) / 3)**2)
     real_lh = 5 + 75 * np.exp(-0.5 * ((tage - ovulation) / 1.5)**2)
