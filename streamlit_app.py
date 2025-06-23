@@ -797,6 +797,21 @@ with lou:
     antwort_a = st.radio("Trinken Sie Alkohol?", ["Ja, mindestens 7 Getränke pro Woche", "Seltener oder nie"])
     alkohol_status = 1 if "mindestens" in antwort_a else 0
     
+    def bmi_wkt(bmi):
+        if bmi < 17:
+            return 0.33
+        elif bmi between(17,20):
+            return 0.89
+        else bmi between(20,25):
+            return 1
+        
+    
+    
+    
+    
+    
+    
+    
     # Fruchtbarkeitswahrscheinlichkeit berechnen
     if bmi is not None:
         p_log = -0.602 + 0.268 * eisprung_entfernung - 0.020 * bmi - 0.065 * alter
