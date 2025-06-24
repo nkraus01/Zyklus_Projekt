@@ -37,7 +37,7 @@ with start:
     st.write("""Wir sind drei Studentinnen und möchten betonen, dass unsere Website **keinen Anspruch auf Richtigkeit** hat und Fehler enthalten kann! Daher überprüfe die Informationen auf jeden Fall, 
     bevor du sie verwendest. Sie dient der Darstellung und groben Informationsbereitstellung.""")
 
-    st.header(" ")
+    st.subheader(" ")
     
     ueberblick = """
     <h2 style='text-align: center; color: black;'>
