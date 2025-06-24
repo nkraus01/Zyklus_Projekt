@@ -857,7 +857,7 @@ with lou:
     
     
     
-    st.header("Fruchtbarkeitswahrscheinlichkeit: pro Zyklus")
+    st.subheader("Fruchtbarkeitswahrscheinlichkeit: pro Zyklus")
     # Fruchtbarkeitswahrscheinlichkeit berechnen
     if bmi is not None:
         p_log = -0.602 + 0.268 * eisprung_entfernung - 0.020 * bmi - 0.065 * alter
@@ -866,14 +866,14 @@ with lou:
     st.write("""Die Fruchtbarkeitswahrscheinlichkeit ist anhand von Daten geschätzt und kann stark variieren. 
     Sie bezieht sich auf einmaligen Geschlechtsverkehr am angegebenen Zyklustag.""")
 
-    st.header("Fruchbarkeitswahrscheinlichkeit: über mehrere Zyklen")
+    st.subheader("Fruchbarkeitswahrscheinlichkeit: über mehrere Zyklen")
     st.write("Berechnung der Wahrscheinlichkeit, über X Zyklen hinweg schwanger zu werden:")
     X = st.number_input("Gib X als Zyklenanzahl ein: ", value = 3)
     z = p_fruchtbarkeit
     p = 1-(1-z)**X
     st.success(f"Die Wahrscheinlichkeit beträgt ungefähr {round(p*100,2)}%.")
 
-    st.header("Fruchbarkeitswahrscheinlichkeit erhöhen")
+    st.subheader("Fruchbarkeitswahrscheinlichkeit erhöhen")
     # Anzeigen von mehr Informationen, wie die Wahrscheinlichkeit erhöht werden kann.
     infos_anzeigen = st.radio(
         "Möchtest du mehr Infos darüber, wie man die Fruchtbarkeitswahrscheinlichkeit erhöhen kann?",
