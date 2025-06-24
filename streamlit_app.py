@@ -841,7 +841,7 @@ with lou:
         X = st.number_input("Gib X als Zyklenanzahl ein: ")
         z = 0.5
         p = 1-(1-z)**X
-        st.info("Die Wahrscheinlichkeit beträgt {p}%.")
+        st.info(f"Die Wahrscheinlichkeit beträgt {p}%.")
         
         
     
