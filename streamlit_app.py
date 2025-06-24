@@ -60,6 +60,7 @@ with start:
         st.info("Klicke dafür oben auf 'Fruchtbarkeitsrechner'!")
 
     st.write("")
+    st.write("")
     gruesse = f"""
     <p style='text-align: center; font-size:17px;'>
         Wir wünschen dir viel Spaß, {name}!
