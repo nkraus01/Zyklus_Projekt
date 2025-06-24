@@ -19,7 +19,7 @@ start, nathi, chiara, lou = st.tabs(["🏠 Start", "💡 Hormonverlauf", "🌡�
 with start:
     # Text zentrieren mit HTML:
     willkommen = """
-    <h2 style='text-align: center; color: powderblue;'>
+    <h2 style='text-align: center; color: skyblue;'>
         Willkommen bei unserer Streamlit App!
     </h2>
     <p style='text-align: center; font-size:18px;'>
