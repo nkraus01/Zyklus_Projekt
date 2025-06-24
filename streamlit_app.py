@@ -56,7 +56,6 @@ with start:
         st.info("Klicke dafür oben auf 'Zyklus und Temperatur'!")
         st.write(" ")
         st.write(f"Wir wünschen dir viel Spaß, {name}!")
-        st.write("Liebe Grüße Lou, Chiara & Nathalie""")
     
     with spalte3:
         st.write("Mit Hilfe von Lous Programmierung kannst du dir in Bezug auf verschiedene Faktoren deine Fruchtbarkeitswahrscheinlichkeit berechnen lassen.")
@@ -64,6 +63,7 @@ with start:
     
     gruesse = """
     <p style='text-align: center; font-size:10px;'>
+        Wir wünschen dir viel Spaß!
         Liebe Grüße Lou, Chiara & Nathalie
     </p>
     """
