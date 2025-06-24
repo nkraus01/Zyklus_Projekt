@@ -25,6 +25,9 @@ with start:
         Dieser Text ist mittig ausgerichtet – mit HTML und CSS.
     </p>
     """
+    st.markdown(zentrierter_text, unsafe_allow_html=True)
+
+    
     st.header("Willkommen!")
     st.subheader("""Du interessierst dich für deinen Zyklus? - Dann bist du hier genau richtig!""")
     name = st.text_input("Verrate uns bitte deinen Namen:")
