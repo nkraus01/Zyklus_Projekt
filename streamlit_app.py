@@ -761,7 +761,7 @@ with chiara:
 
 with lou:
     
-    st.title("📊 Fruchtbarkeitsrechner")
+    st.header("📊 Fruchtbarkeitsrechner")
     
     # Alter
     alter = st.number_input("Ihr Alter", min_value=10, max_value=60, value=30)
