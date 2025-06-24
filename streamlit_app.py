@@ -806,7 +806,7 @@ with lou:
     
     st.header("📊 Fruchtbarkeitsrechner")
 
-    st.header("Datenabfrage")
+    st.subheader("Datenabfrage")
     # Hier werden die Daten abgefragt, die gleich in der Formel verwendet werden, um die Wahrscheinlichkeit zu berechnen.
     
     # Alter
