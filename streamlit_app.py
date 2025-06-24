@@ -125,7 +125,7 @@ with start:
 with nathi:
     
     
-    st.title("💡 Dein Hormonverlauf")
+    st.subheader("💡 Dein Hormonverlauf")
     
     # Auswahl Zyklusart
     modus = st.selectbox("Zyklusart", ["Natürlich", "Pille (21+7)", "Pille (28 Tage)"])
