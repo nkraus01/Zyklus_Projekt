@@ -18,7 +18,7 @@ start, nathi, chiara, lou = st.tabs(["🏠 Start", "💡 Hormonverlauf", "🌡�
 
 with start:
     # Falls wir Test zentrieren wollen, so geht es:
-    zentrierter_text = """
+    willkommen = """
     <h2 style='text-align: center; color: red;'>
         Willkommen bei unserer Streamlit App!
     </h2>
@@ -26,7 +26,7 @@ with start:
         Hier findest du alle Infos zum weiblichen Zyklus.
     </p>
     """
-    st.markdown(zentrierter_text, unsafe_allow_html=True)
+    st.markdown(willkommen, unsafe_allow_html=True)
 
     
     st.subheader("""Du interessierst dich für deinen Zyklus? - Dann bist du hier genau richtig!""")
@@ -37,12 +37,13 @@ with start:
     st.write("""Wir sind drei Studentinnen und möchten betonen, dass unsere Website **keinen Anspruch auf Richtigkeit** hat und Fehler enthalten kann! Daher überprüfe die Informationen auf jeden Fall, 
     bevor du sie verwendest. Sie dient der Darstellung und groben Informationsbereitstellung.""")
   
-    zentrierter_text = """
+    ueberblick = """
     <h2 style='text-align: center; color: black;'>
         Überblick
     """
-    st.markdown(zentrierter_text, unsafe_allow_html=True)
+    st.markdown(ueberblick, unsafe_allow_html=True)
     st.write("")
+    
     spalte1, spalte2, spalte3 = st.columns(3)
     
     with spalte1:
@@ -60,6 +61,13 @@ with start:
     with spalte3:
         st.write("Mit Hilfe von Lous Programmierung kannst du dir in Bezug auf verschiedene Faktoren deine Fruchtbarkeitswahrscheinlichkeit berechnen lassen.")
         st.info("Klicke dafür oben auf 'Fruchtbarkeitsrechner'!")
+    
+    gruesse = """
+    <p style='text-align: center; font-size:10px;'>
+        Liebe Grüße Lou, Chiara & Nathalie
+    </p>
+    """
+    st.markdown(gruesse, unsafe_allow_html=True)
 
 
     # Anzeigen der Quellen
