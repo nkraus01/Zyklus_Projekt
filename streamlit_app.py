@@ -36,6 +36,7 @@ with start:
     
     with spalte2:
         st.subheader("Überblick")
+        st.write("")
         st.write("Mit Hilfe von Chiaras Code kannst du dir abhängig von deiner Körpertemperaturen deinen Eisprung ausrechnen lassen und das graphisch darstellen.")
         st.info("Klicke dafür oben auf 'Zyklus und Temperatur'!")
         st.write(" ")
