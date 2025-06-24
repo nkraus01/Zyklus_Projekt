@@ -18,7 +18,6 @@ start, nathi, chiara, lou = st.tabs(["🏠 Start", "💡 Hormonverlauf", "🌡�
 
 with start:
     # Falls wir Test zentrieren wollen, so geht es:
-    
     zentrierter_text = """
     <h2 style='text-align: center; color: darkblue;'>
         Willkommen bei unserer Streamlit App!
@@ -30,7 +29,6 @@ with start:
     st.markdown(zentrierter_text, unsafe_allow_html=True)
 
     
-    st.header("Willkommen!")
     st.subheader("""Du interessierst dich für deinen Zyklus? - Dann bist du hier genau richtig!""")
     name = st.text_input("Verrate uns bitte deinen Namen:")
              
@@ -41,17 +39,19 @@ with start:
   
 
     spalte1, spalte2, spalte3 = st.columns(3)
+    zentrierter_text = """
+    <h2 style='text-align: center; color: black;'>
+        Überblick:
+    """
+    st.markdown(zentrierter_text, unsafe_allow_html=True)
     
     with spalte1:
-        st.subheader("")
-        st.write("")
         st.write("Nathi hat dir verschiedenste Informationen über die einzelnen Zyklusphasen, die weiblichen Hormone und ihre Rolle im Zyklus zusammengestellt.")
         st.info("Klicke dafür oben auf 'Hormonverlauf'!")
             
     
     with spalte2:
-        st.subheader("""              Überblick""")
-        st.write("")
+        st.subheader("""Überblick""")
         st.write("Mit Hilfe von Chiaras Code kannst du dir abhängig von deiner Körpertemperaturen deinen Eisprung ausrechnen lassen und das graphisch darstellen.")
         st.info("Klicke dafür oben auf 'Zyklus und Temperatur'!")
         st.write(" ")
@@ -59,8 +59,6 @@ with start:
         st.write("Liebe Grüße Lou, Chiara & Nathalie""")
     
     with spalte3:
-        st.subheader("")
-        st.write("")
         st.write("Mit Hilfe von Lous Programmierung kannst du dir in Bezug auf verschiedene Faktoren deine Fruchtbarkeitswahrscheinlichkeit berechnen lassen.")
         st.info("Klicke dafür oben auf 'Fruchtbarkeitsrechner'!")
 
