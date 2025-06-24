@@ -827,7 +827,7 @@ with lou:
     X = st.number_input("Gib X als Zyklenanzahl ein: ")
     z = p_fruchtbarkeit
     p = 1-(1-z)**X
-    st.info(f"Die Wahrscheinlichkeit beträgt ungefähr {round(p*100,2)}%.")
+    st.success(f"Die Wahrscheinlichkeit beträgt ungefähr {round(p*100,2)}%.")
 
     st.header("Fruchbarkeitswahrscheinlichkeit erhöhen")
     # Anzeigen von mehr Informationen
