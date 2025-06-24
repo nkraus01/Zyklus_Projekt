@@ -808,7 +808,7 @@ with lou:
     # Hier werden die Daten abgefragt, die gleich in der Formel verwendet werden, um die Wahrscheinlichkeit zu berechnen.
     
     # Alter
-    alter = st.number_input("Ihr Alter", min_value=10, max_value=60, value=30)
+    alter = st.number_input("Dein Alter", min_value=10, max_value=60, value=30)
     
     # Zykluslänge
     zykluslaenge = st.number_input("Durchschnittliche Zykluslänge (in Tagen)", min_value=15, max_value=45, value=28)
@@ -834,11 +834,11 @@ with lou:
         st.error("Größe muss größer als 0 sein.")
     
     # Raucherstatus
-    antwort_r = st.radio("Rauchen Sie?", ["Ja, täglich mindestens eine Zigarette", "Seltener oder nie"])
+    antwort_r = st.radio("Rauchst du?", ["Ja, täglich mindestens eine Zigarette", "Seltener oder nie"])
     raucher_status = 1 if "täglich" in antwort_r else 0
     
     # Alkoholkonsum
-    antwort_a = st.radio("Trinken Sie Alkohol?", ["Ja, mindestens 7 Getränke pro Woche", "Seltener oder nie"])
+    antwort_a = st.radio("Trinkst du Alkohol?", ["Ja, mindestens 7 Getränke pro Woche", "Seltener oder nie"])
     alkohol_status = 1 if "mindestens" in antwort_a else 0
     
     def bmi_wkt(bmi):
