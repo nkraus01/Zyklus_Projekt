@@ -30,6 +30,8 @@ with start:
     spalte1, spalte2, spalte3 = st.columns(3)
     
     with spalte1:
+        st.subheader("")
+        st.write("")
         st.write("Nathi hat dir verschiedenste Informationen über die einzelnen Zyklusphasen, die weiblichen Hormone und ihre Rolle im Zyklus zusammengestellt.")
         st.info("Klicke dafür oben auf 'Hormonverlauf'!")
             
@@ -44,6 +46,8 @@ with start:
         st.write("Liebe Grüße Lou, Chiara & Nathalie""")
     
     with spalte3:
+        st.subheader("")
+        st.write("")
         st.write("Mit Hilfe von Lous Programmierung kannst du dir in Bezug auf verschiedene Faktoren deine Fruchtbarkeitswahrscheinlichkeit berechnen lassen.")
         st.info("Klicke dafür oben auf 'Fruchtbarkeitsrechner'!")
 
