@@ -17,7 +17,7 @@ start, nathi, chiara, lou = st.tabs(["🏠 Start", "💡 Hormonverlauf", "🌡�
 
 
 with start:
-    # Falls wir Test zentrieren wollen, so geht es:
+    # Text zentrieren mit HTML:
     willkommen = """
     <h2 style='text-align: center; color: red;'>
         Willkommen bei unserer Streamlit App!
@@ -58,7 +58,8 @@ with start:
     with spalte3:
         st.write("Mit Hilfe von Lous Programmierung kannst du dir in Bezug auf verschiedene Faktoren deine Fruchtbarkeitswahrscheinlichkeit berechnen lassen.")
         st.info("Klicke dafür oben auf 'Fruchtbarkeitsrechner'!")
-    
+
+    st.write()
     gruesse = f"""
     <p style='text-align: center; font-size:17px;'>
         Wir wünschen dir viel Spaß, {name}!
