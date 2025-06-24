@@ -809,6 +809,7 @@ with lou:
     
     # Alter
     alter = st.number_input("Dein Alter", min_value=10, max_value=60, value=30)
+    st.slider("Alter",18,45,30)
     
     # Zykluslänge
     zykluslaenge = st.number_input("Durchschnittliche Zykluslänge (in Tagen)", min_value=15, max_value=45, value=28)
