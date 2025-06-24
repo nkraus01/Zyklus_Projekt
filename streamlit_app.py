@@ -820,8 +820,8 @@ with lou:
     st.info(f"Dein Eisprung findet durchschnittlich an Zyklustag {tag_eisprung} statt.")
     
     # Aktueller Zyklustag
-    zyklustag = st.number_input("Aktueller Zyklustag", min_value=1, max_value=zykluslaenge, value=10)
-    st.slider("Aktueller Zyklustag",min_value = 1, max_value = zykluslaenge, value = 15)
+    # zyklustag = st.number_input("Aktueller Zyklustag", min_value=1, max_value=zykluslaenge, value=10)
+    zyklustag = st.slider("Aktueller Zyklustag",min_value = 1, max_value = zykluslaenge, value = 15)
     
     # Abstand zum Eisprung
     eisprung_entfernung = zyklustag - tag_eisprung
