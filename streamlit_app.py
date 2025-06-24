@@ -761,7 +761,9 @@ with chiara:
 
 with lou:
     
-    st.header("📊 Fruchtbarkeitsrechner")
+    st.title("📊 Fruchtbarkeitsrechner")
+
+    st.header("Datenabfrage")
     
     # Alter
     alter = st.number_input("Ihr Alter", min_value=10, max_value=60, value=30)
@@ -811,7 +813,7 @@ with lou:
     
     
     
-    
+    st.header("Fruchtbarkeitswahrscheinlichkeit: pro Zyklus")
     # Fruchtbarkeitswahrscheinlichkeit berechnen
     if bmi is not None:
         p_log = -0.602 + 0.268 * eisprung_entfernung - 0.020 * bmi - 0.065 * alter
@@ -838,6 +840,8 @@ with lou:
     else: 
         st.write("""Okay! Du kannst gerne später darauf zurückkommen.""")
         st.info("Berechnung der Wahrscheinlichkeit, über X Zyklen hinweg schwanger zu werden:")
+
+        st.header("Fruchbarkeitswahrscheinlichkeit: mehrere Zyklen")
         X = st.number_input("Gib X als Zyklenanzahl ein: ")
         z = p_fruchtbarkeit
         p = 1-(1-z)**X
