@@ -862,19 +862,20 @@ with lou:
     
     st.subheader("Fruchtbarkeitswahrscheinlichkeit: pro Zyklus")
     # Fruchtbarkeitswahrscheinlichkeit berechnen
-    if bmi is not None:
-        p_log = -0.602 + 0.268 * eisprung_entfernung - 0.020 * bmi - 0.065 * alter
-        p_fruchtbarkeit = np.exp(p_log) / (1 + np.exp(p_log))
+    if st.button("Berechne meine Fruchtbarkeitswahrscheinlichkeit"):
+        werte = berechne_fruchtbarkeitswkt(alter,bmi,raucher_status,alkohol_status,eisprung_entfernung)
+        p_fruchtbarkeit = gewichtung_fwkt(werte)
         st.success(f"Geschätzte Fruchtbarkeitswahrscheinlichkeit: {100 * p_fruchtbarkeit:.2f}%")
-    st.write("""Die Fruchtbarkeitswahrscheinlichkeit ist anhand von Daten geschätzt und kann stark variieren. 
-    Sie bezieht sich auf einmaligen Geschlechtsverkehr am angegebenen Zyklustag.""")
+        st.write("""Die Fruchtbarkeitswahrscheinlichkeit ist anhand von Daten geschätzt und kann stark variieren. 
+        Sie bezieht sich auf einmaligen Geschlechtsverkehr am angegebenen Zyklustag.""")
 
-    st.subheader("Fruchbarkeitswahrscheinlichkeit: über mehrere Zyklen")
-    st.write("Berechnung der Wahrscheinlichkeit, über X Zyklen hinweg schwanger zu werden:")
-    X = st.number_input("Gib X als Zyklenanzahl ein: ", value = 3)
-    z = p_fruchtbarkeit
-    p = 1-(1-z)**X
-    st.success(f"Die Wahrscheinlichkeit beträgt ungefähr {round(p*100,2)}%.")
+    if p_fruchtbarkeit:
+        st.subheader("Fruchbarkeitswahrscheinlichkeit: über mehrere Zyklen")
+        if st.button("Berechne meine Wahrscheinlichkeit, über X Zyklen hinweg schwanger zu werden:"):
+            X = st.number_input("Gib X als Zyklenanzahl ein: ", value = 3)
+            z = p_fruchtbarkeit
+            p = 1-(1-z)**X
+            st.success(f"Die Wahrscheinlichkeit beträgt ungefähr {round(p*100,2)}%.")
 
     st.subheader("Fruchbarkeitswahrscheinlichkeit erhöhen")
     # Anzeigen von mehr Informationen, wie die Wahrscheinlichkeit erhöht werden kann.
