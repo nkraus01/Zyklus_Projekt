@@ -813,6 +813,7 @@ with lou:
     
     # Zykluslänge
     zykluslaenge = st.number_input("Durchschnittliche Zykluslänge (in Tagen)", min_value=15, max_value=45, value=28)
+    st.slider("Durchschnittliche Zykluslänge in Tagen",min_value = 15, max_value = 45, value = 28)
     
     # Tag des Eisprungs (wird benötigt, um den Abstand zum Eisprung zu berechnen, was die Wahrscheinlichkeit mit am meisten beeinflusst)
     tag_eisprung = zykluslaenge - 14
@@ -820,6 +821,7 @@ with lou:
     
     # Aktueller Zyklustag
     zyklustag = st.number_input("Aktueller Zyklustag", min_value=1, max_value=zykluslaenge, value=10)
+    st.slider("Aktueller Zyklustag",min_value = 1, max_value = zykluslaenge, value = 15)
     
     # Abstand zum Eisprung
     eisprung_entfernung = zyklustag - tag_eisprung
