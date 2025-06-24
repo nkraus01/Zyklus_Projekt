@@ -19,7 +19,7 @@ start, nathi, chiara, lou = st.tabs(["🏠 Start", "💡 Hormonverlauf", "🌡�
 with start:
     # Falls wir Test zentrieren wollen, so geht es:
     zentrierter_text = """
-    <h2 style='text-align: center; color: darkblue;'>
+    <h2 style='text-align: center; color: red;'>
         Willkommen bei unserer Streamlit App!
     </h2>
     <p style='text-align: center; font-size:18px;'>
