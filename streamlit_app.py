@@ -617,7 +617,7 @@ with chiara:
                 writer.writerow([eintrag[0].strftime("%d.%m.%Y"), eintrag[1]])
     
 # === Streamlit App ===
-    st.title("🩸 Zyklus-Tracker")
+    st.header("🩸 Zyklus-Tracker")
     zyklen = lade_zyklen()
 
 # Neue Einträge
@@ -804,7 +804,7 @@ with chiara:
 
 with lou:
     
-    st.title("📊 Fruchtbarkeitsrechner")
+    st.header("📊 Fruchtbarkeitsrechner")
 
     st.header("Datenabfrage")
     # Hier werden die Daten abgefragt, die gleich in der Formel verwendet werden, um die Wahrscheinlichkeit zu berechnen.
