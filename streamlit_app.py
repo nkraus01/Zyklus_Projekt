@@ -840,6 +840,7 @@ with lou:
     # Alkoholkonsum
     antwort_a = st.radio("Trinken Sie Alkohol?", ["Ja, mindestens 7 Getränke pro Woche", "Seltener oder nie"])
     alkohol_status = 1 if "mindestens" in antwort_a else 0
+    st.checkbox("Trinkst du Alkohol?")
     
     def bmi_wkt(bmi):
         if bmi < 17:
