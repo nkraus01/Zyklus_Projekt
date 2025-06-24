@@ -685,7 +685,7 @@ with chiara:
 
     temperaturdaten = st.session_state.temperaturdaten
 
-    st.title("🌡️ Basaltemperatur-Tracker & Eisprung-Analyse")
+    st.header("🌡️ Basaltemperatur-Tracker & Eisprung-Analyse")
 
 # === Neueingabe ===
     st.subheader("➕ Eintrag hinzufügen")
