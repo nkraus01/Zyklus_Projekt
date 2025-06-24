@@ -39,9 +39,10 @@ with start:
   
     zentrierter_text = """
     <h2 style='text-align: center; color: black;'>
-        Überblick:
+        Überblick
     """
     st.markdown(zentrierter_text, unsafe_allow_html=True)
+    st.write("")
     spalte1, spalte2, spalte3 = st.columns(3)
     
     with spalte1:
