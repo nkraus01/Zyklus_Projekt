@@ -889,7 +889,7 @@ with lou:
         - Alkohol und Zigaretten meiden """)
 
     else: 
-        st.write("""Okay! Du kannst gerne später darauf zurückkommen.""")
+        st.info("""Okay! Du kannst gerne später darauf zurückkommen.""")
         
         
     
