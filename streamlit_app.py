@@ -812,8 +812,8 @@ with lou:
     st.slider("Alter",min_value = 18, max_value = 45, value = 30)
     
     # Zykluslänge
-    zykluslaenge = st.number_input("Durchschnittliche Zykluslänge (in Tagen)", min_value=15, max_value=45, value=28)
-    st.slider("Durchschnittliche Zykluslänge in Tagen",min_value = 15, max_value = 45, value = 28)
+    # zykluslaenge = st.number_input("Durchschnittliche Zykluslänge (in Tagen)", min_value=15, max_value=45, value=28)
+    zykluslaenge = st.slider("Durchschnittliche Zykluslänge in Tagen",min_value = 15, max_value = 45, value = 28)
     
     # Tag des Eisprungs (wird benötigt, um den Abstand zum Eisprung zu berechnen, was die Wahrscheinlichkeit mit am meisten beeinflusst)
     tag_eisprung = zykluslaenge - 14
