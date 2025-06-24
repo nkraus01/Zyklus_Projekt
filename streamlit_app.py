@@ -63,7 +63,7 @@ with start:
     
     gruesse = """
     <p style='text-align: center; font-size:15px;'>
-        Wir wünschen dir viel Spaß!
+        Wir wünschen dir viel Spaß, {name}!
     </p>
     <p style='text-align: center; font-size:15px;'>
         Liebe Grüße Lou, Chiara & Nathalie
