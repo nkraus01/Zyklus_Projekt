@@ -808,11 +808,9 @@ with lou:
     # Hier werden die Daten abgefragt, die gleich in der Formel verwendet werden, um die Wahrscheinlichkeit zu berechnen.
     
     # Alter
-    alter = st.number_input("Dein Alter", min_value=10, max_value=60, value=30)
-    st.slider("Alter",min_value = 18, max_value = 45, value = 30)
+    alter = st.slider("Alter",min_value = 16, max_value = 45, value = 30)
     
     # Zykluslänge
-    # zykluslaenge = st.number_input("Durchschnittliche Zykluslänge (in Tagen)", min_value=15, max_value=45, value=28)
     zykluslaenge = st.slider("Durchschnittliche Zykluslänge in Tagen",min_value = 15, max_value = 45, value = 28)
     
     # Tag des Eisprungs (wird benötigt, um den Abstand zum Eisprung zu berechnen, was die Wahrscheinlichkeit mit am meisten beeinflusst)
@@ -820,7 +818,6 @@ with lou:
     st.info(f"Dein Eisprung findet durchschnittlich an Zyklustag {tag_eisprung} statt.")
     
     # Aktueller Zyklustag
-    # zyklustag = st.number_input("Aktueller Zyklustag", min_value=1, max_value=zykluslaenge, value=10)
     zyklustag = st.slider("Aktueller Zyklustag",min_value = 1, max_value = zykluslaenge, value = 15)
     
     # Abstand zum Eisprung
