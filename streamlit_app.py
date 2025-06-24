@@ -835,11 +835,11 @@ with lou:
     
     # Raucherstatus
     antwort_r = st.radio("Rauchst du?", ["Ja, täglich mindestens eine Zigarette", "Seltener oder nie"])
-    raucher_status = 1 if "täglich" in antwort_r else 0
+    raucher_status = "ja" if "täglich" in antwort_r else "nein"
     
     # Alkoholkonsum
     antwort_a = st.radio("Trinkst du Alkohol?", ["Ja, mindestens 7 Getränke pro Woche", "Seltener oder nie"])
-    alkohol_status = 1 if "mindestens" in antwort_a else 0
+    alkohol_status = "ja" if "mindestens" in antwort_a else "nein"
     
     def bmi_wkt(bmi):
         if bmi < 17:
