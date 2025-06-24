@@ -22,9 +22,9 @@ with start:
     <h2 style='text-align: center; color: steelblue;'>
         Willkommen bei unserer Streamlit App!
     </h2>
-    <p style='text-align: center; font-size:18px;'>
-        Hier findest du alle möglichen Infos zum weiblichen Zyklus.
-    </p>
+  #  <p style='text-align: center; font-size:18px;'>
+  #      Hier findest du alle möglichen Infos zum weiblichen Zyklus.
+  #  </p>
     """
     st.markdown(willkommen, unsafe_allow_html=True)
 
