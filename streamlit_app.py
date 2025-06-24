@@ -26,8 +26,6 @@ with start:
     st.write("""Wir sind drei Studentinnen und möchten betonen, dass unsere Website **keinen Anspruch auf Richtigkeit** hat und Fehler enthalten kann! Daher überprüfe die Informationen auf jeden Fall, 
     bevor du sie verwendest. Sie dient der Darstellung und groben Informationsbereitstellung.""")
   
-            
-    st.subheader("Überblick")
 
     spalte1, spalte2, spalte3 = st.columns(3)
     
@@ -37,6 +35,7 @@ with start:
             
     
     with spalte2:
+        st.subheader("Überblick")
         st.write("Mit Hilfe von Chiaras Code kannst du dir abhängig von deiner Körpertemperaturen deinen Eisprung ausrechnen lassen und das graphisch darstellen.")
         st.info("Klicke dafür oben auf 'Zyklus und Temperatur'!")
         st.write(" ")
