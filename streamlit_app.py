@@ -17,6 +17,14 @@ start, nathi, chiara, lou = st.tabs(["🏠 Start", "💡 Hormonverlauf", "🌡�
 
 
 with start:
+    zentrierter_text = """
+    <h2 style='text-align: center; color: darkblue;'>
+        Willkommen bei meiner Streamlit App!
+    </h2>
+    <p style='text-align: center; font-size:18px;'>
+        Dieser Text ist mittig ausgerichtet – mit HTML und CSS.
+    </p>
+    """
     st.header("Willkommen!")
     st.subheader("""Du interessierst dich für deinen Zyklus? - Dann bist du hier genau richtig!""")
     name = st.text_input("Verrate uns bitte deinen Namen:")
