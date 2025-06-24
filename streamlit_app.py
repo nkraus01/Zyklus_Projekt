@@ -37,13 +37,12 @@ with start:
     st.write("""Wir sind drei Studentinnen und möchten betonen, dass unsere Website **keinen Anspruch auf Richtigkeit** hat und Fehler enthalten kann! Daher überprüfe die Informationen auf jeden Fall, 
     bevor du sie verwendest. Sie dient der Darstellung und groben Informationsbereitstellung.""")
   
-
-    spalte1, spalte2, spalte3 = st.columns(3)
     zentrierter_text = """
     <h2 style='text-align: center; color: black;'>
         Überblick:
     """
     st.markdown(zentrierter_text, unsafe_allow_html=True)
+    spalte1, spalte2, spalte3 = st.columns(3)
     
     with spalte1:
         st.write("Nathi hat dir verschiedenste Informationen über die einzelnen Zyklusphasen, die weiblichen Hormone und ihre Rolle im Zyklus zusammengestellt.")
