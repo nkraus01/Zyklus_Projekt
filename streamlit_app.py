@@ -790,7 +790,7 @@ with lou:
         st.error("Größe muss größer als 0 sein.")
     
     # Raucherstatus
-    antwort_r = st.radio("Rauchen Sie?", ["Ja, täglich mindestens eine Zigarette", "Selten oder nie"])
+    antwort_r = st.radio("Rauchen Sie?", ["Ja, täglich mindestens eine Zigarette", "Seltener oder nie"])
     raucher_status = 1 if "täglich" in antwort_r else 0
     
     # Alkoholkonsum
