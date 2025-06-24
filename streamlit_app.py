@@ -821,12 +821,21 @@ with lou:
         st.success(f"Geschätzte Fruchtbarkeitswahrscheinlichkeit: {100 * p_fruchtbarkeit:.2f}%")
     st.info("""Die Fruchtbarkeitswahrscheinlichkeit ist anhand von Daten geschätzt und kann stark variieren. 
     Sie bezieht sich auf einmaligen Geschlechtsverkehr am angegebenen Zyklustag.""")
+
+    st.header("Fruchbarkeitswahrscheinlichkeit: mehrere Zyklen")
+    st.info("Berechnung der Wahrscheinlichkeit, über X Zyklen hinweg schwanger zu werden:")
+    X = st.number_input("Gib X als Zyklenanzahl ein: ")
+    z = p_fruchtbarkeit
+    p = 1-(1-z)**X
+    st.info(f"Die Wahrscheinlichkeit beträgt ungefähr {round(p*100,2)}%.")
+
+    st.header("Fruchbarkeitswahrscheinlichkeit erhöhen")
     # Anzeigen von mehr Informationen
-    quellen_anzeigen = st.radio(
+    infos_anzeigen = st.radio(
         "Möchtest du mehr Infos darüber, wie man die Fruchtbarkeitswahrscheinlichkeit erhöhen kann?",
         ("Ja, gerne!", "Nein, danke!"),
         index=1)
-    if quellen_anzeigen == "Ja, gerne!":
+    if infos_anzeigen == "Ja, gerne!":
         st.write("""Die Fruchtbarkeitswahrscheinlichkeit kann durch bestimmte Methoden beeinflusst werden. Dazu zählen:
         
         - gesunde Ernährung, ausreichende Nährstoffaufnahme und zugleich Meiden von verarbeiteten Lebensmitteln und zugesetzten Zuckern
@@ -839,13 +848,6 @@ with lou:
 
     else: 
         st.write("""Okay! Du kannst gerne später darauf zurückkommen.""")
-        st.info("Berechnung der Wahrscheinlichkeit, über X Zyklen hinweg schwanger zu werden:")
-
-        st.header("Fruchbarkeitswahrscheinlichkeit: mehrere Zyklen")
-        X = st.number_input("Gib X als Zyklenanzahl ein: ")
-        z = p_fruchtbarkeit
-        p = 1-(1-z)**X
-        st.info(f"Die Wahrscheinlichkeit beträgt ungefähr {round(p*100,2)}%.")
         
         
     
