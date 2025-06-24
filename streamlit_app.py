@@ -4,6 +4,7 @@ st.set_page_config(page_title="Der weibliche Zyklus", page_icon="🌹", layout="
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
+from berechne_fruchtbarkeitswkt import berechne_fruchtbarkeitswkt
 
 st.title("Weiblicher Zyklus 🌹")
 
