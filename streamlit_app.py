@@ -822,8 +822,8 @@ with lou:
     st.info("""Die Fruchtbarkeitswahrscheinlichkeit ist anhand von Daten geschätzt und kann stark variieren. 
     Sie bezieht sich auf einmaligen Geschlechtsverkehr am angegebenen Zyklustag.""")
 
-    st.header("Fruchbarkeitswahrscheinlichkeit: mehrere Zyklen")
-    st.info("Berechnung der Wahrscheinlichkeit, über X Zyklen hinweg schwanger zu werden:")
+    st.header("Fruchbarkeitswahrscheinlichkeit: über mehrere Zyklen")
+    st.write("Berechnung der Wahrscheinlichkeit, über X Zyklen hinweg schwanger zu werden:")
     X = st.number_input("Gib X als Zyklenanzahl ein: ")
     z = p_fruchtbarkeit
     p = 1-(1-z)**X
