@@ -832,7 +832,7 @@ with lou:
     groesse = st.number_input("Größe (in m)", min_value=1.0, max_value=2.5, value=1.70)
     if groesse > 0:
         bmi = gewicht / (groesse ** 2)
-        st.info(f"Ihr BMI beträgt: {bmi:.2f}")
+        st.info(f"Dein BMI beträgt: {bmi:.2f}")
     else:
         bmi = None
         st.error("Größe muss größer als 0 sein.")
