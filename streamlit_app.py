@@ -62,10 +62,11 @@ with start:
         st.info("Klicke dafür oben auf 'Fruchtbarkeitsrechner'!")
     
     gruesse = """
-    <p style='text-align: center; font-size:10px;'>
+    <p style='text-align: center; font-size:15px;'>
         Wir wünschen dir viel Spaß!
-        Liebe Grüße Lou, Chiara & Nathalie
     </p>
+    <p style='text-align: center; font-size:15px;'>
+        Liebe Grüße Lou, Chiara & Nathalie
     """
     st.markdown(gruesse, unsafe_allow_html=True)
 
