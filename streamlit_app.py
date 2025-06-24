@@ -39,13 +39,13 @@ with start:
     with spalte2:
         st.write("Mit Hilfe von Chiaras Code kannst du dir abhängig von deiner Körpertemperaturen deinen Eisprung ausrechnen lassen und das graphisch darstellen.")
         st.info("Klicke dafür oben auf 'Zyklus und Temperatur'!")
+        st.write(f"Wir wünschen dir viel Spaß, {name}!")
+        st.write("Liebe Grüße Lou, Chiara & Nathalie""")
     
     with spalte3:
         st.write("Mit Hilfe von Lous Programmierung kannst du dir in Bezug auf verschiedene Faktoren deine Fruchtbarkeitswahrscheinlichkeit berechnen lassen.")
         st.info("Klicke dafür oben auf 'Fruchtbarkeitsrechner'!")
 
-    st.write(f"Wir wünschen dir viel Spaß, {name}!")
-    st.write("Liebe Grüße Lou, Chiara & Nathalie""")
 
     # Anzeigen der Quellen
     quellen_anzeigen = st.radio(
