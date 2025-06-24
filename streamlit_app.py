@@ -44,6 +44,9 @@ with start:
         st.write("Mit Hilfe von Lous Programmierung kannst du dir in Bezug auf verschiedene Faktoren deine Fruchtbarkeitswahrscheinlichkeit berechnen lassen.")
         st.info("Klicke dafür oben auf 'Fruchtbarkeitsrechner'!")
 
+    st.write(f"Wir wünschen dir viel Spaß, {name}!")
+    st.write("Liebe Grüße Lou, Chiara & Nathalie""")
+
     # Anzeigen der Quellen
     quellen_anzeigen = st.radio(
         "Möchtest du unsere Quellen sehen?",
@@ -89,8 +92,7 @@ with start:
                 https://www.swissmom.ch/de/kinderwunsch/vorbereitungen-auf-ein-baby/gewicht-und-fruchtbarkeit-20258 (23.06.2025)
                 https://www.ukbonn.de/gynaekologische-endokrinologie-und-reproduktionsmedizin/behandlungsspektrum/kinderwunschbehandlung/lebensfuehrung/ (23.06.2025)
                 """)
-    st.write(f"Wir wünschen dir viel Spaß, {name}!")
-    st.write("Liebe Grüße Lou, Chiara & Nathalie""")
+  
 
 ### Nathi #####################################################################################
 
