@@ -866,7 +866,7 @@ with lou:
 
     st.header("Fruchbarkeitswahrscheinlichkeit: über mehrere Zyklen")
     st.write("Berechnung der Wahrscheinlichkeit, über X Zyklen hinweg schwanger zu werden:")
-    X = st.number_input("Gib X als Zyklenanzahl ein: ")
+    X = st.number_input("Gib X als Zyklenanzahl ein: ", value = 3)
     z = p_fruchtbarkeit
     p = 1-(1-z)**X
     st.success(f"Die Wahrscheinlichkeit beträgt ungefähr {round(p*100,2)}%.")
