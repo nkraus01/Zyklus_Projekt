@@ -20,7 +20,7 @@ def berechne_fruchtbarkeitswkt(alter,bmi,raucher_status,alkohol_status,eisprung_
 
 def gewichtung_fwkt(wkten):
     basis_wkt = 0.25
-    gewichtung = [0.3,0.1,0.15,0.15,0.3]
+    gewichtung = [0.3,0.1,0.1,0.1,0.1,0.3]
     # Hier werden die Wahrscheinlichkeiten, die anhand eingegebener Daten berechnet wurden, gewichtet.
     wkten_gewichtet = [w * g for w, g in zip(wkten, gewichtung)]
     # Zum Schluss wird die Basiswahrscheinlichkeit von 25% mit dem Ergebnis multipliziert.
