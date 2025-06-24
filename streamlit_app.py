@@ -54,18 +54,16 @@ with start:
     with spalte2:
         st.write("Mit Hilfe von Chiaras Code kannst du dir abhängig von deiner Körpertemperaturen deinen Eisprung ausrechnen lassen und das graphisch darstellen.")
         st.info("Klicke dafür oben auf 'Zyklus und Temperatur'!")
-        st.write(" ")
-        st.write(f"Wir wünschen dir viel Spaß, {name}!")
     
     with spalte3:
         st.write("Mit Hilfe von Lous Programmierung kannst du dir in Bezug auf verschiedene Faktoren deine Fruchtbarkeitswahrscheinlichkeit berechnen lassen.")
         st.info("Klicke dafür oben auf 'Fruchtbarkeitsrechner'!")
     
     gruesse = f"""
-    <p style='text-align: center; font-size:15px;'>
+    <p style='text-align: center; font-size:17px;'>
         Wir wünschen dir viel Spaß, {name}!
     </p>
-    <p style='text-align: center; font-size:15px;'>
+    <p style='text-align: center; font-size:17px;'>
         Liebe Grüße Lou, Chiara & Nathalie
     """
     st.markdown(gruesse, unsafe_allow_html=True)
