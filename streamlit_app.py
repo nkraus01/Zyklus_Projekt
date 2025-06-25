@@ -870,7 +870,7 @@ with lou:
         st.write("""Die Fruchtbarkeitswahrscheinlichkeit ist anhand von Daten geschätzt und kann stark variieren. 
         Sie bezieht sich auf einmaligen Geschlechtsverkehr am angegebenen Zyklustag.""")
 
-    if p_fruchtbarkeit:
+    if p_fruchtbarkeit is TRUE:
         st.subheader("Fruchbarkeitswahrscheinlichkeit: über mehrere Zyklen")
         if st.button("Berechne meine Wahrscheinlichkeit, über X Zyklen hinweg schwanger zu werden:"):
             X = st.number_input("Gib X als Zyklenanzahl ein: ", value = 3)
