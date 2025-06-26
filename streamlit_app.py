@@ -58,7 +58,7 @@ with start:
             
     
     with spalte2:
-        st.write("Mit Hilfe von Chiaras Code kannst du dir abhängig von deiner Körpertemperaturen deinen Eisprung ausrechnen lassen und das graphisch darstellen.")
+        st.write("Mit Hilfe von Chiaras Code kannst du deinen Zyklus tracken, dir veschieden Daten berechnen lassen und mithilfe einer Körpertemperaturkurve deinen Eisprung erkennen.")
         st.info("Klicke dafür oben auf 'Zyklus und Temperatur'!")
     
     with spalte3:
@@ -126,6 +126,7 @@ with start:
         st.info("""Bereich 'Zyklus und Temperatur':
 
                 https://www.apotheken-umschau.de/familie/kinderwunsch/eisprungrechner/eisprungrechner-fruchtbare-tage-eisprung-berechnen-791975.html (03.06.2025)
+                https://www.dkv.com/gesundheit-themenwelt-familie-zyklus-so-erkennen-sie-die-fruchtbaren-tage.html (04.06.2025)
                 https://www.frauenaerzte-im-netz.de/familienplanung-verhuetung/natuerliche-familienplanung/weiblicher-zyklus-wann-sind-die-fruchtbaren-tage/ (03.06.2025)
                 https://docs.streamlit.io/develop/api-reference (10.06.2025)
                 """)
