@@ -42,7 +42,7 @@ with start:
     st.write(f"Hallo {name}, schön dass du da bist!")
     st.write("Wir sind drei Studentinnen und haben im Rahmen einer Projektarbeit diese Website erstellt.")
     st.write("Hier findest du viele interessante Facts und Darstellungen rund um den weiblichen Zyklus im Allgemeinen sowie ganz individuell auf dich abgestimmt.")
-    st.write("""Wir möchten betonen, dass unsere Website **keinen Anspruch auf Richtigkeit** hat und Fehler enthalten kann! """)
+    st.write("""Wir möchten betonen, dass wir **keine Experten** sind und unsere Website daher Fehler enthalten kann! """)
 
     st.subheader(" ")
     
