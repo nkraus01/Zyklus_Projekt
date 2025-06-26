@@ -870,7 +870,6 @@ with lou:
     
     st.subheader("Fruchtbarkeitswahrscheinlichkeit: pro Zyklus")
     # Fruchtbarkeitswahrscheinlichkeit berechnen
-    p_fruchtbarkeit = 0  # Nur so wird bei der 2. if - Schleife kein Fehler ausgegeben
     if st.button("Berechne meine Fruchtbarkeitswahrscheinlichkeit"):
         werte = berechne_fruchtbarkeitswkt(alter,bmi,raucher_status,alkohol_status,eisprung_entfernung)
         st.session_state.p_fruchtbarkeit = gewichtung_fwkt(werte)
