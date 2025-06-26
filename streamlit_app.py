@@ -880,9 +880,9 @@ with lou:
         Sie bezieht sich auf einmaligen Geschlechtsverkehr am angegebenen Zyklustag.""")
 
     # Fruchtbarkeitswahrscheinlichkeit über mehrere Zyklen
-    st.info("Wenn du die Daten oben veränderst, muss du zuerst nochmal die Wahrscheinlichkeit pro Zyklus berechnen, um die Wahrscheinlichkeit über mehrere Zyklen hinweg ändern zu können.")
     if st.session_state.p_fruchtbarkeit is not None:
         st.subheader("Fruchbarkeitswahrscheinlichkeit: über mehrere Zyklen")
+        st.info("Wenn du die Daten oben veränderst, muss du zuerst nochmal die Wahrscheinlichkeit pro Zyklus berechnen, um die Wahrscheinlichkeit über mehrere Zyklen hinweg ändern zu können.")
         X = st.number_input("Gib X als Zyklenanzahl ein: ", min_value= 1, value = 3)
         if st.button(f"Berechne meine Fruchtbarkeitswahrscheinlichkeit über {X} Zyklen:"):
             z = st.session_state.p_fruchtbarkeit
