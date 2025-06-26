@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 # from berechne_fruchtbarkeitswkt import berechne_fruchtbarkeitswkt,gewichtung_fwkt
 # streamlit run app.py
 
-st.title("Weiblicher Zyklus 🌹")
+st.title("Der weibliche Zyklus 🌹")
 
 ### Start ########################################################################################
 
@@ -122,6 +122,7 @@ with start:
                 https://www.swissmom.ch/de/kinderwunsch/vorbereitungen-auf-ein-baby/gewicht-und-fruchtbarkeit-20258 (23.06.2025)
                 https://www.ukbonn.de/gynaekologische-endokrinologie-und-reproduktionsmedizin/behandlungsspektrum/kinderwunschbehandlung/lebensfuehrung/ (23.06.2025)
                 """)
+        
   
 
 ### Nathi #####################################################################################
