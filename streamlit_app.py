@@ -877,8 +877,8 @@ with lou:
 
     if p_fruchtbarkeit is not NONE:
         st.subheader("Fruchbarkeitswahrscheinlichkeit: über mehrere Zyklen")
+        X = st.number_input("Gib X als Zyklenanzahl ein: ", value = 3)
         if st.button("Berechne meine Wahrscheinlichkeit, über X Zyklen hinweg schwanger zu werden:"):
-            X = st.number_input("Gib X als Zyklenanzahl ein: ", value = 3)
             z = p_fruchtbarkeit
             p = 1-(1-z)**X
             st.success(f"Die Wahrscheinlichkeit beträgt ungefähr {round(p*100,2)}%.")
