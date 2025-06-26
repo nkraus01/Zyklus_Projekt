@@ -34,7 +34,7 @@ with start:
   #  </p>
     
     st.markdown(willkommen, unsafe_allow_html=True)
-
+    st.write("")
     
     st.subheader("""Du interessierst dich für deinen Zyklus? - Dann bist du hier genau richtig!""")
     name = st.text_input("Verrate uns bitte deinen Namen:")
