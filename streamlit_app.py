@@ -872,8 +872,9 @@ with lou:
     # Fruchtbarkeitswahrscheinlichkeit berechnen
     if st.button("Berechne meine Fruchtbarkeitswahrscheinlichkeit"):
         werte = berechne_fruchtbarkeitswkt(alter,bmi,raucher_status,alkohol_status,eisprung_entfernung)
+        # Wir speichern die Fruchbarkeitswahrscheinlichkeit in st.session_state als Speicher, der über mehrere Aktion erhalten bleibt (für die nächste if-Schleife)
         st.session_state.p_fruchtbarkeit = gewichtung_fwkt(werte)
-        st.success(f"Geschätzte Fruchtbarkeitswahrscheinlichkeit: {100 * p_fruchtbarkeit:.2f}%")
+        st.success(f"Geschätzte Fruchtbarkeitswahrscheinlichkeit: {100 * st.session_state.p_fruchtbarkeit:.2f}%")
         st.write("""Die Fruchtbarkeitswahrscheinlichkeit ist anhand von Daten geschätzt und kann stark variieren. 
         Sie bezieht sich auf einmaligen Geschlechtsverkehr am angegebenen Zyklustag.""")
 
@@ -881,7 +882,7 @@ with lou:
         st.subheader("Fruchbarkeitswahrscheinlichkeit: über mehrere Zyklen")
         X = st.number_input("Gib X als Zyklenanzahl ein: ", value = 3)
         if st.button(f"Berechne meine Wahrscheinlichkeit, über {X} Zyklen hinweg schwanger zu werden:"):
-            z = p_fruchtbarkeit
+            z = st.session_state.p_fruchtbarkeit
             p = 1-(1-z)**X
             st.success(f"Die Wahrscheinlichkeit beträgt ungefähr {round(p*100,2)}%.")
 
