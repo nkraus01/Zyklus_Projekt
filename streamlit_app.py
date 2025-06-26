@@ -813,8 +813,8 @@ with chiara:
     if len(temperaturdaten) >= 5:
         st.subheader("📊 Analyse")
         analysieren_daten(temperaturdaten)
-    else:
-        st.write("Zu wenige Temperaturdaten vorhanden")
+    #else:
+        #st.write("Zu wenige Temperaturdaten vorhanden")
 
 
 
