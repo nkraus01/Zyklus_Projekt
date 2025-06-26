@@ -43,7 +43,15 @@ with start:
     st.write("Wir sind drei Studentinnen und haben im Rahmen einer Projektarbeit diese Website erstellt.")
     st.write("Hier findest du viele interessante Facts und Darstellungen rund um den weiblichen Zyklus im Allgemeinen sowie ganz individuell auf dich abgestimmt.")
     st.write("""Wir möchten betonen, dass wir **keine Experten** sind und unsere Website daher Fehler enthalten kann! """)
-
+    st.write("")
+    gruesse1 = f"""
+    <p style='text-align: center; font-size:17px;'>
+        Wir wünschen dir viel Spaß!
+    </p>
+    <p style='text-align: center; font-size:17px;'>
+        Liebe Grüße Lou, Chiara & Nathalie
+    """
+    st.markdown(gruesse1, unsafe_allow_html=True)
     st.subheader(" ")
     
     ueberblick = """
