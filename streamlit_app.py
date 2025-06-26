@@ -43,7 +43,7 @@ with start:
     st.write("Wir sind drei Studentinnen und haben im Rahmen einer Projektarbeit diese Website erstellt.")
     st.write("Hier findest du viele interessante Facts und Darstellungen rund um den weiblichen Zyklus im Allgemeinen sowie ganz individuell auf dich abgestimmt.")
     st.write("""Wir möchten betonen, dass unsere Website **keinen Anspruch auf Richtigkeit** hat und Fehler enthalten kann! Daher überprüfe die Informationen auf jeden Fall, 
-    bevor du sie verwendest. Sie dient der Darstellung und groben Informationsbereitstellung.""")
+    bevor du sie verwendest.""")
 
     st.subheader(" ")
     
