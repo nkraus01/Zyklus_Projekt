@@ -637,7 +637,7 @@ with chiara:
     st.header("🩸 Zyklus-Tracker")
     zyklen = lade_zyklen()
 
-# Neue Einträge
+# === Neue Einträge ===
     with st.form("neuer_eintrag"):
         datum_str = st.text_input("Datum der Periode (TT.MM.JJJJ):")
         dauer = st.number_input("Dauer (Tage):", min_value=1, max_value=14, value=5)
@@ -652,7 +652,7 @@ with chiara:
             except ValueError:
                 st.error("❌ Bitte ein gültiges Datum eingeben (TT.MM.JJJJ)")
 
-# Einträge anzeigen und löschen
+# === Einträge anzeigen und löschen ===
     st.subheader("📝 Aktuelle Einträge")
     if zyklen:
         for idx, (datum, dauer) in enumerate(zyklen):
@@ -665,7 +665,7 @@ with chiara:
     else:
         st.write("Noch keine Einträge vorhanden.")
 
-# Analysebereich
+# === Analysebereich ===
     if st.button("💾 Berechnung ausführen"):
         analyse(zyklen)
 
