@@ -17,7 +17,6 @@ def berechne_fruchtbarkeitswkt(alter,bmi,raucher_status,alkohol_status,eisprung_
     
     # Der Vektor enthält nun die entsrechenden Wahrscheinlichkeiten
     wkten = [alter_wkt,bmi_wkt,raucher_status_wkt,alkohol_status_wkt, beides,eisprung_entfernung_wkt]
-    st.write(f"{wkten})
     return wkten
 
 def gewichtung_fwkt(wkten):
