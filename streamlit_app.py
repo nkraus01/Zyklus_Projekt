@@ -807,14 +807,12 @@ with chiara:
         if eisprung:
             st.success(f"✅ Eisprung wurde am **{eisprung.strftime('%d.%m.%Y')}** erkannt.")
         else:
-            st.info("❌ Kein Eisprung erkannt – Temperaturanstieg zu gering.")
+            st.info("❌ Kein Eisprung erkannt.")
 
 # === Automatische Analyse ===
     if len(temperaturdaten) >= 5:
         st.subheader("📊 Analyse")
         analysieren_daten(temperaturdaten)
-    #else:
-        #st.write("Zu wenige Temperaturdaten vorhanden")
 
 
 
