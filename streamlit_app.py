@@ -57,7 +57,7 @@ with start:
     spalte1, spalte2, spalte3 = st.columns(3)
     
     with spalte1:
-        st.write("Nathi hat dir verschiedenste Informationen über die einzelnen Zyklusphasen, die weiblichen Hormone und ihre Rolle im Zyklus zusammengestellt.")
+        st.write("Nathalie hat dir verschiedenste Informationen über die einzelnen Zyklusphasen, die weiblichen Hormone und ihre Rolle im Zyklus zusammengestellt.")
         st.info("Klicke dafür oben auf 'Hormonverlauf'!")
             
     
