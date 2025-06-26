@@ -39,9 +39,9 @@ with start:
     st.subheader("""Du interessierst dich für deinen Zyklus? - Dann bist du hier genau richtig!""")
     name = st.text_input("Verrate uns bitte deinen Namen:")
              
-    st.write(f"Super {name}, dass du da bist!")
-    st.write("Wir haben eine Website erstellt mit allen möglichen interessanten Facts und Darstellungen, dabei sind viele Elemente interaktiv, sodass du alles ganz auf deinen eigenen Körper abstimmen kannst.")
-    st.write("""Wir sind drei Studentinnen und möchten betonen, dass unsere Website **keinen Anspruch auf Richtigkeit** hat und Fehler enthalten kann! Daher überprüfe die Informationen auf jeden Fall, 
+    st.write(f"Hallo {name}, schön dass du da bist!")
+    st.write("Wir sind drei Stdentinnen und haben im Rahmen einer Projektarbeit diese Website erstellt, mit vielen interessanten Facts und Darstellungen rund um den weiblichen Zyklus im Allgemeinen sowie ganz individuell auf dich abgestimmt.")
+    st.write("""Wir möchten betonen, dass unsere Website **keinen Anspruch auf Richtigkeit** hat und Fehler enthalten kann! Daher überprüfe die Informationen auf jeden Fall, 
     bevor du sie verwendest. Sie dient der Darstellung und groben Informationsbereitstellung.""")
 
     st.subheader(" ")
