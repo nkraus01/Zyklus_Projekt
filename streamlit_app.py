@@ -869,9 +869,9 @@ with lou:
     
     
     st.subheader("Fruchtbarkeitswahrscheinlichkeit: pro Zyklus")
-    # Fruchtbarkeitswahrscheinlichkeit berechnen
-    #if "p_fruchtbarkeit" not in st.session_state:
-        #st.session_state.p_fruchtbarkeit = None # So wird p_fruchtbarkeit definiert und es wird kein Fehler ausgegeben, weil die Variable unbekannt ist. 
+    Fruchtbarkeitswahrscheinlichkeit berechnen
+    if "p_fruchtbarkeit" not in st.session_state:
+        st.session_state.p_fruchtbarkeit = None # So wird p_fruchtbarkeit definiert und es wird kein Fehler ausgegeben, weil die Variable unbekannt ist. 
         
     if st.button("Berechne meine Fruchtbarkeitswahrscheinlichkeit"):
         werte = berechne_fruchtbarkeitswkt(alter,bmi,raucher_status,alkohol_status,eisprung_entfernung)
@@ -881,7 +881,7 @@ with lou:
         st.write("""Die Fruchtbarkeitswahrscheinlichkeit ist anhand von Daten geschätzt und kann stark variieren. 
         Sie bezieht sich auf einmaligen Geschlechtsverkehr am angegebenen Zyklustag.""")
 
-        #if st.session_state.p_fruchtbarkeit is not None:
+    if st.session_state.p_fruchtbarkeit is not None:
         st.subheader("Fruchbarkeitswahrscheinlichkeit: über mehrere Zyklen")
         X = st.number_input("Gib X als Zyklenanzahl ein: ", value = 3)
         if st.button(f"Berechne meine Wahrscheinlichkeit, über {X} Zyklen hinweg schwanger zu werden:"):
