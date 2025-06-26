@@ -126,7 +126,9 @@ with start:
         st.info("""Bereich 'Zyklus und Temperatur':
 
                 https://www.apotheken-umschau.de/familie/kinderwunsch/eisprungrechner/eisprungrechner-fruchtbare-tage-eisprung-berechnen-791975.html (03.06.2025)
+                https://www.aok.de/pk/magazin/familie/verhuetung/basaltemperatur-messen-darauf-kommt-es-an/ (04.06.2025)
                 https://www.dkv.com/gesundheit-themenwelt-familie-zyklus-so-erkennen-sie-die-fruchtbaren-tage.html (04.06.2025)
+                https://www.frauenaerzte-im-netz.de/familienplanung-verhuetung/natuerliche-familienplanung/fruchtbare-tage-selbst-bestimmen-methoden/ (04.06.2025)
                 https://www.frauenaerzte-im-netz.de/familienplanung-verhuetung/natuerliche-familienplanung/weiblicher-zyklus-wann-sind-die-fruchtbaren-tage/ (03.06.2025)
                 https://docs.streamlit.io/develop/api-reference (10.06.2025)
                 """)
