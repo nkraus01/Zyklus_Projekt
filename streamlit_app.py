@@ -123,7 +123,9 @@ with start:
                 https://www.ukbonn.de/gynaekologische-endokrinologie-und-reproduktionsmedizin/behandlungsspektrum/kinderwunschbehandlung/lebensfuehrung/ (23.06.2025)
                 """)
         
-  
+        st.info("""Bereich 'Zyklus und Temperatur':
+
+                """)
 
 ### Nathi #####################################################################################
 
