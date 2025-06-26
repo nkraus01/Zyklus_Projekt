@@ -44,7 +44,7 @@ with start:
     st.write("Hier findest du viele interessante Facts und Darstellungen rund um den weiblichen Zyklus im Allgemeinen sowie ganz individuell auf dich abgestimmt.")
     st.write("""Wir möchten betonen, dass wir **keine Experten** sind und unsere Website daher Fehler enthalten kann! """)
     st.write("")
-    st.write("Viel Spaß wünschen dir Lou, Nathi und Chiara")
+    st.write("Viel Spaß wünschen dir Lou, Nathalie & Chiara")
    
     st.subheader(" ")
     
