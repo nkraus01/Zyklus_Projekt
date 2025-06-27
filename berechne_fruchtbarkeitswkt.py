@@ -25,4 +25,5 @@ def gewichtung_fwkt(wkten):
     # Hier werden die Wahrscheinlichkeiten, die anhand eingegebener Daten berechnet wurden, gewichtet.
     wkten_gewichtet = [w * g for w, g in zip(wkten, gewichtung)]
     # Zum Schluss wird die Basiswahrscheinlichkeit von 25% mit dem Ergebnis multipliziert.
-    return sum(wkten_gewichtet) * basis_wkt
+    return wkten_gewichtet
+    # sum(wkten_gewichtet) * basis_wkt
