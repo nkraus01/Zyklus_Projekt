@@ -9,8 +9,8 @@ def berechne_fruchtbarkeitswkt(alter,bmi,raucher_status,alkohol_status,eisprung_
     alkohol_status_wkt = (1.0 if alkohol_status == "nein" else 0.16)
     # Alkohol- und Drogenkonsum führt zu einer stark verminderten Fruchtbarkeit
     beides = (1 if raucher_status_wkt == 1 and alkohol_status_wkt == 1 else 0.77)
-    eisprung_entfernung_wkt = {
-        -7: 0.024, -6: 0.049, -5: 0.146, -4: 0.415,
+    eisprung_entfernung_wkt = { #0.024
+        -7: 500, -6: 0.049, -5: 0.146, -4: 0.415,
         -3: 0.561, -2: 1.0, -1: 0.683, 0: 0.195,
          1: 0.024 }.get(eisprung_entfernung, 0.007)
    
