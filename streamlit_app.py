@@ -675,9 +675,9 @@ with chiara:
     from datetime import datetime, timedelta
 
 # === Meldung nach Rerun anzeigen ===
-if "meldung" in st.session_state:
-    st.success(st.session_state["meldung"])
-    del st.session_state["meldung"]
+    if "meldung" in st.session_state:
+        st.success(st.session_state["meldung"])
+        del st.session_state["meldung"]
 
 
 # === Standardzyklusdaten ===
