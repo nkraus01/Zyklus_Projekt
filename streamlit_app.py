@@ -785,6 +785,7 @@ with chiara:
 
 # === Analysefunktion ===
     def analysieren_daten(daten):
+        import matplotlib.dates as mdates   # bessere Datumsanzeige
         daten.sort()
         tage = [d for d, _ in daten]
         temps = [t for _, t in daten]
@@ -814,6 +815,7 @@ with chiara:
         ax.legend(loc="upper left", fontsize=4)
 
         ax.set_ylim(36.2, 37.2)  # feste Achsenskalierung
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%d.%m.%Y'))
         ax.tick_params(axis='x', labelsize=4)
         ax.tick_params(axis='y', labelsize=4)
         plt.xticks(rotation=45)
