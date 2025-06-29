@@ -754,7 +754,7 @@ with chiara:
         cols = st.columns([2, 1])
         neuer_wert = cols[0].text_input("Neuer Wert (TT.MM.JJJJ 36.5):", key="bearbeiten_text")
     
-          if cols[1].button("🔁 Aktualisieren"):
+        if cols[1].button("🔁 Aktualisieren"):
             if not neuer_wert.strip():
                 st.error("❌ Bitte neuen Wert eingeben.")
             else:
