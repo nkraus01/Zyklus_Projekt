@@ -674,6 +674,12 @@ with chiara:
     import matplotlib.pyplot as plt
     from datetime import datetime, timedelta
 
+# === Meldung nach Rerun anzeigen ===
+if "meldung" in st.session_state:
+    st.success(st.session_state["meldung"])
+    del st.session_state["meldung"]
+
+
 # === Standardzyklusdaten ===
     def beispiel_daten():
         start = datetime(2025, 6, 1)
@@ -759,13 +765,17 @@ with chiara:
                 temperatur = float(temp_str.replace(",", "."))
                 temperaturdaten[index] = (datum, temperatur)
                 temperaturdaten.sort()
-                st.success("✅ Eintrag aktualisiert.")
+                st.session_state["meldung"] = "✅ Eintrag aktualisiert."
+                st.rerun()
+                
             except:
                 st.error("❌ Fehler beim Aktualisieren.")
 
         if st.button("❌ Eintrag löschen"):
             temperaturdaten.pop(index)
-            st.success("🗑️ Eintrag gelöscht.")
+            st.session_state["meldung"] = "✅ Eintrag aktualisiert."
+            st.rerun()
+        
 
 # === Analysefunktion ===
     def analysieren_daten(daten):
