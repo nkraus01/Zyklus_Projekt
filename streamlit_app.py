@@ -743,7 +743,6 @@ with chiara:
         st.info("⚠️ Es werden Beispielwerte angezeigt. Füge eigene Daten ein, um loszulegen.")
     else:
         st.info("Noch keine Daten vorhanden.")
-        
 # === Bearbeiten / Löschen (nur wenn keine Beispieldaten) ===
     if temperaturdaten and not st.session_state.beispiel_aktiv:
         st.subheader("✏️ Bearbeiten oder löschen")
@@ -753,34 +752,34 @@ with chiara:
 
         cols = st.columns([2, 1])
         neuer_wert = cols[0].text_input("Neuer Wert (TT.MM.JJJJ 36.5):", key="bearbeiten_text")
+    
         if cols[1].button("🔁 Aktualisieren"):
             try:
                 datum_str, temp_str = neuer_wert.strip().split()
                 datum = datetime.strptime(datum_str, "%d.%m.%Y")
                 temperatur = float(temp_str.replace(",", "."))
-                temperaturdaten[index] = (datum, temperatur)
-                temperaturdaten.sort()
+                st.session_state.temperaturdaten[index] = (datum, temperatur)
+                st.session_state.temperaturdaten.sort()
                 st.session_state["meldung"] = "✅ Eintrag aktualisiert."
                 st.rerun()
-                
-            except:
-                st.error("❌ Fehler beim Aktualisieren.")
-
-         # Meldung nach Rerun anzeigen
-        if "meldung" in st.session_state:
-            st.success(st.session_state["meldung"])
-            del st.session_state["meldung"]
+            except Exception as e:
+                st.session_state["meldung"] = f"❌ Fehler beim Aktualisieren: {e}"
+                st.rerun()
 
         if st.button("❌ Eintrag löschen"):
-            temperaturdaten.pop(index)
-            st.session_state["meldung"] = "✅ Eintrag gelöscht."
+            st.session_state.temperaturdaten.pop(index)
+            st.session_state["meldung"] = "🗑️ Eintrag gelöscht."
             st.rerun()
-            
-        # Meldung nach Rerun anzeigen
-        if "meldung" in st.session_state:
-            st.success(st.session_state["meldung"])
-            del st.session_state["meldung"]
 
+        # Meldung anzeigen (nach Rerun)
+        if "meldung" in st.session_state:
+            msg = st.session_state["meldung"]
+            if msg.startswith("✅") or msg.startswith("🗑️"):
+                st.success(msg)
+            else:
+                st.error(msg)
+            del st.session_state["meldung"]
+        
 
 # === Analysefunktion ===
     def analysieren_daten(daten):
