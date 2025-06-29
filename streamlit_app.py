@@ -661,7 +661,7 @@ with chiara:
             if col2.button("🗑️ Löschen", key=f"del_{idx}"):
                 del zyklen[idx]
                 speichere_zyklen(zyklen)
-                st.experimental_rerun()
+                st.rerun()
     else:
         st.write("Noch keine Einträge vorhanden.")
 
