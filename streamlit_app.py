@@ -766,6 +766,11 @@ with chiara:
             except:
                 st.error("❌ Fehler beim Aktualisieren.")
 
+         # Meldung nach Rerun anzeigen
+        if "meldung" in st.session_state:
+            st.success(st.session_state["meldung"])
+            del st.session_state["meldung"]
+
         if st.button("❌ Eintrag löschen"):
             temperaturdaten.pop(index)
             st.session_state["meldung"] = "✅ Eintrag gelöscht."
