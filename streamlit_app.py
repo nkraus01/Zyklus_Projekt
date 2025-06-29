@@ -768,7 +768,7 @@ with chiara:
 
         if st.button("❌ Eintrag löschen"):
             temperaturdaten.pop(index)
-            st.session_state["meldung"] = "✅ Eintrag aktualisiert."
+            st.session_state["meldung"] = "✅ Eintrag gelöscht."
             st.rerun()
             
         # Meldung nach Rerun anzeigen
