@@ -199,7 +199,7 @@ with nathi:
         oe = np.concatenate([np.full(21, 100/100), np.full(zykluslaenge - 21, 30/100)])
         pr = np.concatenate([np.full(21, 10/100), np.full(zykluslaenge - 21, 1/100)])
         lh = fsh = np.full(zykluslaenge, 3/100)
-        real_oe = np.concatenate([np.full(21, 100), np.full(zykluslaenge - 21, 30)])
+        real_oe = np.concatenate([np.full(21, 100), np.full(zykluslaenge - 21, 30)]) # concatenate verbindet Arrays entlang einer Achse
         real_pr = np.concatenate([np.full(21, 10), np.full(zykluslaenge - 21, 1)])
         real_lh = real_fsh = np.full(zykluslaenge, 3)
     elif modus == "Pille (28 Tage)":
@@ -209,6 +209,7 @@ with nathi:
         real_oe = np.full(zykluslaenge, 100)
         real_pr = np.full(zykluslaenge, 10)
         real_lh = real_fsh = np.full(zykluslaenge, 3)
+    # oben wurden die real_hormonwerte durch 100 geteilt zur besseren Darstellung im Plot
     
     # Plot erzeugen
     fig = go.Figure()
