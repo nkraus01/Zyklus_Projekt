@@ -801,7 +801,9 @@ with chiara:
             if gleit[i] - gleit[i-1] >= 0.2:
                 eisprung = mittel_tage[i]
                 break
-
+                
+                
+        # Grafische Darstellung
         fig, ax = plt.subplots(figsize=(4, 2))
         ax.plot(tage, temps, marker='.', label="Temperatur", color='blue')
         ax.plot(mittel_tage, gleit, linestyle='--', label="3-Tage-Mittel", color='orange')
@@ -815,7 +817,14 @@ with chiara:
         ax.legend(loc="upper left", fontsize=4)
 
         ax.set_ylim(36.2, 37.2)  # feste Achsenskalierung
-        ax.xaxis.set_major_formatter(mdates.DateFormatter('%d.%m.%Y'))
+        # Automatische Anpassung je nach Datenmenge
+        anzahl_daten = len(tage)
+        if anzahl_daten <= 10:
+            ax.xaxis.set_major_locator(mdates.DayLocator())  # jeden Tag
+        else:
+            ax.xaxis.set_major_locator(mdates.DayLocator(interval=2))  # alle 2 Tage
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%d.%m.%Y'))  # immer klares Datumsformat
+        
         ax.tick_params(axis='x', labelsize=4)
         ax.tick_params(axis='y', labelsize=4)
         plt.xticks(rotation=45)
