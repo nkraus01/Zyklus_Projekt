@@ -743,6 +743,7 @@ with chiara:
         st.info("⚠️ Es werden Beispielwerte angezeigt. Füge eigene Daten ein, um loszulegen.")
     else:
         st.info("Noch keine Daten vorhanden.")
+        
 # === Bearbeiten / Löschen (nur wenn keine Beispieldaten) ===
     if temperaturdaten and not st.session_state.beispiel_aktiv:
         st.subheader("✏️ Bearbeiten oder löschen")
@@ -779,7 +780,7 @@ with chiara:
             else:
                 st.error(msg)
             del st.session_state["meldung"]
-        
+
 
 # === Analysefunktion ===
     def analysieren_daten(daten):
