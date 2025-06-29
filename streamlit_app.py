@@ -763,6 +763,7 @@ with chiara:
                 st.session_state.temperaturdaten.sort()
                 st.session_state["meldung"] = "✅ Eintrag aktualisiert."
                 st.rerun()
+            # konkrete Fehlermledung
             except Exception as e:
                 st.session_state["meldung"] = f"❌ Fehler beim Aktualisieren: {e}"
                 st.rerun()
