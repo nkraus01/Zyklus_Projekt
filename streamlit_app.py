@@ -1,11 +1,10 @@
-# Erweiterung für Männer
 
 import streamlit as st
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 from berechne_fruchtbarkeitswkt import berechne_fruchtbarkeitswkt,gewichtung_fwkt
-#streamlit run app.py
+
 
 ### Start ########################################################################################
 st.set_page_config(page_title="Der weibliche Zyklus", page_icon="🌹", layout="wide")
