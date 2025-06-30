@@ -703,6 +703,7 @@ with chiara:
 
     temperaturdaten = st.session_state.temperaturdaten
     st.markdown("---") 
+    st.write(" ")
     st.header("🌡️ Basaltemperatur-Tracker & Eisprung-Analyse")
 
 # === Neueingabe ===
