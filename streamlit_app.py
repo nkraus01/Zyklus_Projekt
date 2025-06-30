@@ -571,7 +571,7 @@ with nathi:
 
 with chiara:  
     
-### Allgemeine Zyklus Berechnungen ###
+### Allgemeine Zyklus-Berechnungen ###
     
     import csv
     import os
