@@ -7,6 +7,7 @@ from berechne_fruchtbarkeitswkt import berechne_fruchtbarkeitswkt,gewichtung_fwk
 
 
 ### Start ########################################################################################
+
 st.set_page_config(page_title="Der weibliche Zyklus", page_icon="🌹", layout="wide")
 st.title("Der weibliche Zyklus 🌹")
 
