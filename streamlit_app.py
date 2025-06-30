@@ -1,7 +1,7 @@
 # Erweiterung für Männer
 
 import streamlit as st
-st.set_page_config(page_title="Der weibliche Zyklus", page_icon="🌹", layout="wide")
+#st.set_page_config(page_title="Der weibliche Zyklus", page_icon="🌹", layout="wide")
 
 import numpy as np
 import pandas as pd
@@ -9,10 +9,11 @@ import plotly.graph_objects as go
 from berechne_fruchtbarkeitswkt import berechne_fruchtbarkeitswkt,gewichtung_fwkt
 #streamlit run app.py
 
-st.title("Der weibliche Zyklus 🌹")
+#st.title("Der weibliche Zyklus 🌹")
 
 ### Start ########################################################################################
-
+st.set_page_config(page_title="Der weibliche Zyklus", page_icon="🌹", layout="wide")
+st.title("Der weibliche Zyklus 🌹")
 def set_page(page_name):
     """Funktion zum Setzen der aktuellen Seite"""
     st.session_state.current_page = page_name
