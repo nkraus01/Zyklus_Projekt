@@ -60,7 +60,7 @@ with start:
             
     
     with spalte2:
-        st.write("Mit Hilfe von Chiaras Code kannst du deinen Zyklus tracken, dir veschieden Daten berechnen lassen und mithilfe einer Körpertemperaturkurve deinen Eisprung erkennen.")
+        st.write("Mit Hilfe von Chiaras Code kannst du deinen Zyklus tracken, dir veschiedene Daten berechnen lassen und mithilfe einer Körpertemperaturkurve deinen Eisprung erkennen.")
         st.info("Klicke dafür oben auf 'Zyklus und Temperatur'!")
     
     with spalte3:
@@ -207,15 +207,15 @@ with nathi:
         real_oe = np.full(zykluslaenge, 100)
         real_pr = np.full(zykluslaenge, 10)
         real_lh = real_fsh = np.full(zykluslaenge, 3)
-    # oben wurden die real_hormonwerte durch 100 geteilt zur besseren Darstellung im Plot
+    # oben wurden alle real_hormonwerte durch 100 geteilt zur einheitlicheren Darstellung im Plot
     
     # Plot erzeugen
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=tage, y=oe, name="Östrogen", line=dict(color='purple', shape='spline')))
     fig.add_trace(go.Scatter(x=tage, y=pr, name="Progesteron", line=dict(color='orange', shape = 'spline')))
     fig.add_trace(go.Scatter(x=tage, y=lh, name="LH", line=dict(color='green', shape='spline')))
-    fig.add_trace(go.Scatter(x=tage, y=fsh, name="FSH", line=dict(color='blue', shape = 'spline')))
-    fig.add_shape(type="line", x0=tag, x1=tag, y0=0, y1=1, line=dict(color="red", width=2, dash="dash")) #hinzufügen einer vertikalen Linie (durch x0 = x1), dash -> gestrichelte Linie
+    fig.add_trace(go.Scatter(x=tage, y=fsh, name="FSH", line=dict(color='blue', shape = 'spline'))) # spline zum Begradigen der Kurven
+    fig.add_shape(type="line", x0=tag, x1=tag, y0=0, y1=1, line=dict(color="red", width=2, dash="dash")) # hinzufügen einer vertikalen Linie (durch x0 = x1), dash -> gestrichelte Linie
 
     
     if modus == "Natürlich":
@@ -249,8 +249,9 @@ with nathi:
     })
     st.markdown("#### 📊 Hormonspiegel an diesem Tag")
     st.dataframe(df, use_container_width=True)
+
     
-    # --- Zusätzliche Infos zu Phasen und Hormonen ---
+    # ----- Zusätzliche Infos zu Phasen und Hormonen -----
     
     st.markdown("---") # erzeugt horizontale Trennlinie
     st.header("📚 Zusatzinfos zu Zyklusphasen & Hormonen")
@@ -701,7 +702,7 @@ with chiara:
         st.session_state.beispiel_aktiv = True
 
     temperaturdaten = st.session_state.temperaturdaten
-
+    st.markdown("---") 
     st.header("🌡️ Basaltemperatur-Tracker & Eisprung-Analyse")
 
 # === Neueingabe ===
