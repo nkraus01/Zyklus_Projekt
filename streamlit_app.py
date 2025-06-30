@@ -8,7 +8,7 @@ from berechne_fruchtbarkeitswkt import berechne_fruchtbarkeitswkt,gewichtung_fwk
 
 ### Start ########################################################################################
 
-st.set_page_config(page_title="Der weibliche Zyklus", page_icon="🌹", layout="wide")
+st.set_page_config(page_title="Der weibliche Zyklus", page_icon="🌹", layout="wide") # layout = wide -> Inhalt nimmt fast ganze Fensterbreite ein
 st.title("Der weibliche Zyklus 🌹")
 
 def set_page(page_name):
@@ -37,7 +37,7 @@ with start:
     st.subheader("""Du interessierst dich für deinen Zyklus? - Dann bist du hier genau richtig!""")
     name = st.text_input("Verrate uns bitte deinen Namen:")
              
-    st.write(f"Hallo {name}, schön dass du da bist!")
+    st.write(f"Hallo {name}. Schön, dass du da bist!")
     st.write("Wir sind drei Studentinnen und haben im Rahmen einer Projektarbeit diese Website erstellt.")
     st.write("Hier findest du viele interessante Facts und Darstellungen rund um den weiblichen Zyklus im Allgemeinen sowie ganz individuell auf dich abgestimmt.")
     st.write("""Wir möchten betonen, dass wir **keine Experten** sind und unsere Website daher Fehler enthalten kann! """)
