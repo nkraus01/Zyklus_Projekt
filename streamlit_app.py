@@ -108,7 +108,7 @@ with start:
                 https://www.msdmanuals.com/de/heim/gesundheitsprobleme-von-frauen/das-weibliche-fortpflanzungssystem/menstruationszyklus (25.05.2025) 
                 #file:///h:/win.v2/Downloads/978-3-031-58516-6.pdf (26.05.2025) 
                 https://pubmed.ncbi.nlm.nih.gov/14967378/ (26.05.2025) 
-                https://www.nature.com/articles/s41598-017-14261-8 (31.05.2025) 
+                #https://www.nature.com/articles/s41598-017-14261-8 (31.05.2025) 
                 https://pubmed.ncbi.nlm.nih.gov/7477165/ (31.05.2025) 
                 https://europepmc.org/article/PMC/4893975 (31.05.2025)
                 https://www.academia.edu/27558043/Changes_with_age_in_the_level_and_duration_of_fertility_in_the_menstrual_cycle (31.05.2025)
