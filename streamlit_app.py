@@ -86,7 +86,7 @@ with start:
                 https://docs.github.com/de/get-started/start-your-journey (21.05.25)
                 https://plotly.com/python/renderers/ (22.05.25)
                 https://arxiv.org/pdf/1712.00117 (05.06.25)
-                #https://www.researchgate.net/publication/2282598_A_Model_For_The_Production_Of_Ovarian_Hormones_During_The_Menstrual_Cycle (05.06.25)
+                https://www.researchgate.net/publication/2282598_A_Model_For_The_Production_Of_Ovarian_Hormones_During_The_Menstrual_Cycle (05.06.25)
                 https://proceedings.mlr.press/v106/urteaga19a/urteaga19a.pdf? (05.06.25)
                 https://github.com/uja-works/Programmieren2 (20.05.25)
                 https://www.ncbi.nlm.nih.gov/books/NBK500020/ (23.05.25)
@@ -106,9 +106,9 @@ with start:
         st.info("""Bereich 'Fruchtbarkeitswahrscheinlichkeit':
         
                 https://www.msdmanuals.com/de/heim/gesundheitsprobleme-von-frauen/das-weibliche-fortpflanzungssystem/menstruationszyklus (25.05.2025) 
-                #file:///h:/win.v2/Downloads/978-3-031-58516-6.pdf (26.05.2025) 
+                file:///h:/win.v2/Downloads/978-3-031-58516-6.pdf (26.05.2025) 
                 https://pubmed.ncbi.nlm.nih.gov/14967378/ (26.05.2025) 
-                #https://www.nature.com/articles/s41598-017-14261-8 (31.05.2025) 
+                https://www.nature.com/articles/s41598-017-14261-8 (31.05.2025) 
                 https://pubmed.ncbi.nlm.nih.gov/7477165/ (31.05.2025) 
                 https://europepmc.org/article/PMC/4893975 (31.05.2025)
                 https://www.academia.edu/27558043/Changes_with_age_in_the_level_and_duration_of_fertility_in_the_menstrual_cycle (31.05.2025)
