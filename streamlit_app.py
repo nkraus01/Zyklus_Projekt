@@ -106,7 +106,7 @@ with start:
         st.info("""Bereich 'Fruchtbarkeitswahrscheinlichkeit':
         
                 https://www.msdmanuals.com/de/heim/gesundheitsprobleme-von-frauen/das-weibliche-fortpflanzungssystem/menstruationszyklus (25.05.2025) 
-                file:///h:/win.v2/Downloads/978-3-031-58516-6.pdf (26.05.2025) 
+                #file:///h:/win.v2/Downloads/978-3-031-58516-6.pdf (26.05.2025) 
                 https://pubmed.ncbi.nlm.nih.gov/14967378/ (26.05.2025) 
                 https://www.nature.com/articles/s41598-017-14261-8 (31.05.2025) 
                 https://pubmed.ncbi.nlm.nih.gov/7477165/ (31.05.2025) 
