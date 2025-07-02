@@ -86,7 +86,7 @@ with start:
                 https://docs.github.com/de/get-started/start-your-journey (21.05.25)
                 https://plotly.com/python/renderers/ (22.05.25)
                 https://arxiv.org/pdf/1712.00117 (05.06.25)
-                https://www.researchgate.net/publication/2282598_A_Model_For_The_Production_Of_Ovarian_Hormones_During_The_Menstrual_Cycle (05.06.25)
+                
                 https://proceedings.mlr.press/v106/urteaga19a/urteaga19a.pdf? (05.06.25)
                 https://github.com/uja-works/Programmieren2 (20.05.25)
                 https://www.ncbi.nlm.nih.gov/books/NBK500020/ (23.05.25)
