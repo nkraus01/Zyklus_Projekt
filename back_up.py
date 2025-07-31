@@ -26,7 +26,8 @@ with start:
     willkommen = """
     <h2 style='text-align: center; color: steelblue;'>
         Willkommen bei unserer Streamlit App!
-    </h2>
+    </h2> 
+    """
     
     st.markdown(willkommen, unsafe_allow_html=True)
     st.write("")
