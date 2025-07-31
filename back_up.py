@@ -1,4 +1,5 @@
 # Link zur Website: https://zyklusprojekt-fqpsn2c6ex6si2tcvkf5z9.streamlit.app/
+# Die Präsentation mit den anderen Informationen haben wir Ihnen bereits per Mail geschickt.
 
 import streamlit as st
 import numpy as np
